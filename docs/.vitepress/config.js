@@ -11,7 +11,7 @@ export default defineConfig({
 			{
 				text: 'API参考',
 				items: [
-					{ text: '符号大全', link: '/Manual/symbols.md' },
+					{ text: '符号大全', link: '/manual/symbols.md' },
 				]
 			}
 		],
