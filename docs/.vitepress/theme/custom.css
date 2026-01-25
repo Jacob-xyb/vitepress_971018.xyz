@@ -1,30 +1,6 @@
 /* 首页标题渐变色 */
-.VPHero .name {
-  background: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* 首页副标题渐变色（可选） */
-.VPHero .tagline {
-  background: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 0.8;
-}
-
-/* 文档页面 h1 标题渐变色 */
-.vp-doc h1 {
-  background: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* 可选：其他标题也添加渐变色 */
-.vp-doc h2 {
+/* 暗色主题 */
+.dark .VPHero .name {
   background: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

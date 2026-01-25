@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: API 文档
-  text: 专业的API文档网站
-  tagline: 简单、强大、高性能
+  name: Jacob's 百宝箱
+  # text: 满满的干货
+  tagline: 起风了，唯有努力生存...
   actions:
     - theme: brand
       text: 快速开始
