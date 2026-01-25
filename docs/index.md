@@ -9,9 +9,6 @@ hero:
     - theme: brand
       text: 快速开始
       link: /guide/getting-started
-    - theme: alt
-      text: API参考
-      link: /api/
 
 features:
   - title: Web开发

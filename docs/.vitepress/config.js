@@ -25,14 +25,6 @@ export default defineConfig({
 						{ text: '快速开始', link: '/guide/getting-started' }
 					]
 				}
-			],
-			'/api/': [
-				{
-					text: 'API参考',
-					items: [
-						{ text: '概述', link: '/api/' }
-					]
-				}
 			]
 		},
 
