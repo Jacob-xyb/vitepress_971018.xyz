@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'API 文档',
-  description: '专业的API文档网站',
+  title: 'Jacob\'s 百宝箱',
+  description: '专业的导航网站',
   
   themeConfig: {
     nav: [
