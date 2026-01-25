@@ -14,6 +14,59 @@
 npm run docs:dev
 ```
 
+# vitepress 中的 MarkDown
+
+是的！VitePress 的 Markdown 文件非常强大，支持：
+
+## 1. **直接写 HTML**
+```markdown
+<div class="custom-box">
+  <h3>标题</h3>
+  <p>内容</p>
+</div>
+```
+
+## 2. **使用 Vue 组件**
+```markdown
+<script setup>
+import MyComponent from './MyComponent.vue'
+</script>
+
+<MyComponent />
+```
+
+## 3. **在 Markdown 中使用 Vue 语法**
+```markdown
+<script setup>
+const count = ref(0)
+</script>
+
+当前计数：{{ count }}
+<button @click="count++">点击</button>
+```
+
+## 4. **内联样式**
+```markdown
+<style scoped>
+.my-class {
+  color: red;
+}
+</style>
+```
+
+这就是为什么刚才我能直接在你的 `docs/web/index.md` 里写：
+- HTML 标签（`<div>`, `<a>`, `<span>`）
+- `<style scoped>` 样式
+- 之前的 `<script setup>` 和 Vue 组件
+
+VitePress 会把 Markdown 文件编译成 Vue 组件，所以你可以：
+- ✅ 混合使用 Markdown 和 HTML
+- ✅ 导入和使用 Vue 组件
+- ✅ 使用 Vue 的响应式特性
+- ✅ 添加交互功能
+- ✅ 自定义样式
+
+这也是 VitePress 比传统静态网站生成器更灵活的原因之一。你基本上可以把每个 `.md` 文件当作一个 Vue 单文件组件来用。
 
 # 常见问题
 
