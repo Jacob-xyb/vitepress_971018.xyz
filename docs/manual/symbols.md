@@ -1,5 +1,7 @@
 # 常见符号
 
+[表情图标百科](https://emojipedia.org/zh)
+
 ## 常用 Unicode 符号表
 
 ### 状态标记符号
