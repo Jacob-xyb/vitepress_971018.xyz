@@ -9,7 +9,7 @@
 <div class="nav-cards">
   <a href="/web/vitepress/" class="nav-card">
     <span class="nav-icon">
-    	<ThemeIcon icon="vitepress" size="48px" alt="vitepress" darkColor="#5C73E7"/>
+    	<ThemeIcon icon="vitepress" size="48px" alt="vitepress" color="#5C73E7"/>
 	</span>
     <div class="nav-content">
       <h3>vitepress</h3>
@@ -18,7 +18,7 @@
   </a>
   <a href="/web/npm/" class="nav-card">
     <span class="nav-icon">
-    	<ThemeIcon icon="npm" size="48px" alt="npm" darkColor="#CB3837"/>
+    	<ThemeIcon icon="npm" size="48px" alt="npm" color="#CB3837"/>
 	</span>
     <div class="nav-content">
       <h3>npm</h3>
