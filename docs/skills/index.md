@@ -9,7 +9,7 @@
 <div class="nav-cards">
   <a href="/skills/markdown/" class="nav-card">
     <span class="nav-icon">
-      <img src="https://cdn.simpleicons.org/markdown/ffffff" alt="Markdown" />
+      <ThemeIcon icon="markdown" size="48px" alt="Markdown" />
     </span>
     <div class="nav-content">
       <h3>Markdown</h3>
