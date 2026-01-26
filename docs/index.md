@@ -11,6 +11,10 @@ hero:
       link: /guide/getting-started
 
 features:
+  - title: IT必备技能
+    details: MarkDown
+    link: /skills/
+
   - title: Web开发
     details: Vitepress
     link: /web/
