@@ -1,55 +1,84 @@
-# Vitepress
+# VitePress
 
-[vitepress 官方网站](https://vitepress.dev/zh/)
+::: info
+VitePress 是一个基于 Vite 的静态站点生成器，专为编写技术文档而设计。
+:::
 
-# 快速调试
+## 📚 文档导航
 
-## 常用指令
+- [Markdown 扩展语法](./vitepress中的MarkDown.md) - VitePress 特有的 Markdown 功能
+- [快速开始](#快速开始) - 常用命令和开发流程
+- [常见问题](#常见问题) - 开发中遇到的问题和解决方案
 
-[详情可见npm文档](/web/npm/)
+## 🔗 官方资源
 
-常用指令分为三个：dev、build、preview
+- [VitePress 官方文档](https://vitepress.dev/zh/)
+- [GitHub 仓库](https://github.com/vuejs/vitepress)
+
+## 快速开始
+
+### 常用命令
+
+更多 npm 命令详见 [npm 文档](/web/npm/)
 
 ```bash
+# 开发模式 - 本地预览
 npm run docs:dev
+
+# 构建 - 生成静态文件
+npm run docs:build
+
+# 预览构建结果
+npm run docs:preview
 ```
 
-# 常见问题
+### 开发流程
 
-## 大小写问题
+1. 运行 `npm run docs:dev` 启动开发服务器
+2. 编辑 markdown 文件，浏览器自动刷新
+3. 构建前运行 `npm run docs:build` 检查错误
+4. 部署 `docs/.vitepress/dist` 目录
 
-在windows下，vitepress对文件大小写不敏感，在linux下敏感，所以要保证文件名大小写一致，建议文件夹用小写命名
+## 常见问题
 
----
+### 文件名大小写问题
 
-**为什么 `npm run docs:dev` 不报错，但 `npm run docs:build` 会报错？**
+::: warning 注意
+Windows 下文件名不区分大小写，但 Linux 服务器区分大小写！
+:::
 
-1. **dev 模式（开发模式）**
-   - 不检查死链接
-   - 只在你访问页面时才加载
-   - 更宽松，为了开发体验
-   - 即使链接错误，也能正常运行
+**问题表现：**
+- Windows 本地开发正常
+- 部署到 Linux 服务器后出现 404
 
-2. **build 模式（构建模式）**
-   - 会检查所有链接的有效性
-   - 预渲染所有页面
-   - 严格模式，确保生产环境没有问题
-   - 发现死链接会直接报错并停止构建
+**解决方案：**
+- 统一使用小写文件名和文件夹名
+- 链接路径与实际文件名保持一致
 
-**VitePress 的配置：**
+### dev 正常但 build 报错
+
+**为什么会这样？**
+
+| 模式 | dev（开发） | build（构建） |
+|------|------------|--------------|
+| 链接检查 | ❌ 不检查 | ✅ 严格检查 |
+| 加载方式 | 按需加载 | 预渲染所有页面 |
+| 错误处理 | 宽松 | 严格，遇错即停 |
+
+**配置选项：**
+
 ```js
+// .vitepress/config.js
 export default {
-  ignoreDeadLinks: false  // 默认值，build 时检查死链接
+  ignoreDeadLinks: false  // 默认值，推荐保持
 }
 ```
 
-如果你想在 build 时忽略死链接检查（不推荐），可以设置：
-```js
-export default {
-  ignoreDeadLinks: true
-}
-```
+::: tip 建议
+不要设置 `ignoreDeadLinks: true`，而是修复所有死链接，确保用户体验。
+:::
 
-但最好的做法是修复所有死链接，确保用户不会点到 404 页面。
-
->>> 注意：VitePress 的死链接检查只检查 Markdown 文件中的链接，不检查 配置文件（config.js）中的导航链接
+**注意事项：**
+- VitePress 只检查 Markdown 文件中的链接
+- 配置文件（config.js）中的导航链接不会被检查
+- 建议定期运行 `build` 命令验证链接有效性
