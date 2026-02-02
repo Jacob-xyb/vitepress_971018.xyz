@@ -9,7 +9,7 @@
 <div class="nav-cards">
   <a href="/web/vitepress/" class="nav-card">
     <span class="nav-icon">
-    	<ThemeIcon icon="vitepress" size="48px" alt="vitepress" color="#5C73E7"/>
+    	<img src="/logo/vitepress-logo.svg" width="48" height="48" alt="vitepress" />
 	</span>
     <div class="nav-content">
       <h3>vitepress</h3>
