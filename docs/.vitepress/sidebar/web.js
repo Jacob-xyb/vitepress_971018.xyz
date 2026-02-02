@@ -17,6 +17,12 @@ export default {
 			]
 		},
 		{
+			text: 'UI美化',
+			items: [
+				{ text: '宽布局配置', link: '/web/vitepress/ui-宽布局' }
+			]
+		},
+		{
 			text: '常见问题',
 			// collapsed: false,
 			items: [

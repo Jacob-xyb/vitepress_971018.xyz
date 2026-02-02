@@ -1,0 +1,225 @@
+# VitePress 宽布局配置
+
+::: tip 适用场景
+当页面需要展示大量数据、图表或表格时，默认的 688px 内容宽度可能不够用。通过宽布局配置，可以让特定页面充分利用屏幕空间。
+:::
+
+## 快速使用
+
+在需要宽布局的 Markdown 文件的 frontmatter 中添加 `pageClass`：
+
+```yaml
+---
+title: 页面标题
+pageClass: wide-page
+---
+
+# 页面内容
+```
+
+保存后刷新页面，内容区域会自动变宽。
+
+## 实现原理
+
+### 1. VitePress 的布局结构
+
+VitePress 的页面布局是多层嵌套的：
+
+```
+.Layout (外层容器)
+  └── .VPDoc (文档容器)
+      └── .content-container (内容容器)
+          └── .vp-doc (文档内容，默认 max-width: 688px)
+```
+
+### 2. pageClass 的作用
+
+在 frontmatter 中设置 `pageClass: wide-page` 后，VitePress 会将这个类名添加到 `.Layout` 元素上：
+
+```html
+<div class="Layout wide-page">
+  <!-- 页面内容 -->
+</div>
+```
+
+### 3. CSS 实现
+
+在 `docs/.vitepress/theme/custom.css` 中添加以下样式：
+
+```css
+/* 只让带 wide-page 类的页面变宽 */
+
+/* 1. 设置全局布局最大宽度 */
+.Layout.wide-page {
+  --vp-layout-max-width: none; /* 移除宽度限制 */
+}
+
+/* 2. 设置文档内容宽度 */
+.Layout.wide-page .vp-doc {
+  max-width: none !important; /* 移除默认的 688px 限制 */
+}
+
+/* 3. 解除容器宽度限制 */
+.Layout.wide-page .VPDoc.has-aside .content-container {
+  max-width: 100% !important;
+}
+```
+
+::: warning 注意
+三个 CSS 规则缺一不可，必须同时设置才能生效。
+:::
+
+## 宽度选项
+
+根据需求选择不同的宽度设置：
+
+### 选项 1：完全移除限制（推荐）
+
+```css
+.Layout.wide-page .vp-doc {
+  max-width: none !important;
+}
+```
+
+**效果：** 内容会尽可能撑满可用空间
+
+### 选项 2：使用视口宽度百分比
+
+```css
+.Layout.wide-page .vp-doc {
+  max-width: 90vw !important; /* 屏幕宽度的 90% */
+}
+```
+
+**效果：** 左右各留 5% 空白，大屏幕上视觉效果更好
+
+### 选项 3：固定最大宽度
+
+```css
+.Layout.wide-page .vp-doc {
+  max-width: 1400px !important;
+}
+```
+
+**效果：** 在超大屏幕上不会过宽，保持可读性
+
+### 选项 4：动态计算
+
+```css
+.Layout.wide-page .vp-doc {
+  max-width: calc(100vw - 100px) !important; /* 屏幕宽度减去固定边距 */
+}
+```
+
+**效果：** 灵活控制左右边距
+
+## 响应式优化
+
+为移动端添加特殊处理：
+
+```css
+/* 移动端保持默认宽度 */
+@media (max-width: 768px) {
+  .Layout.wide-page .vp-doc {
+    max-width: 100% !important;
+  }
+}
+```
+
+## 使用示例
+
+### 示例 1：数据表格页面
+
+```yaml
+---
+title: 数据统计
+pageClass: wide-page
+---
+
+# 数据统计
+
+<table>
+  <!-- 宽表格内容 -->
+</table>
+```
+
+### 示例 2：图表展示页面
+
+```yaml
+---
+title: 体重记录
+pageClass: wide-page
+---
+
+# 体重记录
+
+<div class="chart-container">
+  <!-- 图表组件 -->
+</div>
+```
+
+## 常见问题
+
+### 为什么设置后没有生效？
+
+**可能原因：**
+
+1. **CSS 文件未正确引入**
+   
+   检查 `docs/.vitepress/theme/index.js`：
+   ```js
+   import DefaultTheme from 'vitepress/theme'
+   import './custom.css' // 确保引入了 custom.css
+   
+   export default DefaultTheme
+   ```
+
+2. **选择器不正确**
+   
+   确保使用 `.Layout.wide-page` 而不是 `.wide-page`
+
+3. **缺少必要的 CSS 规则**
+   
+   三个 CSS 规则必须同时存在
+
+4. **浏览器缓存**
+   
+   清除缓存或强制刷新（Ctrl+Shift+R / Cmd+Shift+R）
+
+### 如何让所有页面都变宽？
+
+如果想让所有页面都使用宽布局，直接修改 `.vp-doc` 即可：
+
+```css
+.vp-doc {
+  max-width: 1400px !important;
+}
+```
+
+不需要使用 `pageClass`。
+
+### 如何自定义其他页面类？
+
+可以定义多个不同的页面类：
+
+```css
+/* 超宽布局 */
+.Layout.extra-wide .vp-doc {
+  max-width: 95vw !important;
+}
+
+/* 中等宽度 */
+.Layout.medium-wide .vp-doc {
+  max-width: 1000px !important;
+}
+```
+
+使用时：
+```yaml
+pageClass: extra-wide
+```
+
+## 参考资源
+
+- [VitePress 官方文档 - Frontmatter](https://vitepress.dev/reference/frontmatter-config)
+- [VitePress 主题定制](https://vitepress.dev/guide/extending-default-theme)
