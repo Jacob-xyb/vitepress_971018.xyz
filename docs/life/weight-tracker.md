@@ -49,6 +49,7 @@ function createChart(Chart) {
   }
   
   const currentMetric = metrics.find(m => m.value === selectedMetric.value)
+  const isMobile = window.innerWidth < 768
   
   chartInstance = new Chart(ctx, {
     type: 'line',
@@ -77,6 +78,8 @@ function createChart(Chart) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      layout: {
+      },
       interaction: {
         mode: 'index',
         intersect: false,
@@ -88,6 +91,9 @@ function createChart(Chart) {
         },
         tooltip: {
           callbacks: {
+            title: function(context) {
+              return context[0].label
+            },
             label: function(context) {
               let label = context.dataset.label || ''
               if (label) {
@@ -100,13 +106,29 @@ function createChart(Chart) {
         }
       },
       scales: {
+        x: {
+          display: !isMobile,
+          grid: {
+            display: false
+          }
+        },
         y: {
           type: 'linear',
           display: true,
           position: 'left',
           title: {
-            display: true,
+            display: !isMobile,
             text: '体重 (kg)'
+          },
+          ticks: {
+            font: {
+              size: isMobile ? 9 : 12
+            },
+            padding: 0,
+            maxTicksLimit: isMobile ? 5 : 8
+          },
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
           }
         },
         y1: {
@@ -114,11 +136,18 @@ function createChart(Chart) {
           display: true,
           position: 'right',
           title: {
-            display: true,
+            display: !isMobile,
             text: currentMetric.label
           },
           grid: {
             drawOnChartArea: false,
+          },
+          ticks: {
+            font: {
+              size: isMobile ? 9 : 12
+            },
+            padding: 0,
+            maxTicksLimit: isMobile ? 5 : 8
           }
         }
       }
@@ -330,6 +359,13 @@ const stats = computed(() => {
   padding: 1rem;
 }
 
+@media (max-width: 768px) {
+  .chart-container {
+    height: 300px;
+    padding: 0.5rem 0.25rem;
+  }
+}
+
 .data-table h2 {
   margin-bottom: 1rem;
   font-size: 1.25rem;
@@ -412,10 +448,6 @@ const stats = computed(() => {
 @media (max-width: 768px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .chart-container {
-    height: 300px;
   }
   
   .data-table {
