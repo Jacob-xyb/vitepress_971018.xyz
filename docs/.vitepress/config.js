@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import { nav } from './nav.js'
+import { sidebar } from './sidebar/index.js'
 
 export default defineConfig({
 	title: 'Jacob\'s 百宝箱',
@@ -25,28 +27,8 @@ export default defineConfig({
 			}
 		},
 
-		nav: [
-			{ text: '首页', link: '/' },
-			{ text: '指南', link: '/guide/' },
-			{
-				text: 'API参考',
-				items: [
-					{ text: '符号大全', link: '/manual/symbols.md' },
-				]
-			}
-		],
-
-		sidebar: {
-			'/guide/': [
-				{
-					text: '指南',
-					items: [
-						{ text: '介绍', link: '/guide/' },
-						{ text: '快速开始', link: '/guide/getting-started' }
-					]
-				}
-			]
-		},
+		nav,
+		sidebar,
 
 		socialLinks: [
 			{ icon: 'github', link: 'https://github.com/Jacob-xyb' }
