@@ -8,6 +8,12 @@ export const nav = [
 		]
 	},
 	{
+		text: '生活',
+		items: [
+			{ text: '体重记录', link: '/life/weight-tracker' }
+		]
+	},
+	{
 		text: 'API参考',
 		items: [
 			{ text: '符号大全', link: '/manual/symbols' }
