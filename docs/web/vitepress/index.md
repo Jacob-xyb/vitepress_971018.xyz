@@ -7,7 +7,7 @@ VitePress 是一个基于 Vite 的静态站点生成器，专为编写技术文�
 ## 📚 文档导航
 
 - [快速开始](#快速开始) - 常用命令和开发流程
-- [Markdown 扩展语法](./vitepress中的MarkDown.md) - VitePress 特有的 Markdown 功能
+- [Markdown 扩展语法](./vitepress中的MarkDown) - VitePress 特有的 Markdown 功能
 - [常见问题](./issue/) - 开发中遇到的问题和解决方案
 
 ## 🔗 官方资源

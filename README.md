@@ -79,7 +79,7 @@ npm run docs:preview
 
 ## 部署
 
-详细的部署教程请查看：[部署指南](docs/my-docs/deployment.md)
+详细的部署教程请查看：[部署指南](docs/my-docs/deployment)
 
 支持的平台：
 - GitHub Pages（免费）
