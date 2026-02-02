@@ -12,10 +12,12 @@ hero:
 
 features:
   - title: IT必备技能
+    icon: 📝
     details: MarkDown
     link: /skills/
 
   - title: Web开发
-    details: Vitepress
+    icon: 🌐
+    details: Vitepress、npm
     link: /web/
 ---
