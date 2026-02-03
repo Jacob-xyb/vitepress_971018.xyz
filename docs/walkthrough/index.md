@@ -1,6 +1,6 @@
 ---
+layout: home
 title: 游戏攻略
-pageClass: wide-page
 outline: false
 ---
 
@@ -13,46 +13,6 @@ const games = [
     cover: '/gameover/仁王3-v.jpg',
     platform: 'PS5,PC',
     link: '/walkthrough/nioh-3'
-  },
-  {
-    id: 2,
-    title: '艾尔登法环',
-    titleEn: 'Elden Ring',
-    cover: '/games/elden-ring.jpg',
-    platform: 'PC',
-    link: '/walkthrough/elden-ring'
-  },
-  {
-    id: 3,
-    title: '荒野大镖客2',
-    titleEn: 'Red Dead Redemption 2',
-    cover: '/games/rdr2.jpg',
-    platform: 'PS5',
-    link: '/walkthrough/rdr2'
-  },
-    {
-    id: 3,
-    title: '荒野大镖客2',
-    titleEn: 'Red Dead Redemption 2',
-    cover: '/games/rdr2.jpg',
-    platform: 'PS5',
-    link: '/walkthrough/rdr2'
-  },
-    {
-    id: 3,
-    title: '荒野大镖客2',
-    titleEn: 'Red Dead Redemption 2',
-    cover: '/games/rdr2.jpg',
-    platform: 'PS5',
-    link: '/walkthrough/rdr2'
-  },
-    {
-    id: 3,
-    title: '荒野大镖客2',
-    titleEn: 'Red Dead Redemption 2',
-    cover: '/games/rdr2.jpg',
-    platform: 'PS5',
-    link: '/walkthrough/rdr2'
   },
   // 添加更多游戏...
 ]
@@ -136,7 +96,7 @@ const getPlatformColor = (platform) => {
 .game-cover {
   position: relative;
   width: 100%;
-  aspect-ratio: 2/3;
+  aspect-ratio: 4/5;
   overflow: hidden;
   background: var(--vp-c-bg-mute);
 }
@@ -146,6 +106,7 @@ const getPlatformColor = (platform) => {
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  border-radius: 6px;
 }
 
 .game-card:hover .game-cover img {
