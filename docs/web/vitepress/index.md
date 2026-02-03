@@ -8,7 +8,8 @@ VitePress 是一个基于 Vite 的静态站点生成器，专为编写技术文�
 
 - [快速开始](#快速开始) - 常用命令和开发流程
 - [Markdown 扩展语法](./vitepress中的MarkDown) - VitePress 特有的 Markdown 功能
-- [常见问题](#常见问题) - 开发中遇到的问题和解决方案
+- [UI 美化](#🎨-ui-美化) - 页面布局和样式优化
+- [常见问题](#💡-常见问题) - 开发中遇到的问题和解决方案
 
 ## 🔗 官方资源
 
@@ -44,3 +45,8 @@ npm run docs:preview
 - [文件相关问题](./issue/file-issues) - 大小写、路径、404 等
 - [样式相关问题](./issue/style-issues) - 自定义样式、深色模式等
 - [构建相关问题](./issue/build-errors) - dev vs build、死链接等
+
+## 🎨 UI 美化
+
+- [宽布局配置](./ui-宽布局) - 让页面充分利用屏幕空间
+- [大纲隐藏](./ui-大纲隐藏) - 移除右侧大纲占位空间

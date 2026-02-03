@@ -1,6 +1,7 @@
 ---
 title: 体重记录
 pageClass: wide-page
+outline: false
 ---
 
 <script setup>

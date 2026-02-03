@@ -7,19 +7,18 @@
   background-clip: text;
 }
 
-/* ========== 只让带 wide-page 类的页面变宽 ========== */
+/* 当大纲为空时隐藏 aside 容器（针对 outline: false 的页面） */
+.aside:has(.VPDocOutlineItem.root:empty) {
+  display: none !important;
+}
 
+/* ========== 只让带 wide-page 类的页面变宽 ========== */
 /* CSS 1：只针对 wide-page 页面的全局布局最大宽度 */
 .Layout.wide-page {
   --vp-layout-max-width: 90vw; /* 使用屏幕宽度的 90%，左右各留 5% 空白 */
 }
 
-/* CSS 2：带 wide-page 类的页面文档内容宽度 */
-.Layout.wide-page .vp-doc {
-  max-width: 90vw !important; /* 使用屏幕宽度的 90%，左右各留 5% 空白 */
-}
-
 /* CSS 3：只针对 wide-page 页面的容器宽度 */
-.Layout.wide-page .VPDoc.has-aside .content-container {
+.VPDoc.has-aside .content-container {
   max-width: 100% !important;
 }

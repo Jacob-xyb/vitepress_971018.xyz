@@ -49,55 +49,59 @@ VitePress 的页面布局是多层嵌套的：
 ```css
 /* 只让带 wide-page 类的页面变宽 */
 
-/* 1. 设置全局布局最大宽度 */
+/* 1. 设置全局布局最大宽度（核心） */
 .Layout.wide-page {
-  --vp-layout-max-width: none; /* 移除宽度限制 */
+  --vp-layout-max-width: 90vw; /* 使用屏幕宽度的 90%，左右各留 5% 空白 */
 }
 
-/* 2. 设置文档内容宽度 */
-.Layout.wide-page .vp-doc {
-  max-width: none !important; /* 移除默认的 688px 限制 */
-}
-
-/* 3. 解除容器宽度限制 */
+/* 2. 解除容器宽度限制（必需） */
 .Layout.wide-page .VPDoc.has-aside .content-container {
   max-width: 100% !important;
 }
 ```
 
-::: warning 注意
-三个 CSS 规则缺一不可，必须同时设置才能生效。
+::: tip 为什么只需要两个 CSS 规则？
+VitePress 内部通过 CSS 变量 `--vp-layout-max-width` 控制多个层级的宽度，包括 `.vp-doc`。
+
+当设置 `--vp-layout-max-width` 后，`.vp-doc` 会自动响应这个变量，无需单独设置。
+
+只有在某些特殊情况下，才需要额外设置：
+```css
+.Layout.wide-page .vp-doc {
+  max-width: 90vw !important; /* 作为保险，通常不需要 */
+}
+```
 :::
 
 ## 宽度选项
 
 根据需求选择不同的宽度设置：
 
-### 选项 1：完全移除限制（推荐）
+### 选项 1：使用视口宽度百分比（推荐）
 
 ```css
-.Layout.wide-page .vp-doc {
-  max-width: none !important;
-}
-```
-
-**效果：** 内容会尽可能撑满可用空间
-
-### 选项 2：使用视口宽度百分比
-
-```css
-.Layout.wide-page .vp-doc {
-  max-width: 90vw !important; /* 屏幕宽度的 90% */
+.Layout.wide-page {
+  --vp-layout-max-width: 90vw; /* 屏幕宽度的 90% */
 }
 ```
 
 **效果：** 左右各留 5% 空白，大屏幕上视觉效果更好
 
+### 选项 2：完全移除限制
+
+```css
+.Layout.wide-page {
+  --vp-layout-max-width: none;
+}
+```
+
+**效果：** 内容会尽可能撑满可用空间
+
 ### 选项 3：固定最大宽度
 
 ```css
-.Layout.wide-page .vp-doc {
-  max-width: 1400px !important;
+.Layout.wide-page {
+  --vp-layout-max-width: 1400px;
 }
 ```
 
@@ -106,8 +110,8 @@ VitePress 的页面布局是多层嵌套的：
 ### 选项 4：动态计算
 
 ```css
-.Layout.wide-page .vp-doc {
-  max-width: calc(100vw - 100px) !important; /* 屏幕宽度减去固定边距 */
+.Layout.wide-page {
+  --vp-layout-max-width: calc(100vw - 100px); /* 屏幕宽度减去固定边距 */
 }
 ```
 
@@ -120,8 +124,8 @@ VitePress 的页面布局是多层嵌套的：
 ```css
 /* 移动端保持默认宽度 */
 @media (max-width: 768px) {
-  .Layout.wide-page .vp-doc {
-    max-width: 100% !important;
+  .Layout.wide-page {
+    --vp-layout-max-width: 100%;
   }
 }
 ```
@@ -180,19 +184,45 @@ pageClass: wide-page
 
 3. **缺少必要的 CSS 规则**
    
-   三个 CSS 规则必须同时存在
+   必须同时设置 CSS 变量和容器宽度：
+   ```css
+   .Layout.wide-page {
+     --vp-layout-max-width: 90vw;
+   }
+   
+   .Layout.wide-page .VPDoc.has-aside .content-container {
+     max-width: 100% !important;
+   }
+   ```
 
 4. **浏览器缓存**
    
    清除缓存或强制刷新（Ctrl+Shift+R / Cmd+Shift+R）
 
+### 需要设置 .vp-doc 的 max-width 吗？
+
+**通常不需要！**
+
+VitePress 内部通过 CSS 变量 `--vp-layout-max-width` 控制布局宽度，`.vp-doc` 会自动响应这个变量。
+
+只有在极少数情况下（如遇到兼容性问题），才需要额外设置：
+```css
+.Layout.wide-page .vp-doc {
+  max-width: none !important;
+}
+```
+
 ### 如何让所有页面都变宽？
 
-如果想让所有页面都使用宽布局，直接修改 `.vp-doc` 即可：
+如果想让所有页面都使用宽布局，直接在 `:root` 设置即可：
 
 ```css
-.vp-doc {
-  max-width: 1400px !important;
+:root {
+  --vp-layout-max-width: 90vw;
+}
+
+.VPDoc.has-aside .content-container {
+  max-width: 100% !important;
 }
 ```
 
@@ -204,13 +234,21 @@ pageClass: wide-page
 
 ```css
 /* 超宽布局 */
-.Layout.extra-wide .vp-doc {
-  max-width: 95vw !important;
+.Layout.extra-wide {
+  --vp-layout-max-width: 95vw;
+}
+
+.Layout.extra-wide .VPDoc.has-aside .content-container {
+  max-width: 100% !important;
 }
 
 /* 中等宽度 */
-.Layout.medium-wide .vp-doc {
-  max-width: 1000px !important;
+.Layout.medium-wide {
+  --vp-layout-max-width: 1000px;
+}
+
+.Layout.medium-wide .VPDoc.has-aside .content-container {
+  max-width: 100% !important;
 }
 ```
 
