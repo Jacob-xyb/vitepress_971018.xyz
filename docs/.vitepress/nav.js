@@ -14,6 +14,12 @@ export const nav = [
 		]
 	},
 	{
+		text: '游戏',
+		items: [
+			{ text: '游戏攻略', link: '/walkthrough/' }
+		]
+	},
+	{
 		text: 'API参考',
 		items: [
 			{ text: '符号大全', link: '/manual/symbols' }

@@ -19,6 +19,7 @@
 }
 
 /* CSS 3：只针对 wide-page 页面的容器宽度 */
-.VPDoc.has-aside .content-container {
+.Layout.wide-page .VPDoc .content-container {
   max-width: 100% !important;
 }
+

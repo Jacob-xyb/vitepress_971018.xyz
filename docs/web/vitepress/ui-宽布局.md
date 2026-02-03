@@ -54,23 +54,17 @@ VitePress 的页面布局是多层嵌套的：
   --vp-layout-max-width: 90vw; /* 使用屏幕宽度的 90%，左右各留 5% 空白 */
 }
 
-/* 2. 解除容器宽度限制（必需） */
-.Layout.wide-page .VPDoc.has-aside .content-container {
+/* 2. 解除内容容器宽度限制（必需） */
+.Layout.wide-page .VPDoc .content-container {
   max-width: 100% !important;
 }
 ```
 
 ::: tip 为什么只需要两个 CSS 规则？
-VitePress 内部通过 CSS 变量 `--vp-layout-max-width` 控制多个层级的宽度，包括 `.vp-doc`。
+1. **CSS 变量控制全局宽度**：VitePress 内部通过 `--vp-layout-max-width` 控制多个层级的宽度
+2. **解除容器限制**：`.content-container` 默认有 `max-width` 限制，需要设置为 100% 让它跟随父容器
 
-当设置 `--vp-layout-max-width` 后，`.vp-doc` 会自动响应这个变量，无需单独设置。
-
-只有在某些特殊情况下，才需要额外设置：
-```css
-.Layout.wide-page .vp-doc {
-  max-width: 90vw !important; /* 作为保险，通常不需要 */
-}
-```
+这两条规则适用于所有情况，无论页面是否有大纲（outline）。
 :::
 
 ## 宽度选项
@@ -190,7 +184,7 @@ pageClass: wide-page
      --vp-layout-max-width: 90vw;
    }
    
-   .Layout.wide-page .VPDoc.has-aside .content-container {
+   .Layout.wide-page .VPDoc .content-container {
      max-width: 100% !important;
    }
    ```
@@ -201,16 +195,11 @@ pageClass: wide-page
 
 ### 需要设置 .vp-doc 的 max-width 吗？
 
-**通常不需要！**
+**不需要！**
 
-VitePress 内部通过 CSS 变量 `--vp-layout-max-width` 控制布局宽度，`.vp-doc` 会自动响应这个变量。
+VitePress 内部通过 CSS 变量 `--vp-layout-max-width` 控制布局宽度，`.vp-doc` 会自动响应这个变量，无需单独设置。
 
-只有在极少数情况下（如遇到兼容性问题），才需要额外设置：
-```css
-.Layout.wide-page .vp-doc {
-  max-width: none !important;
-}
-```
+关键是要设置 `.content-container` 的 `max-width: 100%`，让它跟随父容器的宽度。
 
 ### 如何让所有页面都变宽？
 
@@ -221,7 +210,7 @@ VitePress 内部通过 CSS 变量 `--vp-layout-max-width` 控制布局宽度，`
   --vp-layout-max-width: 90vw;
 }
 
-.VPDoc.has-aside .content-container {
+.VPDoc .content-container {
   max-width: 100% !important;
 }
 ```
@@ -238,7 +227,7 @@ VitePress 内部通过 CSS 变量 `--vp-layout-max-width` 控制布局宽度，`
   --vp-layout-max-width: 95vw;
 }
 
-.Layout.extra-wide .VPDoc.has-aside .content-container {
+.Layout.extra-wide .VPDoc .content-container {
   max-width: 100% !important;
 }
 
@@ -247,7 +236,7 @@ VitePress 内部通过 CSS 变量 `--vp-layout-max-width` 控制布局宽度，`
   --vp-layout-max-width: 1000px;
 }
 
-.Layout.medium-wide .VPDoc.has-aside .content-container {
+.Layout.medium-wide .VPDoc .content-container {
   max-width: 100% !important;
 }
 ```
