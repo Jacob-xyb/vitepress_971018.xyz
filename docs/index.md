@@ -11,6 +11,11 @@ hero:
       link: /guide/getting-started
 
 features:
+  - title: 游戏攻略
+    icon: 🎮
+    details: PS5
+    link: /walkthrough/
+
   - title: IT必备技能
     icon: 📝
     details: MarkDown
