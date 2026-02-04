@@ -1,5 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css'
+import './markdown.css'
 import ThemeIcon from './components/ThemeIcon.vue'
 
 export default {
