@@ -5,8 +5,12 @@ import { sidebar } from './sidebar/index.js'
 export default defineConfig({
 	title: 'Jacob\'s 百宝箱',
 	description: '专业的导航网站',
+	head: [
+		['link', { rel: 'icon', href: '/logo/xyb-logo.svg' }]
+	],
 
 	themeConfig: {
+		logo: '/logo/xyb-logo.svg',
 		outline: [2, 3],
 		
 		search: {
