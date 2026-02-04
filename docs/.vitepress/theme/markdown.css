@@ -226,3 +226,101 @@
 .vp-doc h3 + h4 {
   margin-top: 1rem;
 }
+
+/* ========== Mac 风格代码块 ========== */
+
+/* 代码块容器基础样式 */
+.vp-doc div[class*='language-'] {
+  position: relative;
+  margin: 16px 0;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  /* 使用 background-clip 实现边框渐变效果 */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  transition: all 0.3s ease;
+}
+
+/* Mac 窗口三色圆点（红黄绿） */
+.vp-doc div[class*='language-']::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff5f56; /* 红色 - 关闭 */
+  box-shadow: 
+    18px 0 0 #ffbd2e, /* 黄色 - 最小化 */
+    36px 0 0 #27c93f; /* 绿色 - 最大化 */
+  z-index: 1;
+}
+
+/* 右上角语言标签 */
+.vp-doc div[class*='language-'] .lang {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #888;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.vp-doc div[class*='language-']:hover .lang {
+  color: #aaa;
+}
+
+/* 悬浮时的霓虹灯边框 - 蓝绿紫色调顺时针流动 */
+.vp-doc div[class*='language-']:hover {
+  background-image: 
+    /* 第一层：保持代码块背景色 */
+    linear-gradient(var(--vp-code-block-bg), var(--vp-code-block-bg)),
+    /* 第二层：圆锥渐变实现顺时针旋转的彩色边框 */
+    conic-gradient(
+      from var(--angle),
+      #0369a1 0%,    /* 深蓝 */
+      #0891b2 12%,   /* 深青 */
+      #5b21b6 18%,   /* 蓝紫（点缀） */
+      #0f766e 24%,   /* 深青绿 */
+      #047857 36%,   /* 深翠绿 */
+      #0f766e 48%,   /* 深青绿 */
+      #0891b2 60%,   /* 深青 */
+      #6366f1 66%,   /* 靛蓝（点缀） */
+      #0369a1 72%,   /* 深蓝 */
+      #0369a1 100%   /* 深蓝 */
+    );
+  animation: neon-rotate 5s linear infinite;
+}
+
+/* 霓虹灯旋转动画 - 通过改变角度实现顺时针流动 */
+@keyframes neon-rotate {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+/* CSS Houdini 自定义属性 - 让角度可以动画 */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* 代码块内容样式 */
+.vp-doc div[class*='language-'] pre {
+  padding: 40px 20px 20px 20px !important; /* 顶部留空给圆点和标签 */
+  margin: 0;
+  background-color: transparent !important;
+}
+
+.vp-doc div[class*='language-'] code {
+  background-color: transparent !important;
+  font-size: 14px;
+  line-height: 1.6;
+}
