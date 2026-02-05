@@ -26,6 +26,12 @@ export default {
 			]
 		},
 		{
+			text: '页面设计',
+			items: [
+				{ text: '导航页设计', link: '/web/vitepress/page-导航页设计' }
+			]
+		},
+		{
 			text: '常见问题',
 			// collapsed: false,
 			items: [
