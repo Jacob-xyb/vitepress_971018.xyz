@@ -24,11 +24,28 @@
 }
 
 
-/* 主页 Hero 图片渐变背景效果 */
+/* 主页 Hero 图片圆形裁剪和居中 - 适配两个主题 */
 .VPHero .image-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
   position: relative;
+  min-height: 100%;
 }
 
+.VPHero .image-src {
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  max-width: 30%; /* 从 40% 缩小到 30% */
+  height: auto;
+  position: absolute;
+  top: 55%; /* 从 50% 调整到 55%，稍微往下 */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 渐变背景效果 - 两个主题都显示 */
 .VPHero .image-container::before {
   content: '';
   position: absolute;
@@ -39,16 +56,16 @@
   height: 120%;
   background: radial-gradient(
     50% 50% at 50% 50%,
-    rgba(65, 105, 225, 0.3) 0%,
-    rgba(138, 43, 226, 0.2) 30%,
-    rgba(75, 0, 130, 0.1) 60%,
+    rgba(65, 105, 225, 0.15) 0%,
+    rgba(138, 43, 226, 0.1) 30%,
+    rgba(75, 0, 130, 0.05) 60%,
     transparent 100%
   );
   z-index: -1;
   pointer-events: none;
 }
 
-/* 暗色模式下的渐变 */
+/* 暗色模式下的渐变更明显 */
 .dark .VPHero .image-container::before {
   background: radial-gradient(
     50% 50% at 50% 50%,
@@ -59,9 +76,11 @@
   );
 }
 
-/* 图片本身添加一些样式 */
+/* 投影效果 - 两个主题都有，但暗色模式更明显 */
 .VPHero .image-src {
-  position: relative;
-  z-index: 1;
+  filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.2));
+}
+
+.dark .VPHero .image-src {
   filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.3));
 }
