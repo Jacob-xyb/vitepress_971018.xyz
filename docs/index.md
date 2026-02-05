@@ -5,6 +5,9 @@ hero:
   name: Jacob's 百宝箱
   # text: 满满的干货
   tagline: 起风了，唯有努力生存...
+  image:
+    src: /logo/xyb-logo.svg
+    alt: Galaxy
   actions:
     - theme: brand
       text: 快速开始
