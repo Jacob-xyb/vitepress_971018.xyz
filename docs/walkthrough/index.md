@@ -14,6 +14,14 @@ const games = [
     platform: 'PS5,PC',
     link: '/walkthrough/nioh-3'
   },
+  {
+    id: 2,
+    title: '真三国无双起源',
+    titleEn: 'Dynasty Warriors: Origins',
+    cover: '/gameover/真三国无双起源-v.jpg',
+    platform: 'PS5,NS2,PC',
+    link: '/walkthrough/DynastyWarriors-Origins'
+  },
   // 添加更多游戏...
 ]
 
@@ -23,7 +31,7 @@ const getPlatformColor = (platform) => {
   
   if (platformLower.startsWith('ps')) {
     return { bg: '#2563eb', text: '#ffffff' } // 蓝色
-  } else if (platformLower.startsWith('switch')) {
+  } else if (platformLower.startsWith('ns')) {
     return { bg: '#dc2626', text: '#ffffff' } // 红色
   } else if (platformLower.startsWith('pc')) {
     return { bg: '#6b7280', text: '#ffffff' } // 灰色

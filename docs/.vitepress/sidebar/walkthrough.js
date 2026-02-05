@@ -20,5 +20,20 @@ export default {
 				}
 			]
 		}
+	],
+	'/walkthrough/DynastyWarriors-Origins/': [
+		{
+			text: '真三国无双：起源',
+			items: [
+				{ text: '主页', link: '/walkthrough/DynastyWarriors-Origins/' },
+				{ text: '白金攻略', link: '/walkthrough/DynastyWarriors-Origins/白金攻略' },
+			]
+		},
+		{
+			text: '武器攻略',
+			items: [
+				// 待添加
+			]
+		}
 	]
 }
