@@ -24,7 +24,8 @@
              :key="link.name"
              :href="link.url"
              target="_blank"
-             class="link-card">
+             class="link-card"
+             @click="handleLinkClick(link)">
             <div class="link-icon">
               <img v-if="isImageIcon(link.icon)" :src="link.icon" :alt="link.name" />
               <span v-else>{{ link.icon || '🔗' }}</span>
@@ -38,6 +39,9 @@
                   <span v-if="link.needLogin" class="badge badge-login" title="需要登录">🔐</span>
                   <span v-if="link.needPay" class="badge badge-pay" title="需要付费">💰</span>
                   <span v-if="link.isFree" class="badge badge-free" title="完全免费">✨</span>
+                  <span v-if="getHotLevel(link.url) > 0" class="badge badge-hot" :title="`已访问 ${getClickCount(link.url)} 次`">
+                    {{ '🔥'.repeat(getHotLevel(link.url)) }}
+                  </span>
                 </span>
               </div>
               <div class="link-desc">{{ link.desc }}</div>
@@ -50,12 +54,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { navData } from '../../../nav/links.js'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { navData, hotConfig } from '../../../nav/links.js'
 
 const activeCategory = ref(navData.categories[0]?.id || 'daily')
 const categories = navData.categories
 const links = navData.links
+const linkStats = ref({})
 
 const currentSections = computed(() => links[activeCategory.value] || [])
 
@@ -64,6 +69,161 @@ const isImageIcon = (icon) => {
   if (!icon) return false
   return icon.startsWith('/') || icon.startsWith('http') || icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('.svg') || icon.endsWith('.webp')
 }
+
+// 加载统计数据
+const loadStats = () => {
+  try {
+    const saved = localStorage.getItem('navLinkStats')
+    if (saved) {
+      linkStats.value = JSON.parse(saved)
+    }
+  } catch (error) {
+    console.error('Failed to load stats:', error)
+  }
+}
+
+// 保存统计数据
+const saveStats = () => {
+  try {
+    localStorage.setItem('navLinkStats', JSON.stringify(linkStats.value))
+  } catch (error) {
+    console.error('Failed to save stats:', error)
+  }
+}
+
+// 获取基准访问次数
+const getBaseCount = (url) => {
+  // 遍历所有链接找到对应的 baseCount
+  for (const categoryLinks of Object.values(links)) {
+    for (const section of categoryLinks) {
+      const link = section.links.find(l => l.url === url)
+      if (link && link.baseCount) {
+        return link.baseCount
+      }
+    }
+  }
+  return 0
+}
+
+// 记录点击
+const handleLinkClick = (link) => {
+  const url = link.url
+  
+  if (!linkStats.value[url]) {
+    linkStats.value[url] = {
+      count: 0,
+      lastVisit: null
+    }
+  }
+  
+  linkStats.value[url].count++
+  linkStats.value[url].lastVisit = new Date().toISOString()
+  saveStats()
+}
+
+// 获取点击次数（baseCount + 用户实际点击次数）
+const getClickCount = (url) => {
+  const baseCount = getBaseCount(url)
+  const userClicks = linkStats.value[url]?.count || 0
+  return baseCount + userClicks
+}
+
+// 获取所有链接的访问次数（用于排名）
+const getAllCounts = computed(() => {
+  const allUrls = []
+  for (const categoryLinks of Object.values(links)) {
+    for (const section of categoryLinks) {
+      for (const link of section.links) {
+        const count = getClickCount(link.url)
+        if (count >= hotConfig.minCount) {
+          allUrls.push({ url: link.url, count })
+        }
+      }
+    }
+  }
+  // 按访问次数降序排序
+  return allUrls.sort((a, b) => b.count - a.count)
+})
+
+// 获取热度等级（基于排名）
+const getHotLevel = (url) => {
+  const count = getClickCount(url)
+  if (count < hotConfig.minCount) return 0
+  
+  const allCounts = getAllCounts.value
+  const rank = allCounts.findIndex(item => item.url === url) + 1
+  
+  if (rank === 0) return 0
+  if (rank <= hotConfig.topHot) return 3      // 前N名：🔥🔥🔥
+  if (rank <= hotConfig.topHot + hotConfig.secondHot) return 2  // 前N+M名：🔥🔥
+  if (rank <= hotConfig.topHot + hotConfig.secondHot + hotConfig.thirdHot) return 1  // 前N+M+K名：🔥
+  
+  return 0
+}
+
+// 监听 localStorage 变化（跨标签页实时更新）
+const handleStorageChange = (e) => {
+  if (e.key === 'navLinkStats' && e.newValue) {
+    try {
+      linkStats.value = JSON.parse(e.newValue)
+    } catch (error) {
+      console.error('Failed to parse storage change:', error)
+    }
+  }
+}
+
+onMounted(() => {
+  loadStats()
+  // 监听其他标签页的 localStorage 变化
+  window.addEventListener('storage', handleStorageChange)
+  
+  // 开发模式：暴露导出函数到全局
+  if (import.meta.env.DEV) {
+    window.exportNavStats = () => {
+      const stats = JSON.parse(localStorage.getItem('navLinkStats') || '{}')
+      console.log('\n=== 导航统计数据导出 ===\n')
+      
+      const hasData = Object.keys(stats).length > 0
+      if (!hasData) {
+        console.log('❌ 暂无统计数据')
+        return
+      }
+      
+      console.log('📊 统计数据（按访问次数排序）：')
+      const allCounts = getAllCounts.value
+      allCounts.forEach((item, index) => {
+        const rank = index + 1
+        const userClicks = linkStats.value[item.url]?.count || 0
+        const baseCount = getBaseCount(item.url)
+        const level = getHotLevel(item.url)
+        const fire = level === 3 ? '🔥🔥🔥' : level === 2 ? '🔥🔥' : level === 1 ? '🔥' : ''
+        console.log(`  ${rank}. ${item.url} ${fire}`)
+        console.log(`     总计: ${item.count} (基准: ${baseCount} + 用户: ${userClicks})`)
+      })
+      
+      console.log('\n📋 使用方法（自动更新）：')
+      console.log('1. 数据已自动复制到剪贴板')
+      console.log('2. 在终端运行：')
+      console.log('   npm run update-nav-stats "粘贴的数据"')
+      console.log('3. 访问清除页面：http://localhost:5173/clear-stats.html')
+      
+      // 自动复制到剪贴板
+      const data = localStorage.getItem('navLinkStats')
+      navigator.clipboard.writeText(data).then(() => {
+        console.log('\n✅ 数据已复制到剪贴板！')
+      }).catch(() => {
+        console.log('\n⚠️  请手动复制数据')
+      })
+    }
+    
+    console.log('💡 开发模式提示：')
+    console.log('运行 exportNavStats() 导出统计数据')
+  }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('storage', handleStorageChange)
+})
 </script>
 
 <style scoped>
@@ -242,6 +402,10 @@ const isImageIcon = (icon) => {
   animation: sparkle 1.5s ease-in-out infinite;
 }
 
+.badge-hot {
+  animation: fire 0.8s ease-in-out infinite;
+}
+
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -259,6 +423,15 @@ const isImageIcon = (icon) => {
   50% {
     opacity: 0.8;
     transform: scale(1.1);
+  }
+}
+
+@keyframes fire {
+  0%, 100% {
+    transform: scale(1) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(5deg);
   }
 }
 

@@ -47,7 +47,8 @@ pageClass: wide-page
              :key="link.name"
              :href="link.url"
              target="_blank"
-             class="link-card">
+             class="link-card"
+             @click="handleLinkClick(link)">
             <div class="link-icon">
               <img v-if="isImageIcon(link.icon)" :src="link.icon" :alt="link.name" />
               <span v-else>{{ link.icon || '🔗' }}</span>
@@ -61,6 +62,9 @@ pageClass: wide-page
                   <span v-if="link.needLogin" class="badge badge-login" title="需要登录">🔐</span>
                   <span v-if="link.needPay" class="badge badge-pay" title="需要付费">💰</span>
                   <span v-if="link.isFree" class="badge badge-free" title="完全免费">✨</span>
+                  <span v-if="getHotLevel(link.url) > 0" class="badge badge-hot" :title="`已访问 ${getClickCount(link.url)} 次`">
+                    {{ '🔥'.repeat(getHotLevel(link.url)) }}
+                  </span>
                 </span>
               </div>
               <div class="link-desc">{{ link.desc }}</div>
@@ -73,12 +77,13 @@ pageClass: wide-page
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { navData } from '../../../nav/links.js'
 
 const activeCategory = ref(navData.categories[0]?.id || 'daily')
 const categories = navData.categories
 const links = navData.links
+const linkStats = ref({})
 
 const currentSections = computed(() => links[activeCategory.value] || [])
 
@@ -87,6 +92,76 @@ const isImageIcon = (icon) => {
   if (!icon) return false
   return icon.startsWith('/') || icon.startsWith('http') || icon.endsWith('.png') || icon.endsWith('.jpg') || icon.endsWith('.svg') || icon.endsWith('.webp')
 }
+
+// 加载统计数据
+const loadStats = () => {
+  try {
+    const saved = localStorage.getItem('navLinkStats')
+    if (saved) {
+      linkStats.value = JSON.parse(saved)
+    }
+  } catch (error) {
+    console.error('Failed to load stats:', error)
+  }
+}
+
+// 保存统计数据
+const saveStats = () => {
+  try {
+    localStorage.setItem('navLinkStats', JSON.stringify(linkStats.value))
+  } catch (error) {
+    console.error('Failed to save stats:', error)
+  }
+}
+
+// 记录点击
+const handleLinkClick = (link) => {
+  const url = link.url
+  if (!linkStats.value[url]) {
+    linkStats.value[url] = {
+      count: 0,
+      lastVisit: null
+    }
+  }
+  linkStats.value[url].count++
+  linkStats.value[url].lastVisit = new Date().toISOString()
+  saveStats()
+}
+
+// 获取点击次数
+const getClickCount = (url) => {
+  return linkStats.value[url]?.count || 0
+}
+
+// 获取热度等级（用于显示火焰图标）
+const getHotLevel = (url) => {
+  const count = getClickCount(url)
+  if (count >= 20) return 3  // 🔥🔥🔥
+  if (count >= 10) return 2  // 🔥🔥
+  if (count >= 5) return 1   // 🔥
+  return 0
+}
+
+// 监听 localStorage 变化（跨标签页实时更新）
+const handleStorageChange = (e) => {
+  if (e.key === 'navLinkStats' && e.newValue) {
+    try {
+      linkStats.value = JSON.parse(e.newValue)
+    } catch (error) {
+      console.error('Failed to parse storage change:', error)
+    }
+  }
+}
+
+onMounted(() => {
+  loadStats()
+  // 监听其他标签页的 localStorage 变化
+  window.addEventListener('storage', handleStorageChange)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('storage', handleStorageChange)
+})
 </script>
 
 <style scoped>
@@ -657,6 +732,168 @@ const handleLinkClick = (link) => {
 }
 ```
 
+**本教程已内置使用频率统计功能：**
+- ✅ 自动记录每个链接的点击次数
+- ✅ 根据访问频率排名显示火焰标识（可配置）
+- ✅ 鼠标悬停显示具体访问次数
+- ✅ 数据保存在浏览器 localStorage 中
+- ✅ 火焰图标带有跳动动画效果
+- ✅ 支持跨标签页实时更新
+- ✅ 提供自动化脚本更新基准值
+
+## 热度配置
+
+在 `docs/nav/links.js` 中配置热度显示规则：
+
+```javascript
+export const hotConfig = {
+  minCount: 5,        // 最少访问5次才显示热度
+  topHot: 5,          // 前5名显示 🔥🔥🔥
+  secondHot: 10,      // 前6-15名显示 🔥🔥
+  thirdHot: 20        // 前16-35名显示 🔥
+}
+```
+
+**热度规则说明：**
+- 访问次数 < 5：不显示火焰
+- 访问次数 ≥ 5 且排名前5：🔥🔥🔥
+- 访问次数 ≥ 5 且排名6-15：🔥🔥
+- 访问次数 ≥ 5 且排名16-35：🔥
+- 其他：不显示火焰
+
+**优势：**
+- 基于排名而非固定阈值，更灵活
+- 可以自定义各级热度的数量
+- 自动适应你的使用习惯
+
+## 统计数据更新工作流 ⭐
+
+### 准备工作
+
+1. **创建更新脚本**
+
+在 `scripts/update-nav-stats.js` 中创建自动化脚本（已提供完整代码）
+
+2. **添加 npm 命令**
+
+在 `package.json` 中添加：
+```json
+{
+  "scripts": {
+    "update-nav-stats": "node scripts/update-nav-stats.js"
+  }
+}
+```
+
+### 三步更新流程
+
+**步骤1：导出统计数据**
+
+在浏览器控制台（F12）运行：
+```javascript
+exportNavStats()
+```
+
+输出示例：
+```
+=== 导航统计数据导出 ===
+
+📊 统计数据（按访问次数排序）：
+  1. https://github.com 🔥🔥🔥
+     总计: 25 (基准: 10 + 用户: 15)
+  2. https://stackoverflow.com 🔥🔥
+     总计: 18 (基准: 5 + 用户: 13)
+  ...
+
+✅ 数据已复制到剪贴板！
+```
+
+**步骤2：运行更新脚本**
+
+在终端运行（粘贴刚才复制的数据）：
+```bash
+npm run update-nav-stats "粘贴的数据"
+```
+
+脚本会：
+- ✅ 读取当前 baseCount
+- ✅ 计算新的 baseCount = 旧baseCount + 用户点击
+- ✅ 更新 links.js 文件
+- ✅ 生成清除页面
+
+输出示例：
+```
+🔄 开始更新导航统计数据...
+
+✅ 更新：https://github.com
+   旧基准: 10, 用户点击: 15, 新基准: 25
+
+✨ 完成！共更新 3 个链接的统计数据
+📝 文件已保存：docs/nav/links.js
+
+🌐 已生成清除页面：
+   docs/public/clear-stats.html
+
+📌 下一步：
+1. 启动开发服务器：npm run docs:dev
+2. 访问：http://localhost:5173/clear-stats.html
+3. 页面会自动清除 localStorage 并跳转回导航页
+```
+
+**步骤3：清除本地数据**
+
+访问自动生成的清除页面：
+```
+http://localhost:5173/clear-stats.html
+```
+
+页面会：
+- ✅ 自动清除 localStorage
+- ✅ 显示成功提示
+- ✅ 提供返回导航页的按钮
+
+**完成！** 现在 links.js 中的 baseCount 已更新，本地数据已清除，可以提交代码了。
+
+### 工作流说明
+
+**数据流转：**
+```
+用户使用 → localStorage累积 → 导出数据 → 脚本更新 → baseCount增加 → 清除本地 → 新的基准
+```
+
+**为什么要清除本地数据？**
+- baseCount 已经包含了你的使用次数
+- 如果不清除，会导致重复计数
+- 清除后，显示的就是新的基准值
+- 其他用户访问时，看到的是你的使用热度
+
+**示例场景：**
+1. 初始：baseCount=10，你的本地=0，显示=10
+2. 使用后：baseCount=10，你的本地=15，显示=25
+3. 更新后：baseCount=25，你的本地=15，显示=40 ❌（重复计数）
+4. 清除后：baseCount=25，你的本地=0，显示=25 ✅（正确）
+
+### 手动清除方式
+
+如果不想访问清除页面，也可以在控制台手动清除：
+```javascript
+localStorage.removeItem('navLinkStats')
+// 刷新页面
+location.reload()
+```
+
+**查看统计数据：**
+
+在浏览器控制台输入：
+```javascript
+JSON.parse(localStorage.getItem('navLinkStats'))
+```
+
+**清除统计数据：**
+```javascript
+localStorage.removeItem('navLinkStats')
+```
+
 ## 总结
 
 通过这种方式，你可以：
@@ -677,3 +914,15 @@ const handleLinkClick = (link) => {
 | 登录 | `needLogin: true` | 🔐 | 无 | 需要登录 |
 | 付费 | `needPay: true` | 💰 | 无 | 需要付费 |
 | 免费 | `isFree: true` | ✨ | 闪烁 | 完全免费 |
+| 热门 | 自动显示 | 🔥/🔥🔥/🔥🔥🔥 | 跳动 | 基于排名的访问热度 |
+
+**使用频率统计说明：**
+- 数据存储在浏览器 `localStorage` 中，仅保存在本地
+- 每次点击链接自动记录
+- 支持跨标签页实时更新（使用 `storage` 事件）
+- 不同浏览器/设备的数据独立
+- 清除浏览器数据会重置统计
+- 适合个人使用，记录自己的常用网站
+- Dev 模式下也能实时看到统计变化
+- 基于排名显示热度，而非固定阈值
+- 可自定义热度配置（minCount、topHot、secondHot、thirdHot）
