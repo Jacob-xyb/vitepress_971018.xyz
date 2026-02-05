@@ -30,7 +30,16 @@
               <span v-else>{{ link.icon || '🔗' }}</span>
             </div>
             <div class="link-info">
-              <div class="link-name">{{ link.name }}</div>
+              <div class="link-name">
+                {{ link.name }}
+                <span class="badges">
+                  <span v-if="link.needVPN" class="badge badge-vpn" title="需要 VPN 访问">🌐</span>
+                  <span v-if="link.hasAds" class="badge badge-ads" title="包含广告">📢</span>
+                  <span v-if="link.needLogin" class="badge badge-login" title="需要登录">🔐</span>
+                  <span v-if="link.needPay" class="badge badge-pay" title="需要付费">💰</span>
+                  <span v-if="link.isFree" class="badge badge-free" title="完全免费">✨</span>
+                </span>
+              </div>
               <div class="link-desc">{{ link.desc }}</div>
             </div>
           </a>
@@ -191,9 +200,66 @@ const isImageIcon = (icon) => {
   font-weight: 600;
   color: var(--vp-c-text-1);
   margin-bottom: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.badge {
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.badge-vpn {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.badge-ads {
+  animation: none;
+  opacity: 0.8;
+}
+
+.badge-login {
+  animation: none;
+  opacity: 0.8;
+}
+
+.badge-pay {
+  animation: none;
+  opacity: 0.8;
+}
+
+.badge-free {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
 }
 
 .link-desc {

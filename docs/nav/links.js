@@ -20,9 +20,9 @@ export const navData = {
         title: '每日推荐',
         icon: '⭐',
         links: [
-          { name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: '🐙' },
-          { name: 'Stack Overflow', url: 'https://stackoverflow.com', desc: '程序员问答社区', icon: '📚' },
-          { name: 'MDN', url: 'https://developer.mozilla.org', desc: 'Web开发文档', icon: '📖' },
+          { name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: '🐙', needVPN: true, isFree: true },
+          { name: 'Stack Overflow', url: 'https://stackoverflow.com', desc: '程序员问答社区', icon: '📚', hasAds: true },
+          { name: 'MDN', url: 'https://developer.mozilla.org', desc: 'Web开发文档', icon: '📖', isFree: true },
         ]
       }
     ],
@@ -68,9 +68,9 @@ export const navData = {
         title: 'AI工具',
         icon: '🤖',
         links: [
-          { name: 'ChatGPT', url: 'https://chat.openai.com', desc: 'OpenAI对话AI', icon: '💬' },
-          { name: 'Midjourney', url: 'https://www.midjourney.com', desc: 'AI绘画工具', icon: '🎨' },
-          { name: 'Claude', url: 'https://claude.ai', desc: 'Anthropic AI助手', icon: '🤖' },
+          { name: 'ChatGPT', url: 'https://chat.openai.com', desc: 'OpenAI对话AI', icon: '💬', needVPN: true, needLogin: true },
+          { name: 'Midjourney', url: 'https://www.midjourney.com', desc: 'AI绘画工具', icon: '🎨', needLogin: true, needPay: true },
+          { name: 'Claude', url: 'https://claude.ai', desc: 'Anthropic AI助手', icon: '🤖', needVPN: true, needLogin: true },
         ]
       }
     ],
