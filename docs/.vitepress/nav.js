@@ -1,4 +1,5 @@
 export const nav = [
+	{ text: '导航', link: '/nav/' },
 	{ text: '指南', link: '/guide/' },
 	{
 		text: 'Web开发',
