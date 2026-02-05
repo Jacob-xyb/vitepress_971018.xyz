@@ -6,8 +6,8 @@ hero:
   # text: 满满的干货
   tagline: 起风了，唯有努力生存...
   image:
-    src: /logo/xyb-logo.svg
-    alt: Galaxy
+    src: /logo/hero.jpg
+    alt: Hero Image
   actions:
     - theme: brand
       text: 快速开始
