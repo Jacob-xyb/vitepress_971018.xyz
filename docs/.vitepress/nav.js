@@ -8,6 +8,12 @@ export const nav = [
 		]
 	},
 	{
+		text: '编程',
+		items: [
+			{ text: 'Git', link: '/coding/git/' }
+		]
+	},
+	{
 		text: '生活',
 		items: [
 			{ text: '体重记录', link: '/life/weight-tracker' }

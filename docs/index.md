@@ -28,4 +28,9 @@ features:
     icon: 🌐
     details: Vitepress、npm
     link: /web/
+
+  - title: 编程
+    icon: 💻
+    details: Git
+    link: /coding/
 ---
