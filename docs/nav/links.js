@@ -36,6 +36,13 @@ export const navData = {
   links: {
     daily: [
       {
+        title: '日常必备',
+        icon: '💎',
+        links: [
+          { name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 0 }
+        ]
+      },
+      {
         title: '强烈推荐',
         icon: '⭐',
         links: [
