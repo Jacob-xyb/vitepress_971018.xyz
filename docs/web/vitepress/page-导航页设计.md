@@ -20,6 +20,7 @@ pageClass: wide-page
 
 在 `docs/.vitepress/theme/components/` 目录下创建 `NavLinks.vue` 组件：
 
+::: details 点击展开 NavLinks.vue 完整代码
 ```vue
 <template>
   <div class="nav-links-container">
@@ -400,6 +401,7 @@ onUnmounted(() => {
 }
 </style>
 ```
+:::
 
 ### 2. 注册全局组件
 
@@ -422,6 +424,7 @@ export default {
 
 在 `docs/nav/` 目录下创建 `links.js` 数据文件：
 
+::: details 点击展开 links.js 示例代码
 ```javascript
 // 导航链接数据
 export const navData = {
@@ -467,6 +470,7 @@ export const navData = {
   }
 }
 ```
+:::
 
 ### 4. 创建导航页面
 
@@ -681,6 +685,7 @@ icon: 'https://example.com/logo.png'
 
 可以在组件中添加搜索框，过滤链接：
 
+::: details 点击展开搜索功能示例代码
 ```vue
 <template>
   <div class="search-box">
@@ -695,11 +700,13 @@ const filteredLinks = computed(() => {
 })
 </script>
 ```
+:::
 
 ### 添加收藏功能
 
 使用 `localStorage` 保存用户收藏的链接：
 
+::: details 点击展开收藏功能示例代码
 ```javascript
 const favorites = ref(JSON.parse(localStorage.getItem('favorites') || '[]'))
 
@@ -708,17 +715,20 @@ const toggleFavorite = (link) => {
   localStorage.setItem('favorites', JSON.stringify(favorites.value))
 }
 ```
+:::
 
 ### 添加分类筛选
 
 支持按标识筛选网站：
 
+::: details 点击展开分类筛选示例代码
 ```vue
 <div class="filter-buttons">
   <button @click="filterBy('isFree')">免费</button>
   <button @click="filterBy('needVPN')">需要VPN</button>
 </div>
 ```
+:::
 
 ### 添加访问统计
 
