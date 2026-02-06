@@ -64,15 +64,21 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { navData, hotConfig } from '../../../nav/links.js'
+import { navData, hotConfig, mvpConfig } from '../../../nav/links.js'
 import ThemeIcon from './ThemeIcon.vue'
 
-const activeCategory = ref(navData.categories[0]?.id || 'daily')
+const activeCategory = ref(navData.categories[0]?.id || 'mvp')
 const categories = navData.categories
 const links = navData.links
 const linkStats = ref({})
 
-const currentSections = computed(() => links[activeCategory.value] || [])
+// 获取当前分类的内容（如果是 mvp 则动态生成）
+const currentSections = computed(() => {
+  if (activeCategory.value === 'mvp') {
+    return generateMvpSections()
+  }
+  return links[activeCategory.value] || []
+})
 
 // 判断是否为 Simple Icons 名称（纯字母、数字、连字符）
 const isSimpleIcon = (icon) => {
@@ -153,7 +159,11 @@ const getAllCounts = computed(() => {
       for (const link of section.links) {
         const count = getClickCount(link.url)
         if (count >= hotConfig.minCount) {
-          allUrls.push({ url: link.url, count })
+          allUrls.push({ 
+            url: link.url, 
+            count,
+            link: link  // 保存完整的链接对象
+          })
         }
       }
     }
@@ -161,6 +171,68 @@ const getAllCounts = computed(() => {
   // 按访问次数降序排序
   return allUrls.sort((a, b) => b.count - a.count)
 })
+
+// 生成全场最佳页面的内容
+const generateMvpSections = () => {
+  const allCounts = getAllCounts.value
+  
+  // 过滤出符合最低访问次数的链接
+  const qualifiedLinks = allCounts.filter(item => item.count >= mvpConfig.minCount)
+  
+  if (qualifiedLinks.length === 0) {
+    return [{
+      title: '暂无数据',
+      icon: '📊',
+      links: []
+    }]
+  }
+  
+  const sections = []
+  
+  // OnePiece - 第1名
+  const onePieceLinks = qualifiedLinks.slice(0, mvpConfig.onePiece)
+  if (onePieceLinks.length > 0) {
+    sections.push({
+      title: 'OnePiece',
+      icon: '👑',
+      links: onePieceLinks.map(item => ({
+        ...item.link,
+        desc: `${item.link.desc} · 访问 ${item.count} 次`
+      }))
+    })
+  }
+  
+  // 四皇 - 第2-5名
+  const yonkoLinks = qualifiedLinks.slice(mvpConfig.onePiece, mvpConfig.onePiece + mvpConfig.yonko)
+  if (yonkoLinks.length > 0) {
+    sections.push({
+      title: '四皇',
+      icon: '⚔️',
+      links: yonkoLinks.map(item => ({
+        ...item.link,
+        desc: `${item.link.desc} · 访问 ${item.count} 次`
+      }))
+    })
+  }
+  
+  // 七武海 - 第6-12名
+  const shichibukaiLinks = qualifiedLinks.slice(
+    mvpConfig.onePiece + mvpConfig.yonko, 
+    mvpConfig.onePiece + mvpConfig.yonko + mvpConfig.shichibukai
+  )
+  if (shichibukaiLinks.length > 0) {
+    sections.push({
+      title: '七武海',
+      icon: '🗡️',
+      links: shichibukaiLinks.map(item => ({
+        ...item.link,
+        desc: `${item.link.desc} · 访问 ${item.count} 次`
+      }))
+    })
+  }
+  
+  return sections
+}
 
 // 获取热度等级（基于排名）
 const getHotLevel = (url) => {

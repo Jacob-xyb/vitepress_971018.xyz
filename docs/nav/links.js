@@ -13,14 +13,24 @@ export const hotConfig = {
   thirdHot: 20        // 前secondHot-thirdHot名显示 🔥
 }
 
+// 全场最佳配置：根据访问次数自动分档
+export const mvpConfig = {
+  minCount: 5,        // 最少访问次数才能进入全场最佳
+  onePiece: 1,        // 前1名：OnePiece（海贼王）
+  yonko: 4,           // 前2-5名：四皇
+  shichibukai: 7      // 前6-12名：七武海
+}
+
 export const navData = {
   categories: [
-    { id: 'daily', name: '日常使用', icon: '👑' },
+    { id: 'mvp', name: '全场最佳', icon: '🏆' },
+    { id: 'daily', name: '日常使用', icon: '⭐' },
     { id: 'dev', name: '开发工具', icon: '🛠️' },
     { id: 'design', name: '设计资源', icon: '🎨' },
     { id: 'ai', name: 'AI工具', icon: '🤖' },
     { id: 'life', name: '生活服务', icon: '🏠' },
     { id: 'game', name: '游戏娱乐', icon: '🎮' },
+    { id: 'uncategorized', name: '待分类', icon: '📦' },
   ],
   
   links: {
@@ -104,6 +114,16 @@ export const navData = {
           { name: 'Steam', url: 'https://store.steampowered.com', desc: 'PC游戏平台', icon: '🎮', baseCount: 0 },
           { name: 'PlayStation', url: 'https://www.playstation.com', desc: 'PS游戏平台', icon: '🎮', baseCount: 0 },
           { name: 'Nintendo', url: 'https://www.nintendo.com', desc: '任天堂官网', icon: '🎮', baseCount: 0 },
+        ]
+      }
+    ],
+    
+    uncategorized: [
+      {
+        title: '待整理',
+        icon: '📋',
+        links: [
+          // 在这里添加待分类的链接
         ]
       }
     ]
