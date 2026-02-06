@@ -79,14 +79,20 @@ pageClass: wide-page
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { navData } from '../../../nav/links.js'
+import { navData, hotConfig, mvpConfig } from '../../../nav/links.js'
 
-const activeCategory = ref(navData.categories[0]?.id || 'daily')
+const activeCategory = ref(navData.categories[0]?.id || 'mvp')
 const categories = navData.categories
 const links = navData.links
 const linkStats = ref({})
 
-const currentSections = computed(() => links[activeCategory.value] || [])
+// 获取当前分类的内容（如果是 mvp 则动态生成）
+const currentSections = computed(() => {
+  if (activeCategory.value === 'mvp') {
+    return generateMvpSections()
+  }
+  return links[activeCategory.value] || []
+})
 
 // 判断是否为图片路径
 const isImageIcon = (icon) => {
@@ -134,12 +140,102 @@ const getClickCount = (url) => {
   return linkStats.value[url]?.count || 0
 }
 
+// 获取所有链接的访问次数（用于排名）
+const getAllCounts = computed(() => {
+  const allUrls = []
+  for (const categoryLinks of Object.values(links)) {
+    for (const section of categoryLinks) {
+      for (const link of section.links) {
+        const count = getClickCount(link.url)
+        if (count >= hotConfig.minCount) {
+          allUrls.push({ 
+            url: link.url, 
+            count,
+            link: link  // 保存完整的链接对象
+          })
+        }
+      }
+    }
+  }
+  // 按访问次数降序排序
+  return allUrls.sort((a, b) => b.count - a.count)
+})
+
+// 生成全场最佳页面的内容
+const generateMvpSections = () => {
+  const allCounts = getAllCounts.value
+  
+  // 过滤出符合最低访问次数的链接
+  const qualifiedLinks = allCounts.filter(item => item.count >= mvpConfig.minCount)
+  
+  if (qualifiedLinks.length === 0) {
+    return [{
+      title: '暂无数据',
+      icon: '📊',
+      links: []
+    }]
+  }
+  
+  const sections = []
+  
+  // OnePiece - 第1名
+  const onePieceLinks = qualifiedLinks.slice(0, mvpConfig.onePiece)
+  if (onePieceLinks.length > 0) {
+    sections.push({
+      title: 'OnePiece',
+      icon: '👑',
+      links: onePieceLinks.map(item => ({
+        ...item.link,
+        desc: `${item.link.desc} · 访问 ${item.count} 次`
+      }))
+    })
+  }
+  
+  // 四皇 - 第2-5名
+  const yonkoLinks = qualifiedLinks.slice(mvpConfig.onePiece, mvpConfig.onePiece + mvpConfig.yonko)
+  if (yonkoLinks.length > 0) {
+    sections.push({
+      title: '四皇',
+      icon: '⚔️',
+      links: yonkoLinks.map(item => ({
+        ...item.link,
+        desc: `${item.link.desc} · 访问 ${item.count} 次`
+      }))
+    })
+  }
+  
+  // 七武海 - 第6-12名
+  const shichibukaiLinks = qualifiedLinks.slice(
+    mvpConfig.onePiece + mvpConfig.yonko, 
+    mvpConfig.onePiece + mvpConfig.yonko + mvpConfig.shichibukai
+  )
+  if (shichibukaiLinks.length > 0) {
+    sections.push({
+      title: '七武海',
+      icon: '🗡️',
+      links: shichibukaiLinks.map(item => ({
+        ...item.link,
+        desc: `${item.link.desc} · 访问 ${item.count} 次`
+      }))
+    })
+  }
+  
+  return sections
+}
+
 // 获取热度等级（用于显示火焰图标）
 const getHotLevel = (url) => {
   const count = getClickCount(url)
-  if (count >= 20) return 3  // 🔥🔥🔥
-  if (count >= 10) return 2  // 🔥🔥
-  if (count >= 5) return 1   // 🔥
+  if (count < hotConfig.minCount) return 0
+  
+  const allCounts = getAllCounts.value
+  const rank = allCounts.findIndex(item => item.url === url) + 1
+  
+  if (rank === 0) return 0
+  if (rank <= hotConfig.topHot) return 3      // 前N名：🔥🔥🔥
+  if (rank <= hotConfig.topHot + hotConfig.secondHot) return 2  // 前N+M名：🔥🔥
+  if (rank <= hotConfig.topHot + hotConfig.secondHot + hotConfig.thirdHot) return 1  // 前N+M+K名：🔥
+  
   return 0
 }
 
@@ -426,9 +522,18 @@ export default {
 
 ::: details 点击展开 links.js 示例代码
 ```javascript
+// 全场最佳配置：根据访问次数自动分档
+export const mvpConfig = {
+  minCount: 5,        // 最少访问次数才能进入全场最佳
+  onePiece: 1,        // 前1名：OnePiece（海贼王）
+  yonko: 4,           // 前2-5名：四皇
+  shichibukai: 7      // 前6-12名：七武海
+}
+
 // 导航链接数据
 export const navData = {
   categories: [
+    { id: 'mvp', name: '全场最佳', icon: '🏆' },
     { id: 'daily', name: '每日推荐', icon: '👑' },
     { id: 'dev', name: '开发工具', icon: '🛠️' },
     { id: 'design', name: '设计资源', icon: '🎨' },
@@ -740,6 +845,137 @@ const toggleFavorite = (link) => {
 - ✅ 火焰图标带有跳动动画效果
 - ✅ 支持跨标签页实时更新
 - ✅ 提供自动化脚本更新基准值
+
+## 全场最佳功能 ⭐
+
+**自动根据访问次数生成最受欢迎的网站排行榜！**
+
+### 功能特点
+
+- 🏆 自动统计所有分类中的链接访问次数
+- 📊 按访问次数降序排序
+- 🎖️ 动态分配到三个档次（OnePiece、四皇、七武海）
+- 🔄 实时更新，无需手动维护
+
+### 配置说明
+
+在 `docs/nav/links.js` 中配置全场最佳规则：
+
+```javascript
+export const mvpConfig = {
+  minCount: 5,        // 最少访问5次才能进入全场最佳
+  onePiece: 1,        // 第1名：OnePiece（海贼王）👑
+  yonko: 4,           // 第2-5名：四皇 ⚔️
+  shichibukai: 7      // 第6-12名：七武海 🗡️
+}
+```
+
+### 档次说明
+
+| 档次 | 排名 | 图标 | 说明 |
+|------|------|------|------|
+| OnePiece | 第1名 | 👑 | 最受欢迎的网站 |
+| 四皇 | 第2-5名 | ⚔️ | 非常受欢迎的网站 |
+| 七武海 | 第6-12名 | 🗡️ | 受欢迎的网站 |
+
+### 使用方式
+
+1. **添加全场最佳分类**
+
+在 `categories` 数组中添加（建议放在第一位）：
+
+```javascript
+{ id: 'mvp', name: '全场最佳', icon: '🏆' }
+```
+
+2. **组件自动生成内容**
+
+NavLinks 组件会自动：
+- 统计所有链接的访问次数（baseCount + 用户点击）
+- 筛选出访问次数 ≥ minCount 的链接
+- 按访问次数降序排序
+- 根据排名分配到对应档次
+- 在描述中显示访问次数
+
+3. **显示效果**
+
+```
+🏆 全场最佳
+  👑 OnePiece
+    - GitHub · 访问 156 次
+  
+  ⚔️ 四皇
+    - Stack Overflow · 访问 89 次
+    - MDN · 访问 67 次
+    - VS Code · 访问 45 次
+    - npm · 访问 34 次
+  
+  🗡️ 七武海
+    - Figma · 访问 28 次
+    - CodePen · 访问 23 次
+    ...
+```
+
+### 实现原理
+
+组件中的 `generateMvpSections()` 函数会：
+
+```javascript
+// 1. 获取所有链接的访问次数
+const allCounts = getAllCounts.value
+
+// 2. 过滤符合条件的链接
+const qualifiedLinks = allCounts.filter(item => item.count >= mvpConfig.minCount)
+
+// 3. 按排名分配档次
+const onePieceLinks = qualifiedLinks.slice(0, 1)
+const yonkoLinks = qualifiedLinks.slice(1, 5)
+const shichibukaiLinks = qualifiedLinks.slice(5, 12)
+
+// 4. 生成对应的 sections
+return [
+  { title: 'OnePiece', icon: '👑', links: onePieceLinks },
+  { title: '四皇', icon: '⚔️', links: yonkoLinks },
+  { title: '七武海', icon: '🗡️', links: shichibukaiLinks }
+]
+```
+
+### 自定义档次
+
+你可以根据需要修改档次名称和数量：
+
+**示例1：简化为三档**
+```javascript
+export const mvpConfig = {
+  minCount: 5,
+  gold: 3,      // 金牌：前3名
+  silver: 3,    // 银牌：第4-6名
+  bronze: 4     // 铜牌：第7-10名
+}
+```
+
+**示例2：扩展为五档**
+```javascript
+export const mvpConfig = {
+  minCount: 3,
+  sss: 1,       // SSS级：第1名
+  ss: 2,        // SS级：第2-3名
+  s: 3,         // S级：第4-6名
+  a: 5,         // A级：第7-11名
+  b: 9          // B级：第12-20名
+}
+```
+
+修改配置后，需要同步更新 `NavLinks.vue` 中的 `generateMvpSections()` 函数。
+
+### 注意事项
+
+- ✅ 全场最佳页面内容完全自动生成，无需手动维护
+- ✅ 基于所有分类的链接统计，跨分类排名
+- ✅ 访问次数 = baseCount + 用户本地点击
+- ✅ 如果没有符合条件的链接，会显示"暂无数据"
+- ⚠️ 档次数量配置需要与组件代码保持一致
+- 💡 建议将全场最佳放在第一个分类，更醒目
 
 ## 热度配置
 
