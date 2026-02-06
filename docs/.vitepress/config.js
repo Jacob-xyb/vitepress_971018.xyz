@@ -13,6 +13,15 @@ export default defineConfig({
 		logo: '/logo/xyb-logo.svg',
 		outline: [2, 3],
 		
+		// 显示最后编辑时间
+		lastUpdated: {
+			text: '最后更新于',
+			formatOptions: {
+				dateStyle: 'short',
+				timeStyle: 'short'
+			}
+		},
+		
 		search: {
 			provider: 'local',
 			options: {
