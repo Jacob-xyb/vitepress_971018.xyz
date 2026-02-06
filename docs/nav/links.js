@@ -15,7 +15,7 @@ export const hotConfig = {
 
 export const navData = {
   categories: [
-    { id: 'daily', name: '每日推荐', icon: '👑' },
+    { id: 'daily', name: '日常使用', icon: '👑' },
     { id: 'dev', name: '开发工具', icon: '🛠️' },
     { id: 'design', name: '设计资源', icon: '🎨' },
     { id: 'ai', name: 'AI工具', icon: '🤖' },
@@ -26,7 +26,7 @@ export const navData = {
   links: {
     daily: [
       {
-        title: '每日推荐',
+        title: '强烈推荐',
         icon: '⭐',
         links: [
           { name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: '🐙', needVPN: true, isFree: true, baseCount: 1 },
