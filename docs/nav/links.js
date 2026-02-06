@@ -29,7 +29,7 @@ export const navData = {
         title: '强烈推荐',
         icon: '⭐',
         links: [
-          { name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: '🐙', needVPN: true, isFree: true, baseCount: 1 },
+          { name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: '/logo/github-logo.svg', needVPN: true, isFree: true, baseCount: 1 },
           { name: 'Stack Overflow', url: 'https://stackoverflow.com', desc: '程序员问答社区', icon: '📚', hasAds: true, baseCount: 0 },
           { name: 'MDN', url: 'https://developer.mozilla.org', desc: 'Web开发文档', icon: '📖', isFree: true, baseCount: 0 },
         ]
