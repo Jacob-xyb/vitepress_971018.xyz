@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import clipboardy from 'clipboardy'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -9,16 +10,54 @@ const __dirname = path.dirname(__filename)
 const linksPath = path.resolve(__dirname, '../docs/nav/links.js')
 let linksContent = fs.readFileSync(linksPath, 'utf-8')
 
-// 从命令行参数获取统计数据
-const statsJson = process.argv[2]
+// 从命令行参数、剪贴板或临时文件获取统计数据
+let statsJson = process.argv[2]
 
+// 如果没有参数，尝试从剪贴板读取
 if (!statsJson) {
-  console.error('❌ 错误：缺少统计数据参数')
-  console.log('\n使用方法：')
-  console.log('1. 在浏览器控制台运行：exportNavStats()')
-  console.log('2. 数据会自动复制到剪贴板')
-  console.log('3. 运行脚本：npm run update-nav-stats "粘贴的数据"')
-  process.exit(1)
+  try {
+    console.log('📋 正在从剪贴板读取数据...')
+    statsJson = await clipboardy.read()
+    
+    // 检查是否为空
+    if (!statsJson || statsJson.trim() === '' || statsJson === 'null' || statsJson === 'undefined') {
+      throw new Error('剪贴板为空')
+    }
+    
+    // 验证是否是有效的 JSON
+    const testParse = JSON.parse(statsJson)
+    
+    // 检查是否有有效数据
+    if (!testParse || Object.keys(testParse).length === 0) {
+      throw new Error('剪贴板中没有有效的统计数据')
+    }
+    
+    console.log('✅ 成功从剪贴板读取数据')
+  } catch (e) {
+    // 剪贴板读取失败或不是有效 JSON，尝试从文件读取
+    const tempFile = path.resolve(__dirname, '../.nav-stats-temp.json')
+    if (fs.existsSync(tempFile)) {
+      console.log('📂 从临时文件读取数据...')
+      statsJson = fs.readFileSync(tempFile, 'utf-8')
+      // 读取后删除临时文件
+      fs.unlinkSync(tempFile)
+    } else {
+      console.error('❌ 错误：无法获取统计数据')
+      console.log('\n可能的原因：')
+      console.log('- 剪贴板为空或数据已清除')
+      console.log('- 剪贴板中不是有效的 JSON 数据')
+      console.log('\n使用方法：')
+      console.log('1. 在浏览器控制台运行：copyNavStats()')
+      console.log('2. 确保看到 "✅ 数据已复制到剪贴板" 提示')
+      console.log('3. 然后运行：npm run update-nav-stats')
+      console.log('\n或者使用文件方式：')
+      console.log('1. 在浏览器控制台运行：exportNavStatsToFile()')
+      console.log('2. 将下载的文件移动到项目根目录')
+      console.log('3. 运行：npm run update-nav-stats')
+      console.log('\n💡 提示：先访问导航页并点击几个链接，积累统计数据')
+      process.exit(1)
+    }
+  }
 }
 
 try {
@@ -100,86 +139,13 @@ try {
   console.log(`\n✨ 完成！共更新 ${updateCount} 个链接的统计数据`)
   console.log(`📝 文件已保存：${linksPath}`)
   
-  // 生成清除 localStorage 的 HTML 文件
-  const clearHtmlPath = path.resolve(__dirname, '../docs/public/clear-stats.html')
-  const clearHtml = `<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>清除导航统计数据</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    .container {
-      background: white;
-      padding: 3rem;
-      border-radius: 1rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      text-align: center;
-      max-width: 500px;
-    }
-    h1 { color: #333; margin-bottom: 1rem; }
-    .status { font-size: 4rem; margin: 1rem 0; }
-    .message { color: #666; font-size: 1.1rem; line-height: 1.6; }
-    .success { color: #10b981; }
-    .button {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.75rem 2rem;
-      background: #667eea;
-      color: white;
-      text-decoration: none;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    .button:hover {
-      background: #5568d3;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>导航统计数据清除</h1>
-    <div class="status">✅</div>
-    <div class="message success">
-      <p><strong>统计数据已成功清除！</strong></p>
-      <p>您的本地访问记录已重置</p>
-      <p>现在显示的是最新的基准热度</p>
-    </div>
-    <a href="/nav/" class="button">返回导航页</a>
-  </div>
-  <script>
-    // 清除 localStorage
-    localStorage.removeItem('navLinkStats');
-    console.log('✅ 导航统计数据已清除');
-  </script>
-</body>
-</html>`
-
-  fs.writeFileSync(clearHtmlPath, clearHtml, 'utf-8')
-  
-  console.log('\n🌐 已生成清除页面：')
-  console.log(`   ${clearHtmlPath}`)
-  console.log('\n📌 下一步：')
-  console.log('1. 启动开发服务器：npm run docs:dev')
-  console.log('2. 访问：http://localhost:5173/clear-stats.html')
-  console.log('3. 页面会自动清除 localStorage 并跳转回导航页')
-  console.log('\n或者手动在浏览器控制台运行：')
-  console.log('   localStorage.removeItem("navLinkStats")\n')
+  console.log('\n📌 下一步：清除本地统计数据')
+  console.log('在浏览器控制台运行：clearNavStats()')
+  console.log('或手动运行：localStorage.removeItem("navLinkStats")\n')
 
 } catch (error) {
   console.error('❌ 错误：', error.message)
-  console.log('\n请确保提供的是有效的 JSON 数据')
+  console.log('\n请确保剪贴板中有有效的 JSON 数据')
+  console.log('提示：在浏览器控制台运行 copyNavStats()')
   process.exit(1)
 }

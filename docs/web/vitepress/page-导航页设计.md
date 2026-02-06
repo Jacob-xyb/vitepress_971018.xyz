@@ -722,16 +722,6 @@ const toggleFavorite = (link) => {
 
 ### 添加访问统计
 
-记录链接点击次数：
-
-```javascript
-const handleLinkClick = (link) => {
-  const stats = JSON.parse(localStorage.getItem('linkStats') || '{}')
-  stats[link.url] = (stats[link.url] || 0) + 1
-  localStorage.setItem('linkStats', JSON.stringify(stats))
-}
-```
-
 **本教程已内置使用频率统计功能：**
 - ✅ 自动记录每个链接的点击次数
 - ✅ 根据访问频率排名显示火焰标识（可配置）
@@ -768,11 +758,29 @@ export const hotConfig = {
 
 ## 统计数据更新工作流 ⭐
 
+### 显示逻辑
+
+**公式：** `显示次数 = baseCount + 用户本地点击次数`
+
+- `baseCount`：基准访问次数（站长设置的全局热度，保存在代码中）
+- 用户本地点击：保存在浏览器 localStorage 中
+- 不同电脑/浏览器的数据独立
+
+**示例：**
+
+| 场景 | baseCount | 本地点击 | 显示次数 |
+|------|-----------|---------|---------|
+| 首次访问 | 20 | 0 | 20 |
+| 点击10次后 | 20 | 10 | 30 |
+| 站长更新到30 | 30 | 10 | 40 |
+
 ### 准备工作
 
-1. **创建更新脚本**
+1. **安装依赖**
 
-在 `scripts/update-nav-stats.js` 中创建自动化脚本（已提供完整代码）
+```bash
+npm install clipboardy
+```
 
 2. **添加 npm 命令**
 
@@ -783,115 +791,76 @@ export const hotConfig = {
     "update-nav-stats": "node scripts/update-nav-stats.js"
   }
 }
+{
+  "scripts": {
+    "update-nav-stats": "node scripts/update-nav-stats.js"
+  }
+}
 ```
 
-### 三步更新流程
+### 使用流程（仅需两步）⭐
 
-**步骤1：导出统计数据**
+**步骤1：导出并更新**
 
 在浏览器控制台（F12）运行：
 ```javascript
-exportNavStats()
+copyNavStats()
 ```
 
-输出示例：
-```
-=== 导航统计数据导出 ===
-
-📊 统计数据（按访问次数排序）：
-  1. https://github.com 🔥🔥🔥
-     总计: 25 (基准: 10 + 用户: 15)
-  2. https://stackoverflow.com 🔥🔥
-     总计: 18 (基准: 5 + 用户: 13)
-  ...
-
-✅ 数据已复制到剪贴板！
-```
-
-**步骤2：运行更新脚本**
-
-在终端运行（粘贴刚才复制的数据）：
+然后在终端运行：
 ```bash
-npm run update-nav-stats "粘贴的数据"
+npm run update-nav-stats
 ```
 
-脚本会：
-- ✅ 读取当前 baseCount
-- ✅ 计算新的 baseCount = 旧baseCount + 用户点击
-- ✅ 更新 links.js 文件
-- ✅ 生成清除页面
+**步骤2：清除本地数据**
 
-输出示例：
-```
-🔄 开始更新导航统计数据...
-
-✅ 更新：https://github.com
-   旧基准: 10, 用户点击: 15, 新基准: 25
-
-✨ 完成！共更新 3 个链接的统计数据
-📝 文件已保存：docs/nav/links.js
-
-🌐 已生成清除页面：
-   docs/public/clear-stats.html
-
-📌 下一步：
-1. 启动开发服务器：npm run docs:dev
-2. 访问：http://localhost:5173/clear-stats.html
-3. 页面会自动清除 localStorage 并跳转回导航页
+在浏览器控制台运行：
+```javascript
+clearNavStats()
 ```
 
-**步骤3：清除本地数据**
+完成！
 
-访问自动生成的清除页面：
+### 开发模式全局函数
+
+**主要使用：**
+```javascript
+copyNavStats()   // 一键复制统计数据到剪贴板
+clearNavStats()  // 清除本地统计数据
 ```
-http://localhost:5173/clear-stats.html
+
+**辅助功能（可选）：**
+```javascript
+exportNavStats()        // 查看详细统计（仅显示，不复制）
+exportNavStatsToFile()  // 导出到JSON文件（剪贴板失败时的备用方案）
 ```
 
-页面会：
-- ✅ 自动清除 localStorage
-- ✅ 显示成功提示
-- ✅ 提供返回导航页的按钮
-
-**完成！** 现在 links.js 中的 baseCount 已更新，本地数据已清除，可以提交代码了。
-
-### 工作流说明
+### 为什么要清除本地数据？
 
 **数据流转：**
 ```
-用户使用 → localStorage累积 → 导出数据 → 脚本更新 → baseCount增加 → 清除本地 → 新的基准
+用户使用 → localStorage累积 → 导出 → 更新baseCount → 清除本地 → 新基准
 ```
 
-**为什么要清除本地数据？**
-- baseCount 已经包含了你的使用次数
-- 如果不清除，会导致重复计数
-- 清除后，显示的就是新的基准值
-- 其他用户访问时，看到的是你的使用热度
+**原因：** baseCount 已包含你的使用次数，不清除会重复计数
 
-**示例场景：**
-1. 初始：baseCount=10，你的本地=0，显示=10
-2. 使用后：baseCount=10，你的本地=15，显示=25
-3. 更新后：baseCount=25，你的本地=15，显示=40 ❌（重复计数）
-4. 清除后：baseCount=25，你的本地=0，显示=25 ✅（正确）
+| 阶段 | baseCount | 本地 | 显示 | 状态 |
+|------|-----------|------|------|------|
+| 使用后 | 10 | 15 | 25 | 待更新 |
+| 更新后 | 25 | 15 | 40 | ❌ 重复 |
+| 清除后 | 25 | 0 | 25 | ✅ 正确 |
 
-### 手动清除方式
+### 备用方案
 
-如果不想访问清除页面，也可以在控制台手动清除：
+**如果剪贴板复制失败：**
 ```javascript
-localStorage.removeItem('navLinkStats')
-// 刷新页面
-location.reload()
+exportNavStatsToFile()  // 下载 JSON 文件到本地
 ```
+将下载的文件移到项目根目录，然后运行 `npm run update-nav-stats`
 
-**查看统计数据：**
-
-在浏览器控制台输入：
+**查看详细统计（不更新）：**
 ```javascript
-JSON.parse(localStorage.getItem('navLinkStats'))
-```
-
-**清除统计数据：**
-```javascript
-localStorage.removeItem('navLinkStats')
+exportNavStats()  // 在控制台显示详细排名和访问次数
 ```
 
 ## 总结
@@ -923,6 +892,7 @@ localStorage.removeItem('navLinkStats')
 - 不同浏览器/设备的数据独立
 - 清除浏览器数据会重置统计
 - 适合个人使用，记录自己的常用网站
-- Dev 模式下也能实时看到统计变化
+- Dev 模式下可导出数据并更新基准值
+- 火焰标识基于访问次数排名动态显示
 - 基于排名显示热度，而非固定阈值
 - 可自定义热度配置（minCount、topHot、secondHot、thirdHot）

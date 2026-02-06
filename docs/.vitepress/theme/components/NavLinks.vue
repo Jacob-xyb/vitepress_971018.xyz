@@ -180,16 +180,26 @@ onMounted(() => {
   // 开发模式：暴露导出函数到全局
   if (import.meta.env.DEV) {
     window.exportNavStats = () => {
-      const stats = JSON.parse(localStorage.getItem('navLinkStats') || '{}')
-      console.log('\n=== 导航统计数据导出 ===\n')
+      const data = localStorage.getItem('navLinkStats')
       
-      const hasData = Object.keys(stats).length > 0
-      if (!hasData) {
-        console.log('❌ 暂无统计数据')
+      if (!data || data === '{}') {
+        console.log('\n❌ 暂无统计数据')
+        console.log('💡 提示：先点击几个链接，然后再导出统计数据\n')
         return
       }
       
+      const stats = JSON.parse(data)
+      const hasData = Object.keys(stats).some(url => stats[url].count > 0)
+      
+      if (!hasData) {
+        console.log('\n❌ 暂无有效统计数据')
+        console.log('💡 提示：先点击几个链接，然后再导出统计数据\n')
+        return
+      }
+      
+      console.log('\n=== 导航统计数据导出 ===\n')
       console.log('📊 统计数据（按访问次数排序）：')
+      
       const allCounts = getAllCounts.value
       allCounts.forEach((item, index) => {
         const rank = index + 1
@@ -202,22 +212,47 @@ onMounted(() => {
       })
       
       console.log('\n📋 使用方法（自动更新）：')
-      console.log('1. 数据已自动复制到剪贴板')
+      console.log('1. 数据正在复制到剪贴板...')
       console.log('2. 在终端运行：')
       console.log('   npm run update-nav-stats "粘贴的数据"')
       console.log('3. 访问清除页面：http://localhost:5173/clear-stats.html')
       
-      // 自动复制到剪贴板
+      // 尝试自动复制到剪贴板
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(data)
+          .then(() => {
+            console.log('\n✅ 数据已复制到剪贴板！直接粘贴即可')
+          })
+          .catch((err) => {
+            console.log('\n⚠️  自动复制失败，请手动复制：')
+            console.log('运行：copy(localStorage.getItem("navLinkStats"))')
+            console.log('错误：', err.message)
+            console.log('\n📦 原始数据：')
+            console.log(data)
+          })
+      } else {
+        console.log('\n⚠️  浏览器不支持自动复制，请手动复制：')
+        console.log('运行：copy(localStorage.getItem("navLinkStats"))')
+        console.log('\n📦 原始数据：')
+        console.log(data)
+      }
+    }
+    
+    // 添加手动复制函数
+    window.copyNavStats = () => {
       const data = localStorage.getItem('navLinkStats')
-      navigator.clipboard.writeText(data).then(() => {
-        console.log('\n✅ 数据已复制到剪贴板！')
-      }).catch(() => {
-        console.log('\n⚠️  请手动复制数据')
-      })
+      if (!data || data === '{}') {
+        console.log('❌ 暂无统计数据')
+        return
+      }
+      console.log('📋 请复制以下数据：')
+      console.log(data)
+      console.log('\n或者运行：copy(localStorage.getItem("navLinkStats"))')
     }
     
     console.log('💡 开发模式提示：')
-    console.log('运行 exportNavStats() 导出统计数据')
+    console.log('- 运行 exportNavStats() 导出统计数据')
+    console.log('- 运行 copyNavStats() 手动查看数据')
   }
 })
 

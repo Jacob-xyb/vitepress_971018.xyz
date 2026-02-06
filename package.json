@@ -10,6 +10,7 @@
     "update-nav-stats": "node scripts/update-nav-stats.js"
   },
   "devDependencies": {
+    "clipboardy": "^4.0.0",
     "vitepress": "^1.0.0",
     "vue": "^3.4.0"
   },
