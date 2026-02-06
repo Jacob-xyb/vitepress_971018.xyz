@@ -22,7 +22,8 @@ export default {
 				{ text: '宽布局配置', link: '/web/vitepress/ui-宽布局' },
 				{ text: '大纲隐藏', link: '/web/vitepress/ui-大纲隐藏' },
 				{ text: '标题美化', link: '/web/vitepress/ui-标题美化' },
-				{ text: '代码块美化', link: '/web/vitepress/ui-代码块美化' }
+				{ text: '代码块美化', link: '/web/vitepress/ui-代码块美化' },
+				{ text: 'Icon美化', link: '/web/vitepress/ui-Icon美化' }
 			]
 		},
 		{

@@ -27,7 +27,16 @@
              class="link-card"
              @click="handleLinkClick(link)">
             <div class="link-icon">
-              <img v-if="isImageIcon(link.icon)" :src="link.icon" :alt="link.name" />
+              <!-- 如果是 Simple Icons 名称（不含 / . http），使用 ThemeIcon -->
+              <ThemeIcon 
+                v-if="isSimpleIcon(link.icon)" 
+                :icon="link.icon" 
+                size="36px"
+                :alt="link.name"
+              />
+              <!-- 如果是图片路径，使用 img -->
+              <img v-else-if="isImageIcon(link.icon)" :src="link.icon" :alt="link.name" />
+              <!-- 否则显示 emoji 或默认图标 -->
               <span v-else>{{ link.icon || '🔗' }}</span>
             </div>
             <div class="link-info">
@@ -56,6 +65,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { navData, hotConfig } from '../../../nav/links.js'
+import ThemeIcon from './ThemeIcon.vue'
 
 const activeCategory = ref(navData.categories[0]?.id || 'daily')
 const categories = navData.categories
@@ -63,6 +73,13 @@ const links = navData.links
 const linkStats = ref({})
 
 const currentSections = computed(() => links[activeCategory.value] || [])
+
+// 判断是否为 Simple Icons 名称（纯字母、数字、连字符）
+const isSimpleIcon = (icon) => {
+  if (!icon || typeof icon !== 'string') return false
+  // 不包含 / . http 等路径特征，且只包含字母数字连字符
+  return !icon.includes('/') && !icon.includes('.') && !icon.startsWith('http') && /^[a-z0-9-]+$/i.test(icon)
+}
 
 // 判断是否为图片路径
 const isImageIcon = (icon) => {
