@@ -9,6 +9,14 @@ export const codingLinks = [
     tags: ['版本控制', '协作开发']
   },
   {
+    id: 'file-io',
+    title: '文件读写',
+    icon: '📄',
+    desc: '文件操作基础',
+    link: '/coding/file-io/',
+    tags: ['文件操作', '基础']
+  },
+  {
     id: 'github',
     title: 'GitHub',
     icon: '🐙',

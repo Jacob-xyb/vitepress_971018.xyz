@@ -15,5 +15,13 @@ export default {
 				{ text: '代理配置', link: '/coding/git/proxy' }
 			]
 		}
+	],
+	'/coding/file-io/': [
+		{
+			text: '文件读写',
+			items: [
+				{ text: '介绍', link: '/coding/file-io/' }
+			]
+		}
 	]
 }
