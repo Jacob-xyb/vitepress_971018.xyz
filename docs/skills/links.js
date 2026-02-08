@@ -12,7 +12,7 @@ export const skillsLinks = [
     id: 'regex',
     title: '正则表达式',
     icon: '🔍',
-    desc: '文本匹配与处理',
+    desc: '文本匹配与处理 TODO',
     link: '/skills/regex/',
     tags: ['文本处理', '匹配']
   },
@@ -20,7 +20,7 @@ export const skillsLinks = [
     id: 'shell',
     title: 'Shell脚本',
     icon: '💻',
-    desc: '命令行脚本编程',
+    desc: '命令行脚本编程 TODO',
     link: '/skills/shell/',
     tags: ['命令行', '自动化']
   },
@@ -28,7 +28,7 @@ export const skillsLinks = [
     id: 'vim',
     title: 'Vim',
     icon: '📝',
-    desc: '强大的文本编辑器',
+    desc: '强大的文本编辑器 TODO',
     link: '/skills/vim/',
     tags: ['编辑器', '效率']
   },
@@ -36,7 +36,7 @@ export const skillsLinks = [
     id: 'http',
     title: 'HTTP协议',
     icon: '🌐',
-    desc: 'Web通信协议',
+    desc: 'Web通信协议 TODO',
     link: '/skills/http/',
     tags: ['网络', '协议']
   },
@@ -44,7 +44,7 @@ export const skillsLinks = [
     id: 'rest-api',
     title: 'REST API',
     icon: '🔌',
-    desc: 'RESTful接口设计',
+    desc: 'RESTful接口设计 TODO',
     link: '/skills/rest-api/',
     tags: ['API', '接口']
   },
@@ -52,7 +52,7 @@ export const skillsLinks = [
     id: 'json',
     title: 'JSON',
     icon: '📋',
-    desc: '数据交换格式',
+    desc: '数据交换格式 TODO',
     link: '/skills/json/',
     tags: ['数据格式', '序列化']
   },
@@ -60,7 +60,7 @@ export const skillsLinks = [
     id: 'yaml',
     title: 'YAML',
     icon: '📄',
-    desc: '配置文件格式',
+    desc: '配置文件格式 TODO',
     link: '/skills/yaml/',
     tags: ['配置', '数据格式']
   },
@@ -68,7 +68,7 @@ export const skillsLinks = [
     id: 'ssh',
     title: 'SSH',
     icon: '🔐',
-    desc: '安全远程连接',
+    desc: '安全远程连接 TODO',
     link: '/skills/ssh/',
     tags: ['安全', '远程']
   },
@@ -76,7 +76,7 @@ export const skillsLinks = [
     id: 'nginx',
     title: 'Nginx',
     icon: '🚀',
-    desc: 'Web服务器',
+    desc: 'Web服务器 TODO',
     link: '/skills/nginx/',
     tags: ['服务器', '反向代理']
   },
@@ -84,7 +84,7 @@ export const skillsLinks = [
     id: 'security',
     title: '网络安全',
     icon: '🛡️',
-    desc: '安全基础知识',
+    desc: '安全基础知识 TODO',
     link: '/skills/security/',
     tags: ['安全', '加密']
   },
@@ -92,7 +92,7 @@ export const skillsLinks = [
     id: 'performance',
     title: '性能优化',
     icon: '⚡',
-    desc: '系统性能调优',
+    desc: '系统性能调优 TODO',
     link: '/skills/performance/',
     tags: ['优化', '性能']
   }
