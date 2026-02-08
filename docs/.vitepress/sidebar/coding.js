@@ -20,7 +20,8 @@ export default {
 		{
 			text: '文件读写',
 			items: [
-				{ text: '介绍', link: '/coding/file-io/' }
+				{ text: '介绍', link: '/coding/file-io/' },
+				{ text: 'INI 文件读写', link: '/coding/file-io/ini-file' }
 			]
 		}
 	]
