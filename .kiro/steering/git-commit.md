@@ -11,6 +11,7 @@ inclusion: always
 - 所有 commit message 的描述部分必须使用中文
 - 类型前缀使用英文（feat/fix/docs 等）
 - 格式：`类型: 中文描述`
+- 不要每次在执行结束后自主的帮我提交git
 
 ## 提交类型
 

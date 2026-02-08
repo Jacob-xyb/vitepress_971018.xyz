@@ -99,6 +99,8 @@ import { navLinks } from './links.js'
 
 ### 图标类型详解
 
+组件会根据图标内容自动判断类型并使用对应的渲染方式。
+
 #### 1. Emoji 图标（推荐）
 
 最简单的方式，直接使用 emoji：
@@ -111,6 +113,11 @@ import { navLinks } from './links.js'
 }
 ```
 
+**优点**：
+- 无需额外资源，直接显示
+- 跨平台兼容性好
+- 颜色丰富，自动适配系统
+
 #### 2. 自定义图片
 
 使用自定义 SVG 或图片（相对于 `docs/public/` 目录）：
@@ -122,19 +129,51 @@ import { navLinks } from './links.js'
 }
 ```
 
+**识别规则**：
+- 以 `/` 开头
+- 或包含 `.` 和 `/`（文件路径特征）
+
 #### 3. ThemeIcon 图标
 
-使用 Simple Icons 的图标名称（单个单词，不含路径）：
+使用 Simple Icons 的图标名称（纯英文字母、数字和连字符）：
 
 ```js
 {
   icon: 'markdown'  // Markdown 图标
   icon: 'github'    // GitHub 图标
   icon: 'vue'       // Vue 图标
+  icon: 'node-js'   // Node.js 图标（注意使用连字符）
 }
 ```
 
-**注意**：ThemeIcon 仅支持 [Simple Icons](https://simpleicons.org/) 中的图标名称。
+**识别规则**：
+- 仅包含英文字母、数字和连字符 `-`
+- 符合正则表达式：`/^[a-z0-9-]+$/i`
+
+**注意**：
+- ThemeIcon 仅支持 [Simple Icons](https://simpleicons.org/) 中的图标名称
+- 图标名称必须是纯英文，不能包含特殊字符或 emoji
+- 如果图标名称不存在，会显示加载失败
+
+#### 图标类型判断优先级
+
+组件按以下顺序判断图标类型：
+
+1. **自定义图片**：检查是否包含路径特征（`/` 或 `.` + `/`）
+2. **ThemeIcon**：检查是否为纯英文字母、数字和连字符
+3. **Emoji/文本**：其他情况直接显示
+
+```js
+// 示例：不同类型的图标
+const examples = [
+  { icon: '/logo/icon.svg' },      // → 自定义图片
+  { icon: 'github' },               // → ThemeIcon
+  { icon: 'node-js' },              // → ThemeIcon
+  { icon: '📦' },                   // → Emoji
+  { icon: '🎨' },                   // → Emoji
+  { icon: 'Git 图标' },             // → 文本（包含空格和中文）
+]
+```
 
 ## 组件属性
 
@@ -314,9 +353,41 @@ import { skillsLinks } from './links.js'
 ### Q: 图标不显示？
 
 **A:** 检查以下几点：
-1. emoji 是否正确复制
-2. 图片路径是否正确（相对于 `docs/public/`）
-3. ThemeIcon 名称是否存在
+
+1. **Emoji 不显示**：
+   - 确认 emoji 已正确复制
+   - 某些 emoji 在不同系统上显示可能不同
+
+2. **自定义图片不显示**：
+   - 检查图片路径是否正确（相对于 `docs/public/`）
+   - 确认图片文件存在
+   - 路径必须以 `/` 开头，如 `/logo/icon.svg`
+
+3. **ThemeIcon 不显示**：
+   - 确认图标名称在 [Simple Icons](https://simpleicons.org/) 中存在
+   - 图标名称只能包含英文字母、数字和连字符 `-`
+   - 不能包含空格、下划线或其他特殊字符
+   - 示例：`'github'` ✅  `'node-js'` ✅  `'node_js'` ❌
+
+4. **图标类型判断错误**：
+   - 如果想使用 ThemeIcon 但显示为文本，检查名称是否包含非法字符
+   - 如果想显示文本但被识别为 ThemeIcon，可以添加空格或特殊字符
+
+### Q: 如何强制使用某种图标类型？
+
+**A:** 根据识别规则调整图标格式：
+
+```js
+// 强制使用自定义图片
+{ icon: '/logo/icon.svg' }  // 以 / 开头
+
+// 强制使用 ThemeIcon
+{ icon: 'github' }  // 纯英文字母
+
+// 强制显示为文本/Emoji
+{ icon: '📦' }      // Emoji
+{ icon: 'Git 图标' } // 包含空格或中文
+```
 
 ### Q: 如何调整卡片宽度？
 
