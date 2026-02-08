@@ -3,6 +3,7 @@ import './custom.css'
 import './markdown.css'
 import ThemeIcon from './components/ThemeIcon.vue'
 import NavLinks from './components/NavLinks.vue'
+import NavCards from './components/NavCards.vue'
 
 export default {
   extends: DefaultTheme,
@@ -10,6 +11,7 @@ export default {
     // 注册全局组件
     app.component('ThemeIcon', ThemeIcon)
     app.component('NavLinks', NavLinks)
+    app.component('NavCards', NavCards)
     
     // 开发模式：全局导出函数（任何页面都可用）
     if (typeof window !== 'undefined' && import.meta.env.DEV) {

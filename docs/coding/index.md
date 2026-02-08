@@ -1,7 +1,15 @@
+---
+layout: home
+---
+
 # 编程
 
 记录编程开发过程中的各种知识点和技巧。
 
-## 目录
+## 内容导航
 
-- [Git](/coding/git/) - Git 版本控制相关知识
+<script setup>
+import { codingLinks } from './links.js'
+</script>
+
+<NavCards :items="codingLinks" />

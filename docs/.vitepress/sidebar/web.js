@@ -33,6 +33,12 @@ export default {
 			]
 		},
 		{
+			text: '组件开发',
+			items: [
+				{ text: '导航卡片组件', link: '/web/vitepress/component-导航卡片组件' }
+			]
+		},
+		{
 			text: '常见问题',
 			// collapsed: false,
 			items: [
