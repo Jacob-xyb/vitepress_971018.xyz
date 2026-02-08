@@ -7,12 +7,22 @@
       class="nav-card"
     >
       <span class="nav-icon" v-if="item.icon">
+        <!-- 自定义图片路径：直接使用 img 标签 -->
+        <img 
+          v-if="item.icon.startsWith('/') || item.icon.includes('/')" 
+          :src="item.icon" 
+          :alt="item.title"
+          :style="{ width: iconSize, height: iconSize }"
+          class="icon-img"
+        />
+        <!-- ThemeIcon 图标名称：使用 ThemeIcon 组件 -->
         <ThemeIcon 
-          v-if="item.icon.startsWith('/') || item.icon.includes('.')" 
+          v-else-if="isThemeIcon(item.icon)"
           :icon="item.icon" 
           :size="iconSize" 
           :alt="item.title" 
         />
+        <!-- Emoji：直接显示 -->
         <span v-else>{{ item.icon }}</span>
       </span>
       <div class="nav-content">
@@ -40,6 +50,17 @@ defineProps({
     default: '48px'
   }
 })
+
+// 判断是否为 ThemeIcon 支持的图标名称
+// ThemeIcon 用于 Simple Icons，通常是单个单词，不包含路径分隔符
+const isThemeIcon = (icon) => {
+  // 如果包含路径分隔符或文件扩展名，则不是 ThemeIcon
+  if (icon.includes('/') || icon.includes('.')) {
+    return false
+  }
+  // 如果是纯文本且长度合理，可能是 ThemeIcon 名称
+  return icon.length > 0 && icon.length < 30
+}
 </script>
 
 <style scoped>
@@ -82,6 +103,10 @@ defineProps({
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.icon-img {
+  object-fit: contain;
 }
 
 .nav-content {

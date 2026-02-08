@@ -93,7 +93,7 @@ import { navLinks } from './links.js'
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
-| `icon` | String | 图标，支持三种格式：<br>1. emoji：`'📦'`<br>2. ThemeIcon 名称：`'markdown'`<br>3. 图片路径：`'/logo/icon.svg'` |
+| `icon` | String | 图标，支持三种格式：<br>1. emoji：`'📦'`<br>2. 自定义图片：`'/logo/icon.svg'`<br>3. ThemeIcon 名称：`'markdown'` |
 | `desc` | String | 卡片描述文字 |
 | `tags` | Array | 标签数组，如 `['标签1', '标签2']` |
 
@@ -111,26 +111,30 @@ import { navLinks } from './links.js'
 }
 ```
 
-#### 2. ThemeIcon 图标
+#### 2. 自定义图片
 
-使用内置的 ThemeIcon 组件图标：
+使用自定义 SVG 或图片（相对于 `docs/public/` 目录）：
+
+```js
+{
+  icon: '/logo/vitepress-logo.svg'  // 对应 docs/public/logo/vitepress-logo.svg
+  icon: '/icons/custom-icon.png'    // 对应 docs/public/icons/custom-icon.png
+}
+```
+
+#### 3. ThemeIcon 图标
+
+使用 Simple Icons 的图标名称（单个单词，不含路径）：
 
 ```js
 {
   icon: 'markdown'  // Markdown 图标
   icon: 'github'    // GitHub 图标
+  icon: 'vue'       // Vue 图标
 }
 ```
 
-#### 3. 自定义图片
-
-使用自定义 SVG 或图片：
-
-```js
-{
-  icon: '/logo/vitepress-logo.svg'  // 相对于 docs/public/
-}
-```
+**注意**：ThemeIcon 仅支持 [Simple Icons](https://simpleicons.org/) 中的图标名称。
 
 ## 组件属性
 
