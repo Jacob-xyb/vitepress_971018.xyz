@@ -41,6 +41,20 @@
             </div>
             
             <div class="modal-body">
+              <div class="details-section" v-if="game.version">
+                <h4>游戏信息</h4>
+                <div class="info-content">
+                  <div class="info-item">
+                    <span class="info-label">版本：</span>
+                    <span class="info-value">{{ game.version }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">平台：</span>
+                    <span class="info-value">{{ game.platform }}</span>
+                  </div>
+                </div>
+              </div>
+              
               <div class="details-section" v-if="game.note">
                 <h4>物品状态</h4>
                 <div class="note-content">
@@ -393,6 +407,33 @@ const lastReturnDate = computed(() => {
   font-size: 0.9rem;
   color: var(--vp-c-text-1);
   line-height: 1.5;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.info-label {
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+  min-width: 60px;
+}
+
+.info-value {
+  color: var(--vp-c-text-1);
+  font-weight: 600;
 }
 
 .finance-grid {
