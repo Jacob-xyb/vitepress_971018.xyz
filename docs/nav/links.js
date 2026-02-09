@@ -8,17 +8,17 @@
 // 热度配置：根据访问次数排名显示火焰标识
 export const hotConfig = {
   minCount: 5,        // 最少访问次数才显示热度
-  topHot: 5,          // 前topHot名显示 🔥🔥🔥
-  secondHot: 10,      // 前topHot-secondHot名显示 🔥🔥
-  thirdHot: 20        // 前secondHot-thirdHot名显示 🔥
+  topHot: 5,          // 前 5 名显示 🔥🔥🔥
+  secondHot: 10,      // 前 6-10 名显示 🔥🔥
+  thirdHot: 20        // 前 11-20 名显示 🔥
 }
 
-// 全场最佳配置：根据访问次数自动分档
+// 全场最佳配置：根据访问次数排名显示特殊标识
 export const mvpConfig = {
   minCount: 5,        // 最少访问次数才能进入全场最佳
-  onePiece: 1,        // 前1名：OnePiece（海贼王）
-  yonko: 4,           // 前2-5名：四皇
-  shichibukai: 7      // 前6-12名：七武海
+  onePiece: 1,        // 前 1 名：OnePiece（海贼王）
+  yonko: 4,           // 前 2-5 名：四皇
+  shichibukai: 7      // 前 6-12 名：七武海
 }
 
 export const navData = {
@@ -27,10 +27,11 @@ export const navData = {
     { id: 'daily', name: '日常使用', icon: '⭐' },
     { id: 'dev', name: '开发工具', icon: '🛠️' },
     { id: 'design', name: '设计资源', icon: '🎨' },
+    { id: 'resources', name: '素材中心', icon: '📦' },
     { id: 'ai', name: 'AI工具', icon: '🤖' },
     { id: 'life', name: '生活服务', icon: '🏠' },
     { id: 'game', name: '游戏娱乐', icon: '🎮' },
-    { id: 'uncategorized', name: '待分类', icon: '📦' },
+    { id: 'uncategorized', name: '待分类', icon: '📋' },
   ],
   
   links: {
@@ -85,6 +86,24 @@ export const navData = {
           { name: 'Figma', url: 'https://www.figma.com', desc: '在线UI设计工具', icon: '🎨', baseCount: 0 },
           { name: 'Dribbble', url: 'https://dribbble.com', desc: '设计师作品分享', icon: '🏀', baseCount: 0 },
           { name: 'Unsplash', url: 'https://unsplash.com', desc: '免费高质量图片', icon: '📷', baseCount: 0 },
+        ]
+      }
+    ],
+    
+    resources: [
+      {
+        title: '图标资源',
+        icon: '🎨',
+        links: [
+          { name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 0 },
+        ]
+      },
+      {
+        title: 'CDN服务',
+        icon: '🌐',
+        links: [
+          { name: 'jsDelivr', url: 'https://www.jsdelivr.com/', desc: '免费开源CDN', icon: '📦', isFree: true, baseCount: 0 },
+          { name: 'cdnjs', url: 'https://cdnjs.com/', desc: '前端库CDN', icon: '📚', isFree: true, baseCount: 0 },
         ]
       }
     ],
