@@ -9,6 +9,7 @@ export const rentalGames = [
     cost: 300,
     rentalPrice: 50,
     deposit: 100,
+    note: '光盘无划痕，盒子完好',
     history: [
       { date: '2025-01-15', renter: '张三', income: 50, returned: true, returnDate: '2025-01-22' },
       { date: '2025-01-25', renter: '李四', income: 50, returned: true, returnDate: '2025-01-30' },
@@ -23,6 +24,7 @@ export const rentalGames = [
     cost: 350,
     rentalPrice: 60,
     deposit: 150,
+    note: '全新未拆封',
     history: [
       { date: '2025-01-20', renter: '赵六', income: 60, returned: true, returnDate: '2025-01-30' },
       { date: '2026-02-05', renter: '王五', income: 60, returned: false, returnDate: '2026-02-12' },

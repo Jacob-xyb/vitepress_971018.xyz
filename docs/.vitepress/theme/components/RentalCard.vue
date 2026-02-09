@@ -41,6 +41,14 @@
             </div>
             
             <div class="modal-body">
+              <div class="details-section" v-if="game.note">
+                <h4>物品状态</h4>
+                <div class="note-content">
+                  <span class="note-icon">📝</span>
+                  <span class="note-text">{{ game.note }}</span>
+                </div>
+              </div>
+              
               <div class="details-section">
                 <h4>财务概览</h4>
                 <div class="finance-grid">
@@ -154,7 +162,7 @@ const lastReturnDate = computed(() => {
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid var(--vp-c-divider);
+  border: 2px solid var(--vp-c-divider);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -364,6 +372,27 @@ const lastReturnDate = computed(() => {
   margin: 0 0 1rem 0;
   font-size: 1rem;
   color: var(--vp-c-text-1);
+}
+
+.note-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  border-left: 3px solid var(--vp-c-brand-1);
+}
+
+.note-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.note-text {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-1);
+  line-height: 1.5;
 }
 
 .finance-grid {
