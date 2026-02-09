@@ -25,7 +25,8 @@ export const nav = [
 	{
 		text: '游戏',
 		items: [
-			{ text: '游戏攻略', link: '/walkthrough/' }
+			{ text: '游戏攻略', link: '/walkthrough/' },
+			{ text: '游戏租赁', link: '/rental/' }
 		]
 	},
 	{
