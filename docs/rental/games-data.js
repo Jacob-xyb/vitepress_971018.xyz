@@ -2,18 +2,17 @@
 export const rentalGames = [
   {
     id: 1,
-    title: '仁王3',
-    titleEn: 'Nioh 3',
-    cover: '/gameover/仁王3-v.jpg',
+    title: '漫威蜘蛛侠2',
+    titleEn: 'Marvel\'s Spider-Man 2',
+    cover: '/gameover/蜘蛛侠2-v.jpg',
     platform: 'PS5',
-    cost: 300,
-    rentalPrice: 50,
-    deposit: 100,
+    cost: 195,
+    rentalPrice: 20,
+    deposit: 220,
     note: '光盘无划痕，盒子完好',
     popularity: 0,
     history: [
-      { date: '2025-01-15', renter: '张三', income: 50, returned: true, returnDate: '2025-01-22' },
-      { date: '2025-01-25', renter: '李四', income: 50, returned: true, returnDate: '2025-01-30' },
+      { date: '2025-12-8', renter: 'HelloAlita', income: 50, returned: true, returnDate: '2025-01-19' },
     ]
   },
   {
