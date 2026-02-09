@@ -7,7 +7,7 @@ outline: false
 <script setup>
 import { ref, computed } from 'vue'
 import { rentalGames } from './games-data.js'
-import { getGameStatus } from './rental-utils.js'
+import { getGameStatus, sortGamesByPopularity } from './rental-utils.js'
 import RentalCard from '../.vitepress/theme/components/RentalCard.vue'
 
 const isDev = ref(import.meta.env.DEV)
@@ -20,11 +20,13 @@ const platforms = computed(() => {
 })
 
 const filteredGames = computed(() => {
-  return rentalGames.filter(game => {
+  let games = rentalGames.filter(game => {
     const statusMatch = selectedStatus.value === 'all' || getGameStatus(game) === selectedStatus.value
     const platformMatch = selectedPlatform.value === 'all' || game.platform === selectedPlatform.value
     return statusMatch && platformMatch
   })
+  
+  return sortGamesByPopularity(games)
 })
 
 const resetFilters = () => {

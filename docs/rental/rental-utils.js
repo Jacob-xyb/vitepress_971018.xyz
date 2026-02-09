@@ -51,3 +51,17 @@ export const getRecoveryRate = (game) => {
   const total = getTotalIncome(game)
   return Math.min((total / game.cost) * 100, 100).toFixed(1)
 }
+
+// 计算游戏热度
+export const calculatePopularity = (game) => {
+  return game.popularity + (game.history?.length || 0) * 10
+}
+
+// 按热度排序游戏
+export const sortGamesByPopularity = (games) => {
+  return [...games].sort((a, b) => {
+    const popularityA = calculatePopularity(a)
+    const popularityB = calculatePopularity(b)
+    return popularityB - popularityA
+  })
+}
