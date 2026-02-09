@@ -98,6 +98,13 @@ export const navData = {
 				]
 			},
 			{
+				title: '游戏素材',
+				icon: '🖌️',
+				links: [
+					{ name: 'Game FAQ', url: 'https://gamefaqs.gamespot.com/', desc: '齐全的游戏封面论坛', icon: '/logo/game-faq.ico', needVPN: true, isFree: true, baseCount: 1 },
+				]
+			},
+			{
 				title: 'CDN服务',
 				icon: '🌐',
 				links: [
