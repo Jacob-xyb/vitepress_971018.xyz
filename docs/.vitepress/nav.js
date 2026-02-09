@@ -11,6 +11,7 @@ export const nav = [
 	{
 		text: '编程',
 		items: [
+			{ text: 'C++', link: '/coding/cpp/' },
 			{ text: 'Git', link: '/coding/git/' },
 			{ text: '文件读写', link: '/coding/file-io/' }
 		]
