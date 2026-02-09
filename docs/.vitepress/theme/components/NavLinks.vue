@@ -68,9 +68,41 @@ import { navData, hotConfig, mvpConfig } from '../../../nav/links.js'
 import ThemeIcon from './ThemeIcon.vue'
 
 const activeCategory = ref(navData.categories[0]?.id || 'mvp')
-const categories = navData.categories
-const links = navData.links
 const linkStats = ref({})
+
+// 计算每个分类的总访问次数
+const getCategoryTotalCount = (categoryId) => {
+  if (categoryId === 'mvp' || categoryId === 'uncategorized') return 0
+  
+  const categoryLinks = links[categoryId]
+  if (!categoryLinks) return 0
+  
+  let total = 0
+  for (const section of categoryLinks) {
+    for (const link of section.links) {
+      total += getClickCount(link.url)
+    }
+  }
+  return total
+}
+
+// 动态排序的分类列表
+const categories = computed(() => {
+  const allCategories = [...navData.categories]
+  
+  // 前两个固定（全场最佳、日常使用）
+  const fixed = allCategories.slice(0, 2)
+  
+  // 其余分类按总访问次数排序
+  const sortable = allCategories.slice(2).map(cat => ({
+    ...cat,
+    totalCount: getCategoryTotalCount(cat.id)
+  })).sort((a, b) => b.totalCount - a.totalCount)
+  
+  return [...fixed, ...sortable]
+})
+
+const links = navData.links
 
 // 获取当前分类的内容（如果是 mvp 则动态生成）
 const currentSections = computed(() => {

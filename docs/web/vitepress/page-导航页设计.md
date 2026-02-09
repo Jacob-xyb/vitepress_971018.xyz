@@ -857,6 +857,106 @@ const toggleFavorite = (link) => {
 - 🎖️ 动态分配到三个档次（OnePiece、四皇、七武海）
 - 🔄 实时更新，无需手动维护
 
+## 全场最佳功能 ⭐
+
+**自动根据访问次数生成最受欢迎的网站排行榜！**
+
+### 功能特点
+
+- 🏆 自动统计所有分类中的链接访问次数
+- 📊 按访问次数降序排序
+- 🎖️ 动态分配到三个档次（OnePiece、四皇、七武海）
+- 🔄 实时更新，无需手动维护
+
+## 分类动态排序 ⭐
+
+**根据分类热度自动调整显示顺序！**
+
+### 功能特点
+
+- 📊 自动计算每个分类下所有链接的总访问次数
+- 🔄 根据热度动态排序分类（除前两个固定）
+- 🎯 热门分类自动排到前面，方便访问
+- ⚡ 实时更新，每次点击后自动重新排序
+
+### 排序规则
+
+1. **前两个固定**：全场最佳和日常使用始终保持在第一、第二位
+2. **其余动态排序**：从第三个开始，根据分类总热度降序排列
+3. **热度计算**：分类热度 = 该分类下所有链接的总访问次数（baseCount + 用户点击）
+
+### 实现原理
+
+```javascript
+// 计算每个分类的总访问次数
+const getCategoryTotalCount = (categoryId) => {
+  const categoryLinks = links[categoryId]
+  let total = 0
+  for (const section of categoryLinks) {
+    for (const link of section.links) {
+      total += getClickCount(link.url)  // baseCount + 用户点击
+    }
+  }
+  return total
+}
+
+// 动态排序的分类列表
+const categories = computed(() => {
+  const allCategories = [...navData.categories]
+  
+  // 前两个固定（全场最佳、日常使用）
+  const fixed = allCategories.slice(0, 2)
+  
+  // 其余分类按总访问次数排序
+  const sortable = allCategories.slice(2)
+    .map(cat => ({
+      ...cat,
+      totalCount: getCategoryTotalCount(cat.id)
+    }))
+    .sort((a, b) => b.totalCount - a.totalCount)
+  
+  return [...fixed, ...sortable]
+})
+```
+
+### 使用示例
+
+**初始状态：**
+```
+1. 🏆 全场最佳（固定）
+2. ⭐ 日常使用（固定）
+3. 🛠️ 开发工具（总访问 50 次）
+4. 🎨 设计资源（总访问 30 次）
+5. 📦 素材中心（总访问 20 次）
+```
+
+**使用一段时间后：**
+```
+1. 🏆 全场最佳（固定）
+2. ⭐ 日常使用（固定）
+3. 📦 素材中心（总访问 150 次）← 自动排到前面
+4. 🛠️ 开发工具（总访问 80 次）
+5. 🎨 设计资源（总访问 45 次）
+```
+
+### 注意事项
+
+- ✅ 前两个分类（全场最佳、日常使用）位置固定，不参与排序
+- ✅ 排序基于所有用户的 baseCount + 当前用户的本地点击
+- ✅ 每次点击链接后，分类顺序会自动重新计算
+- ✅ 不同浏览器/设备的排序可能不同（基于本地数据）
+- 💡 建议定期更新 baseCount，让排序更准确反映全局热度
+
+### 自定义固定分类数量
+
+如果想固定更多分类，修改 `NavLinks.vue` 中的代码：
+
+```javascript
+// 固定前3个分类
+const fixed = allCategories.slice(0, 3)
+const sortable = allCategories.slice(3)
+```
+
 ### 配置说明
 
 在 `docs/nav/links.js` 中配置全场最佳规则：
