@@ -45,7 +45,7 @@ export default {
 		}
 	],
 	'/coding/cpp/': cppCommonSidebar,
-	'/coding/cpp/oop/polymorphism/': [
+	'/coding/cpp/oop/': [
 		...cppCommonSidebar,
 		{
 			text: '多态详解',
