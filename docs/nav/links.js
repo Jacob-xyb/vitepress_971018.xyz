@@ -41,15 +41,15 @@ export const navData = {
 				title: '日常必备',
 				icon: '💎',
 				links: [
-					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 0 },
+					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 2 },
 				]
 			},
 			{
 				title: '强烈推荐',
 				icon: '⭐',
 				links: [
-					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 0 },
-					{ name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: 'github', needVPN: true, isFree: true, baseCount: 1 },
+					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 2 },
+					{ name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: 'github', needVPN: true, isFree: true, baseCount: 5 },
 				]
 			}
 		],
@@ -146,7 +146,7 @@ export const navData = {
 				title: '云服务平台',
 				icon: '☁️',
 				links: [
-					{ name: 'Cloudflare', url: 'https://dash.cloudflare.com/', desc: 'CDN与网站安全服务', icon: 'cloudflare#F38020', needLogin: true, needVPN: true, isFree: true, baseCount: 0 },
+					{ name: 'Cloudflare', url: 'https://dash.cloudflare.com/', desc: 'CDN与网站安全服务', icon: 'cloudflare#F38020', needLogin: true, needVPN: true, isFree: true, baseCount: 1 },
 				]
 			}
 		],
@@ -168,7 +168,7 @@ export const navData = {
 				title: '图标资源',
 				icon: '🎨',
 				links: [
-					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 0 },
+					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 2 },
 					{ name: 'OpenMoji', url: 'https://openmoji.org/', desc: '开源 Emoji 图标库', icon: '/logo/openmoji-logo.svg', isFree: true, baseCount: 0 },
 				]
 			},
@@ -176,14 +176,14 @@ export const navData = {
 				title: '游戏素材',
 				icon: '🖌️',
 				links: [
-					{ name: 'Game FAQ', url: 'https://gamefaqs.gamespot.com/', desc: '齐全的游戏封面论坛', icon: '/logo/game-faq.ico', needVPN: true, isFree: true, baseCount: 1 },
+					{ name: 'Game FAQ', url: 'https://gamefaqs.gamespot.com/', desc: '齐全的游戏封面论坛', icon: '/logo/game-faq.ico', needVPN: true, isFree: true, baseCount: 2 },
 				]
 			},
 			{
 				title: 'CDN服务',
 				icon: '🌐',
 				links: [
-					{ name: 'jsDelivr', url: 'https://www.jsdelivr.com/', desc: '免费开源CDN', icon: '📦', isFree: true, baseCount: 0 },
+					{ name: 'jsDelivr', url: 'https://www.jsdelivr.com/', desc: '免费开源CDN', icon: '📦', isFree: true, baseCount: 1 },
 					{ name: 'cdnjs', url: 'https://cdnjs.com/', desc: '前端库CDN', icon: '📚', isFree: true, baseCount: 0 },
 				]
 			}
