@@ -65,3 +65,36 @@ export const sortGamesByPopularity = (games) => {
     return popularityB - popularityA
   })
 }
+
+// 计算总体统计数据
+export const calculateOverallStats = (games) => {
+  const totalCost = games.reduce((sum, game) => sum + game.cost, 0)
+  const totalIncome = games.reduce((sum, game) => sum + getTotalIncome(game), 0)
+  const totalProfit = totalIncome - totalCost
+  const recoveryRate = totalCost > 0 ? (totalIncome / totalCost * 100).toFixed(1) : 0
+  
+  // 统计游戏数量
+  const totalGames = games.length
+  const rentedGames = games.filter(game => getGameStatus(game) === 'rented').length
+  const overdueGames = games.filter(game => getGameStatus(game) === 'overdue').length
+  const availableGames = games.filter(game => getGameStatus(game) === 'available').length
+  
+  // 统计租赁次数
+  const totalRentals = games.reduce((sum, game) => sum + (game.history?.length || 0), 0)
+  
+  // 已回本游戏数量
+  const recoveredGames = games.filter(game => getTotalIncome(game) >= game.cost).length
+  
+  return {
+    totalCost,
+    totalIncome,
+    totalProfit,
+    recoveryRate,
+    totalGames,
+    rentedGames,
+    overdueGames,
+    availableGames,
+    totalRentals,
+    recoveredGames
+  }
+}
