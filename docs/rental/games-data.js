@@ -10,7 +10,7 @@ export const rentalGames = [
 		cost: 195,
 		rentalPrice: 20,
 		deposit: 220,
-		note: '光盘无划痕，盒子完好',
+		note: '无损',
 		popularity: 0,
 		history: [
 			{ date: '2025-12-8', renter: 'HelloAlita', income: 20, returned: true, returnDate: '2025-12-19' },
@@ -42,7 +42,7 @@ export const rentalGames = [
 		cost: 120,
 		rentalPrice: 20,
 		deposit: 220,
-		note: '光盘无划痕，盒子完好',
+		note: '无损',
 		popularity: 0,
 		history: [
 			{ date: '2026-02-07', renter: '向西0', income: 18, returned: false, returnDate: '2026-03-11' },
@@ -58,11 +58,134 @@ export const rentalGames = [
 		cost: 250,
 		rentalPrice: 30,
 		deposit: 250,
-		note: '光盘无划痕，盒子完好',
+		note: '无损',
 		popularity: 0,
 		history: [
 			{ date: '2026-01-13', renter: '帅的想整容i', income: 20, returned: true, returnDate: '2026-02-07' },
 			{ date: '2026-02-07', renter: 'niko', income: 30, returned: false, returnDate: '2026-03-11' },
+		]
+	},	
+	{
+		id: 5,
+		title: '生化危机4 重置版',
+		titleEn: 'Resident Evil 4 (Remake)',
+		cover: '/gameover/生化危机4重置版-v.jpg',
+		platform: 'PS5',
+		version: '港版 中文',
+		cost: 165,
+		rentalPrice: 20,
+		deposit: 220,
+		note: '无损',
+		popularity: 0,
+		history: [
+			{ date: '2026-02-14', renter: 'Destiny', income: 30, returned: false, returnDate: '2026-03-14' },
+		]
+	},	
+	{
+		id: 6,
+		title: '胡闹厨房 全都好吃',
+		titleEn: 'Overcooked! All You Can Eat',
+		cover: '/gameover/胡闹厨房全都好吃-v.jpg',
+		platform: 'PS5',
+		version: '港版 中文',
+		cost: 120,
+		rentalPrice: 20,
+		deposit: 220,
+		note: '无损',
+		popularity: 0,
+		history: [
+			{ date: '2026-02-07', renter: '帅的想整容i', income: 20, returned: false, returnDate: '2026-03-11' },
+		]
+	},
+	{
+		id: 7,
+		title: '雪地奔驰',
+		titleEn: 'SnowRunner',
+		cover: '/gameover/雪地奔驰-v.jpg',
+		platform: 'PS5',
+		version: '港版 中文',
+		cost: 178,
+		rentalPrice: 20,
+		deposit: 220,
+		note: '无损',
+		popularity: 0,
+		history: [
+			{ date: '2026-02-14', renter: 'Destiny', income: 25, returned: false, returnDate: '2026-03-14' },
+		]
+	},
+	{
+		id: 8,
+		title: '明末:渊虚之羽',
+		titleEn: 'WUCHANG: Fallen Feathers',
+		cover: '/gameover/明末渊虚之羽-v.jpg',
+		platform: 'PS5',
+		version: '欧版 中文',
+		cost: 147,
+		rentalPrice: 20,
+		deposit: 220,
+		note: '无损',
+		popularity: 0,
+		history: [
+		]
+	},
+	{
+		id: 9,
+		title: '哈迪斯',
+		titleEn: 'Hades',
+		cover: '/gameover/哈迪斯-v.jpg',
+		platform: 'PS5',
+		version: '欧版 中文',
+		cost: 139,
+		rentalPrice: 20,
+		deposit: 220,
+		note: '无损',
+		popularity: 0,
+		history: [
+		]
+	},
+	{
+		id: 10,
+		title: '海贼王:时光旅诗',
+		titleEn: 'One Piece Odyssey',
+		cover: '/gameover/海贼王时光旅诗-v.jpg',
+		platform: 'PS5',
+		version: '港版 中文',
+		cost: 300,
+		rentalPrice: 15,
+		deposit: 215,
+		note: '无损',
+		popularity: 0,
+		history: [
+		]
+	},
+	{
+		id: 11,
+		title: '魔界战记5',
+		titleEn: 'Disgaea 5: Alliance of Vengeance – Box Scans',
+		cover: '/gameover/魔界战记5-v.jpg',
+		platform: 'PS4',
+		version: '港版 中文',
+		cost: 49,
+		rentalPrice: 15,
+		deposit: 215,
+		note: '无损',
+		popularity: 0,
+		history: [
+		]
+	},
+	{
+		id: 12,
+		title: '魔界战记:重置版',
+		titleEn: 'Disgaea Refine',
+		cover: '/gameover/魔界战记重置版-v.jpg',
+		platform: 'PS4',
+		version: '港版 中文',
+		cost: 159,
+		rentalPrice: 20,
+		deposit: 220,
+		note: '无损',
+		popularity: 0,
+		history: [
 		]
 	},
 ]
