@@ -30,6 +30,7 @@
              :href="link.url"
              target="_blank"
              class="link-card"
+             :title="link.visitCount ? `${link.desc} · 已访问 ${link.visitCount} 次` : link.desc"
              @click="handleLinkClick(link)">
             <div class="link-icon">
               <!-- 如果是 Simple Icons 名称（不含 / . http），使用 ThemeIcon -->
@@ -260,7 +261,7 @@ const generateMvpSections = () => {
       icon: '👑',
       links: onePieceLinks.map(item => ({
         ...item.link,
-        desc: `${item.link.desc} · 访问 ${item.count} 次`
+        visitCount: item.count  // 保存访问次数用于悬停显示
       }))
     })
   }
@@ -273,7 +274,7 @@ const generateMvpSections = () => {
       icon: '⚔️',
       links: yonkoLinks.map(item => ({
         ...item.link,
-        desc: `${item.link.desc} · 访问 ${item.count} 次`
+        visitCount: item.count
       }))
     })
   }
@@ -289,7 +290,7 @@ const generateMvpSections = () => {
       icon: '🗡️',
       links: shichibukaiLinks.map(item => ({
         ...item.link,
-        desc: `${item.link.desc} · 访问 ${item.count} 次`
+        visitCount: item.count
       }))
     })
   }
