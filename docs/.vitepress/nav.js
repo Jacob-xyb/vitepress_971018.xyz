@@ -17,6 +17,13 @@ export const nav = [
 		]
 	},
 	{
+		text: '系统技巧',
+		items: [
+			{ text: 'macOS', link: '/system/mac/' },
+			{ text: 'Windows', link: '/system/windows/' }
+		]
+	},
+	{
 		text: '生活',
 		items: [
 			{ text: '体重记录', link: '/life/weight-tracker' }

@@ -33,4 +33,9 @@ features:
     icon: 💻
     details: Git
     link: /coding/
+
+  - title: 系统技巧
+    icon: 🖥️
+    details: macOS、Windows
+    link: /system/
 ---

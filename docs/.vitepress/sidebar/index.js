@@ -5,6 +5,7 @@ import skills from './skills.js'
 import hacker from './hacker.js'
 import life from './life.js'
 import walkthrough from './walkthrough.js'
+import system from './system.js'
 
 export const sidebar = {
 	...guide,
@@ -13,5 +14,6 @@ export const sidebar = {
 	...skills,
 	...hacker,
 	...life,
-	...walkthrough
+	...walkthrough,
+	...system
 }
