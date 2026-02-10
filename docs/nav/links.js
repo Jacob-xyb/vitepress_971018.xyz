@@ -74,6 +74,13 @@ export const navData = {
 					{ name: 'RegExr', url: 'https://regexr.com', desc: '正则表达式测试', icon: '🔍', baseCount: 0 },
 					{ name: 'Can I Use', url: 'https://caniuse.com', desc: '浏览器兼容性查询', icon: '✅', baseCount: 0 },
 				]
+			},
+			{
+				title: '云服务平台',
+				icon: '☁️',
+				links: [
+					{ name: 'Cloudflare', url: 'https://dash.cloudflare.com/', desc: 'CDN与网站安全服务', icon: 'cloudflare#F38020', needLogin: true, needVPN: true, isFree: true, baseCount: 0 },
+				]
 			}
 		],
 

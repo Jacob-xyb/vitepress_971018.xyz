@@ -668,14 +668,40 @@ new: [
 
 ### Icon 使用方式
 
-支持三种 icon 格式：
+支持四种 icon 格式：
 
 **1. Emoji（推荐）**
 ```javascript
 icon: '🐙'
 ```
 
-**2. 本地图片**
+**2. Simple Icons（品牌图标）**
+
+使用 [Simple Icons](https://simpleicons.org/) 提供的 3000+ 品牌图标：
+
+```javascript
+// 基础用法：使用默认颜色
+icon: 'github'
+
+// 指定颜色：图标名#颜色（推荐）
+icon: 'cloudflare#F38020'    // Cloudflare 橙色
+icon: 'github#181717'         // GitHub 黑色
+icon: 'vue#42b883'            // Vue 绿色
+
+// 高级用法：分别指定浅色/深色模式颜色
+icon: 'github',
+iconLightColor: '181717',     // 浅色模式：深色图标
+iconDarkColor: 'ffffff'       // 深色模式：白色图标
+
+// 优先级：icon中的颜色 > iconColor > iconLightColor/iconDarkColor > 默认颜色
+```
+
+**颜色格式说明：**
+- 支持 6 位十六进制颜色码
+- 可以带 `#` 也可以不带（如 `F38020` 或 `#F38020`）
+- 在 [Simple Icons](https://simpleicons.org/) 网站可以找到各品牌的官方颜色
+
+**3. 本地图片**
 
 将图片放在 `docs/public/` 目录下：
 ```javascript
@@ -683,10 +709,16 @@ icon: '/logo/vitepress-logo.svg'
 icon: '/icons/website.png'
 ```
 
-**3. 外部图片**
+**4. 外部图片**
 ```javascript
 icon: 'https://example.com/logo.png'
 ```
+
+**图标类型识别规则：**
+- 包含 `#` 且符合 `名称#颜色` 格式 → Simple Icons（带颜色）
+- 纯字母数字连字符（如 `github`）→ Simple Icons（默认颜色）
+- 包含 `/` 或 `.` 或 `http` → 图片路径
+- 其他 → Emoji
 
 ### VPN 标识
 

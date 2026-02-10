@@ -30,9 +30,12 @@
               <!-- 如果是 Simple Icons 名称（不含 / . http），使用 ThemeIcon -->
               <ThemeIcon 
                 v-if="isSimpleIcon(link.icon)" 
-                :icon="link.icon" 
+                :icon="parseSimpleIcon(link.icon).name" 
                 size="36px"
                 :alt="link.name"
+                :color="parseSimpleIcon(link.icon).color || link.iconColor"
+                :lightColor="link.iconLightColor"
+                :darkColor="link.iconDarkColor"
               />
               <!-- 如果是图片路径，使用 img -->
               <img v-else-if="isImageIcon(link.icon)" :src="link.icon" :alt="link.name" />
@@ -112,11 +115,34 @@ const currentSections = computed(() => {
   return links[activeCategory.value] || []
 })
 
-// 判断是否为 Simple Icons 名称（纯字母、数字、连字符）
+// 判断是否为 Simple Icons 名称（纯字母、数字、连字符，或包含 # 的颜色格式）
 const isSimpleIcon = (icon) => {
   if (!icon || typeof icon !== 'string') return false
-  // 不包含 / . http 等路径特征，且只包含字母数字连字符
-  return !icon.includes('/') && !icon.includes('.') && !icon.startsWith('http') && /^[a-z0-9-]+$/i.test(icon)
+  // 支持 'iconname' 或 'iconname#color' 格式
+  // 不包含 http、斜杠、点号等路径特征
+  if (icon.startsWith('http') || icon.includes('/') || icon.includes('.')) return false
+  
+  const parts = icon.split('#')
+  if (parts.length === 1) {
+    // 纯图标名：只包含字母数字连字符
+    return /^[a-z0-9-]+$/i.test(icon)
+  } else if (parts.length === 2) {
+    // 图标名#颜色格式：图标名符合规则，颜色是6位十六进制
+    return /^[a-z0-9-]+$/i.test(parts[0]) && /^[0-9a-f]{6}$/i.test(parts[1])
+  }
+  
+  return false
+}
+
+// 解析 Simple Icons 的图标名和颜色
+const parseSimpleIcon = (icon) => {
+  if (!icon || typeof icon !== 'string') return { name: '', color: undefined }
+  
+  const parts = icon.split('#')
+  if (parts.length === 2) {
+    return { name: parts[0], color: parts[1] }
+  }
+  return { name: icon, color: undefined }
 }
 
 // 判断是否为图片路径
