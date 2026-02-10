@@ -16,7 +16,12 @@
     <main class="nav-content">
       <div class="nav-section" v-for="section in currentSections" :key="section.title">
         <h2 class="section-title">
-          <span class="title-icon">{{ section.icon }}</span>
+          <span class="title-icon">
+            <!-- 如果是图片路径，使用 img -->
+            <img v-if="isImageIcon(section.icon)" :src="section.icon" :alt="section.title" class="title-icon-img" />
+            <!-- 否则显示 emoji 或文本 -->
+            <span v-else>{{ section.icon }}</span>
+          </span>
           {{ section.title }}
         </h2>
         <div class="links-grid">
@@ -484,7 +489,16 @@ onUnmounted(() => {
 
 .title-icon {
   margin-right: 8px;
-  font-size: 20px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-icon-img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
 }
 
 /* 链接卡片网格 */

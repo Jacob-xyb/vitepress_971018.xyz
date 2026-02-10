@@ -25,6 +25,7 @@ export const navData = {
 	categories: [
 		{ id: 'mvp', name: '全场最佳', icon: '🏆' },
 		{ id: 'daily', name: '日常使用', icon: '⭐' },
+		{ id: 'media', name: '影视资源', icon: '🎬' },
 		{ id: 'dev', name: '开发工具', icon: '🛠️' },
 		{ id: 'design', name: '设计资源', icon: '🎨' },
 		{ id: 'resources', name: '素材中心', icon: '📦' },
@@ -49,6 +50,72 @@ export const navData = {
 				links: [
 					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 0 },
 					{ name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: 'github', needVPN: true, isFree: true, baseCount: 1 },
+				]
+			}
+		],
+
+		media: [
+			{
+				title: '在线观看',
+				icon: '📺',
+				links: [
+					// 在这里添加在线观看网站
+				]
+			},
+			{
+				title: '资源下载',
+				icon: '/icon/openmoji-film-projector.svg',
+				links: [
+					// 在这里添加下载网站
+				]
+			},
+			{
+				title: '动漫',
+				icon: '🎭',
+				links: [
+					// 在这里添加动漫网站
+				]
+			},
+			{
+				title: '美剧',
+				icon: '🇺🇸',
+				links: [
+					// 在这里添加美剧网站
+				]
+			},
+			{
+				title: '日剧',
+				icon: '🇯🇵',
+				links: [
+					// 在这里添加日剧网站
+				]
+			},
+			{
+				title: '韩剧',
+				icon: '🇰🇷',
+				links: [
+					// 在这里添加韩剧网站
+				]
+			},
+			{
+				title: '纪录片',
+				icon: '🎥',
+				links: [
+					// 在这里添加纪录片网站
+				]
+			},
+			{
+				title: '字幕资源',
+				icon: '💬',
+				links: [
+					// 在这里添加字幕网站
+				]
+			},
+			{
+				title: '影视素材',
+				icon: '🎞️',
+				links: [
+					// 在这里添加影视素材网站
 				]
 			}
 		],
@@ -102,6 +169,7 @@ export const navData = {
 				icon: '🎨',
 				links: [
 					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 0 },
+					{ name: 'OpenMoji', url: 'https://openmoji.org/', desc: '开源 Emoji 图标库', icon: '/logo/openmoji-logo.svg', isFree: true, baseCount: 0 },
 				]
 			},
 			{
