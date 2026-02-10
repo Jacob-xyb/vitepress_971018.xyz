@@ -2,7 +2,7 @@
 export const rentalGames = [
 	{
 		id: 1,
-		title: '漫威蜘蛛侠2',
+		title: '漫威蜘蛛侠 2',
 		titleEn: 'Marvel\'s Spider-Man 2',
 		cover: '/gameover/蜘蛛侠2-v.jpg',
 		platform: 'PS5',
@@ -34,7 +34,7 @@ export const rentalGames = [
 	},
 	{
 		id: 3,
-		title: '荒野大镖客: 救赎2',
+		title: '荒野大镖客:救赎 2',
 		titleEn: 'Red Dead Redemption 2',
 		cover: '/gameover/荒野大镖客2-v.jpg',
 		platform: 'PS4',
@@ -67,7 +67,7 @@ export const rentalGames = [
 	},	
 	{
 		id: 5,
-		title: '生化危机4 重置版',
+		title: '生化危机 4 重置版',
 		titleEn: 'Resident Evil 4 (Remake)',
 		cover: '/gameover/生化危机4重置版-v.jpg',
 		platform: 'PS5',
@@ -160,7 +160,7 @@ export const rentalGames = [
 	},
 	{
 		id: 11,
-		title: '魔界战记5',
+		title: '魔界战记 5',
 		titleEn: 'Disgaea 5: Alliance of Vengeance – Box Scans',
 		cover: '/gameover/魔界战记5-v.jpg',
 		platform: 'PS4',
@@ -186,6 +186,37 @@ export const rentalGames = [
 		note: '无损',
 		popularity: 0,
 		history: [
+		]
+	},
+	{
+		id: 13,
+		title: '刺客信条:影',
+		titleEn: 'Assassin\'s Creed Shadows',
+		cover: '/gameover/刺客信条影-v.jpg',
+		platform: 'PS5',
+		version: '港版 中文',
+		cost: 238,
+		rentalPrice: 25,
+		deposit: 265,
+		note: '无损',
+		popularity: 20,
+		history: [
+		]
+	},
+	{
+		id: 14,
+		title: '无主之地 4',
+		titleEn: 'Borderlands 4',
+		cover: '/gameover/无主之地4-v.jpg',
+		platform: 'PS5',
+		version: '欧版 中文',
+		cost: 265,
+		rentalPrice: 30,
+		deposit: 280,
+		note: '无损',
+		popularity: 0,
+		history: [
+			{ date: '2025-11-25', renter: 'Destiny', income: 35, returned: true, returnDate: '2026-01-25' },
 		]
 	},
 ]
