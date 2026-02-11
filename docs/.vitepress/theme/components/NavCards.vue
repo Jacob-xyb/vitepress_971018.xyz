@@ -15,12 +15,15 @@
           :style="{ width: iconSize, height: iconSize }"
           class="icon-img"
         />
-        <!-- ThemeIcon 图标：纯英文字母的单词（Simple Icons 名称） -->
+        <!-- ThemeIcon 图标：纯英文字母的单词（Simple Icons 名称）或带颜色的格式 -->
         <ThemeIcon 
-          v-else-if="/^[a-z0-9-]+$/i.test(item.icon)"
-          :icon="item.icon" 
+          v-else-if="isSimpleIcon(item.icon)"
+          :icon="parseIconName(item.icon)" 
           :size="iconSize" 
-          :alt="item.title" 
+          :alt="item.title"
+          :color="parseIconColor(item.icon) || item.iconColor"
+          :lightColor="item.iconLightColor"
+          :darkColor="item.iconDarkColor"
         />
         <!-- Emoji 或其他：直接显示 -->
         <span v-else>{{ item.icon }}</span>
@@ -50,6 +53,33 @@ defineProps({
     default: '48px'
   }
 })
+
+// 判断是否为 Simple Icons 名称（支持 name#color 格式）
+const isSimpleIcon = (icon) => {
+  if (!icon || typeof icon !== 'string') return false
+  if (icon.startsWith('/') || icon.startsWith('http') || icon.includes('.')) return false
+  
+  const parts = icon.split('#')
+  if (parts.length === 1) {
+    return /^[a-z0-9-]+$/i.test(icon)
+  } else if (parts.length === 2) {
+    return /^[a-z0-9-]+$/i.test(parts[0]) && /^[0-9a-f]{6}$/i.test(parts[1])
+  }
+  return false
+}
+
+// 解析图标名称（去掉颜色部分）
+const parseIconName = (icon) => {
+  if (!icon) return ''
+  return icon.split('#')[0]
+}
+
+// 解析图标颜色
+const parseIconColor = (icon) => {
+  if (!icon) return undefined
+  const parts = icon.split('#')
+  return parts.length === 2 ? parts[1] : undefined
+}
 </script>
 
 <style scoped>

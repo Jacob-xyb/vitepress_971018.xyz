@@ -11,7 +11,7 @@ export const systemLinks = [
 	{
 		id: 'windows',
 		title: 'Windows',
-		icon: '🪟',
+		icon: '/icon/openmoji-windows.svg',
 		desc: 'Windows 系统使用技巧',
 		link: '/system/windows/',
 		tags: ['Windows', 'Microsoft']
