@@ -31,7 +31,8 @@ export default {
 			text: 'Git',
 			items: [
 				{ text: '介绍', link: '/coding/git/' },
-				{ text: '代理配置', link: '/coding/git/proxy' }
+				{ text: '代理配置', link: '/coding/git/proxy' },
+				{ text: 'Rebase 变基', link: '/coding/git/rebase' }
 			]
 		}
 	],
