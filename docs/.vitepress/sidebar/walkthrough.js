@@ -7,6 +7,12 @@ export default {
 			]
 		},
 		{
+			text: '核心机制',
+			items: [
+				{ text: '精力机制', link: '/walkthrough/nioh-3/仁王3-精力机制' }
+			]
+		},
+		{
 			text: '流派攻略',
 			items: [
 				{
