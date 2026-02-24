@@ -13,6 +13,19 @@ export default {
 			]
 		},
 		{
+			text: '进阶玩法',
+			items: [
+				{ text: '二周目刷宝', link: '/walkthrough/nioh-3/仁王3-二周目刷宝' },
+				{
+					text: '套装推荐',
+					collapsed: false,
+					items: [
+						{ text: '麻痹太刀', link: '/walkthrough/nioh-3/流派套装玩法/麻痹太刀' }
+					]
+				}
+			]
+		},
+		{
 			text: '流派攻略',
 			items: [
 				{
