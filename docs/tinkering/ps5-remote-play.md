@@ -47,7 +47,7 @@ PC 串流 PS5，随时随地畅玩游戏。
 
 ### PC 端设置
 
-1. 下载客户端
+1. 下载客户端(科学上网)
    - 访问 [PlayStation Remote Play](https://www.playstation.com/remote-play/)
    - 下载对应系统版本
 
