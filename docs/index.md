@@ -38,4 +38,9 @@ features:
     icon: 🖥️
     details: macOS、Windows
     link: /system/
+
+  - title: 折腾日记
+    icon: 🔧
+    details: 小众但有趣的技术折腾
+    link: /tinkering/
 ---
