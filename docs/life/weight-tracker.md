@@ -33,7 +33,10 @@ let chartInstance = null
 // 初始化图表
 onMounted(() => {
   if (typeof window !== 'undefined') {
-    import('chart.js/auto').then((Chart) => {
+    Promise.all([
+      import('chart.js/auto'),
+      import('chartjs-adapter-date-fns')
+    ]).then(([Chart]) => {
       const ctx = document.getElementById('weightChart')
       if (ctx) {
         createChart(Chart.default)
@@ -56,24 +59,25 @@ function createChart(Chart) {
   chartInstance = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: records.value.map(r => r.date),
       datasets: [
         {
           label: '体重 (kg)',
-          data: records.value.map(r => r.weight),
+          data: records.value.map(r => ({ x: r.date, y: r.weight })),
           borderColor: '#8b5cf6',
           backgroundColor: 'rgba(139, 92, 246, 0.1)',
           yAxisID: 'y',
-          tension: 0.3,
-          fill: true
+          tension: 0.4,
+          fill: true,
+          cubicInterpolationMode: 'monotone'
         },
         {
           label: currentMetric.label,
-          data: records.value.map(r => r[selectedMetric.value]),
+          data: records.value.map(r => ({ x: r.date, y: r[selectedMetric.value] })),
           borderColor: currentMetric.color,
           backgroundColor: currentMetric.color + '20',
           yAxisID: 'y1',
-          tension: 0.3
+          tension: 0.4,
+          cubicInterpolationMode: 'monotone'
         }
       ]
     },
@@ -109,9 +113,22 @@ function createChart(Chart) {
       },
       scales: {
         x: {
+          type: 'time',
+          time: {
+            unit: 'day',
+            displayFormats: {
+              day: 'yyyy-MM-dd'
+            }
+          },
           display: !isMobile,
           grid: {
             display: false
+          },
+          ticks: {
+            source: 'data', // 只显示数据点的日期
+            autoSkip: false,
+            maxRotation: 45,
+            minRotation: 45
           }
         },
         y: {
@@ -161,7 +178,10 @@ function createChart(Chart) {
 function changeMetric(metric) {
   selectedMetric.value = metric
   if (typeof window !== 'undefined') {
-    import('chart.js/auto').then((Chart) => {
+    Promise.all([
+      import('chart.js/auto'),
+      import('chartjs-adapter-date-fns')
+    ]).then(([Chart]) => {
       createChart(Chart.default)
     })
   }
