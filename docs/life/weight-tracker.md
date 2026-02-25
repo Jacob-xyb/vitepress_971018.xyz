@@ -141,9 +141,10 @@ function createChart(Chart) {
           },
           ticks: {
             source: 'data', // 只显示数据点的日期
-            autoSkip: false,
+            autoSkip: true, // 自动跳过标签避免拥挤
             maxRotation: 45,
-            minRotation: 45
+            minRotation: 45,
+            maxTicksLimit: isMobile ? 5 : 10 // 限制最多显示的标签数量
           }
         },
         y: {
@@ -418,12 +419,20 @@ const stats = computed(() => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   padding: 1rem;
+  min-width: 100%;
+  overflow-x: auto;
 }
 
 @media (max-width: 768px) {
   .chart-container {
     height: 300px;
     padding: 0.5rem 0.25rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .chart-container {
+    height: 500px;
   }
 }
 
