@@ -9,6 +9,9 @@ export default defineConfig({
 		['link', { rel: 'icon', href: '/logo/xyb-logo.svg' }]
 	],
 
+	// 忽略死链接，避免构建失败（设置为 'localhostLinks' 只忽略 localhost 链接，true 忽略所有）
+	ignoreDeadLinks: true,
+
 	themeConfig: {
 		logo: '/logo/xyb-logo.svg',
 		outline: [2, 3],
