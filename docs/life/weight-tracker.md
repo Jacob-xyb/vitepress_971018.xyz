@@ -14,7 +14,8 @@ const records = ref(
     date: row[0],
     weight: row[1],
     calories: row[2],
-    rope: row[3]
+    rope: row[3],
+    hasExercise: row[2] !== null && row[3] !== null // 判断是否有锻炼
   }))
 )
 
@@ -68,16 +69,30 @@ function createChart(Chart) {
           yAxisID: 'y',
           tension: 0.4,
           fill: true,
-          cubicInterpolationMode: 'monotone'
+          cubicInterpolationMode: 'monotone',
+          pointBackgroundColor: records.value.map(r => r.hasExercise ? '#8b5cf6' : '#ffffff'),
+          pointBorderColor: records.value.map(r => '#8b5cf6'),
+          pointBorderWidth: records.value.map(r => r.hasExercise ? 2 : 3),
+          pointRadius: 5,
+          pointHoverRadius: 7
         },
         {
           label: currentMetric.label,
-          data: records.value.map(r => ({ x: r.date, y: r[selectedMetric.value] })),
+          data: records.value.map(r => ({ 
+            x: r.date, 
+            y: r[selectedMetric.value] === null ? null : r[selectedMetric.value]
+          })),
           borderColor: currentMetric.color,
           backgroundColor: currentMetric.color + '20',
           yAxisID: 'y1',
           tension: 0.4,
-          cubicInterpolationMode: 'monotone'
+          cubicInterpolationMode: 'monotone',
+          spanGaps: true, // 跳过 null 值，连接有效数据点
+          pointBackgroundColor: records.value.map(r => r.hasExercise ? currentMetric.color : '#ffffff'),
+          pointBorderColor: records.value.map(r => currentMetric.color),
+          pointBorderWidth: records.value.map(r => r.hasExercise ? 2 : 3),
+          pointRadius: 5,
+          pointHoverRadius: 7
         }
       ]
     },
@@ -201,8 +216,10 @@ const stats = computed(() => {
     min: Math.min(...weights),
     max: Math.max(...weights),
     avg: (weights.reduce((a, b) => a + b, 0) / weights.length).toFixed(1),
-    totalCalories: records.value.reduce((sum, r) => sum + r.calories, 0),
-    totalRope: records.value.reduce((sum, r) => sum + r.rope, 0)
+    totalCalories: records.value.reduce((sum, r) => sum + (r.calories || 0), 0),
+    totalRope: records.value.reduce((sum, r) => sum + (r.rope || 0), 0),
+    exerciseDays: records.value.filter(r => r.hasExercise).length,
+    totalDays: records.value.length
   }
 })
 </script>
@@ -254,6 +271,16 @@ const stats = computed(() => {
   <!-- 数据表格 -->
   <div class="data-table">
     <h2>详细记录</h2>
+    <div class="legend">
+      <span class="legend-item">
+        <span class="legend-dot" style="background: #8b5cf6;"></span>
+        有锻炼
+      </span>
+      <span class="legend-item">
+        <span class="legend-dot" style="background: #ffffff; border: 2px solid #8b5cf6;"></span>
+        无锻炼 ⚠️
+      </span>
+    </div>
     <table>
       <thead>
         <tr>
@@ -266,9 +293,14 @@ const stats = computed(() => {
       <tbody>
         <tr v-for="record in records.slice().reverse()" :key="record.date">
           <td>{{ record.date }}</td>
-          <td>{{ record.weight }}</td>
-          <td>{{ record.calories }}</td>
-          <td>{{ record.rope }}</td>
+          <td>
+            <span :style="{ color: record.hasExercise ? 'inherit' : '#ef4444' }">
+              {{ record.weight }}
+              <span v-if="!record.hasExercise" style="font-size: 0.75rem; margin-left: 4px;">⚠️</span>
+            </span>
+          </td>
+          <td>{{ record.calories === null ? '-' : record.calories }}</td>
+          <td>{{ record.rope === null ? '-' : record.rope }}</td>
         </tr>
       </tbody>
     </table>
@@ -290,6 +322,13 @@ const stats = computed(() => {
         <div>
           <div class="total-label">总跳绳次数</div>
           <div class="total-value">{{ stats.totalRope.toLocaleString() }} 个</div>
+        </div>
+      </div>
+      <div class="total-item">
+        <span class="total-icon">📅</span>
+        <div>
+          <div class="total-label">锻炼天数</div>
+          <div class="total-value">{{ stats.exerciseDays }} / {{ stats.totalDays }} 天</div>
         </div>
       </div>
     </div>
@@ -391,6 +430,26 @@ const stats = computed(() => {
 .data-table h2 {
   margin-bottom: 1rem;
   font-size: 1.25rem;
+}
+
+.legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .data-table table {
