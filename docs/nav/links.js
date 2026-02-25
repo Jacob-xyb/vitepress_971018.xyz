@@ -30,7 +30,8 @@ export const navData = {
 		{ id: 'design', name: '设计资源', icon: '🎨' },
 		{ id: 'resources', name: '素材中心', icon: '📦' },
 		{ id: 'ai', name: 'AI工具', icon: '🤖' },
-		{ id: 'life', name: '生活服务', icon: '🏠' },
+		{ id: 'study', name: '学习相关', icon: '📚' },
+		{ id: 'life', name: '生活服务', icon: '�' },
 		{ id: 'game', name: '游戏娱乐', icon: '🎮' },
 		{ id: 'uncategorized', name: '待分类', icon: '📋' },
 	],
@@ -197,6 +198,16 @@ export const navData = {
 					{ name: 'ChatGPT', url: 'https://chat.openai.com', desc: 'OpenAI对话AI', icon: '💬', needVPN: true, needLogin: true, baseCount: 0 },
 					{ name: 'Midjourney', url: 'https://www.midjourney.com', desc: 'AI绘画工具', icon: '🎨', needLogin: true, needPay: true, baseCount: 0 },
 					{ name: 'Claude', url: 'https://claude.ai', desc: 'Anthropic AI助手', icon: '🤖', needVPN: true, needLogin: true, baseCount: 0 },
+				]
+			}
+		],
+
+		study: [
+			{
+				title: '学习工具',
+				icon: '📖',
+				links: [
+					{ name: '有道词典', url: 'https://www.youdao.com/', desc: '在线翻译与词典', icon: '📕', isFree: true, baseCount: 0 },
 				]
 			}
 		],
