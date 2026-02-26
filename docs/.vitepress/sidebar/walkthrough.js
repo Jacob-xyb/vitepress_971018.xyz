@@ -20,7 +20,8 @@ export default {
 					text: '套装推荐',
 					collapsed: false,
 					items: [
-						{ text: '麻痹太刀', link: '/walkthrough/nioh-3/流派套装玩法/麻痹太刀' }
+						{ text: '武士-麻痹套', link: '/walkthrough/nioh-3/流派套装玩法/武士-麻痹套' },
+						{ text: '武士-动减套', link: '/walkthrough/nioh-3/流派套装玩法/武士-动减套' }
 					]
 				}
 			]
