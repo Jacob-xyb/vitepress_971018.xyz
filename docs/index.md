@@ -14,6 +14,11 @@ hero:
       link: /guide/getting-started
 
 features:
+  - title: 编程
+    icon: 💻
+    details: Git
+    link: /coding/
+
   - title: 游戏攻略
     icon: 🎮
     details: PS5
@@ -28,11 +33,6 @@ features:
     icon: 🌐
     details: Vitepress、npm
     link: /web/
-
-  - title: 编程
-    icon: 💻
-    details: Git
-    link: /coding/
 
   - title: 系统技巧
     icon: 🖥️
