@@ -7,7 +7,12 @@
            :key="category.id"
            :class="{ active: activeCategory === category.id }"
            @click="activeCategory = category.id">
-        <span class="category-icon">{{ category.icon }}</span>
+        <span class="category-icon">
+          <!-- 如果是图片路径，使用 img -->
+          <img v-if="isImageIcon(category.icon)" :src="category.icon" :alt="category.name" class="category-icon-img" />
+          <!-- 否则显示 emoji 或文本 -->
+          <span v-else>{{ category.icon }}</span>
+        </span>
         <span class="category-name">{{ category.name }}</span>
       </div>
     </aside>
@@ -458,6 +463,15 @@ onUnmounted(() => {
 .category-icon {
   font-size: 20px;
   margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .category-name {

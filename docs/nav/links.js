@@ -31,7 +31,7 @@ export const navData = {
 		{ id: 'resources', name: '素材中心', icon: '📦' },
 		{ id: 'ai', name: 'AI工具', icon: '🤖' },
 		{ id: 'study', name: '学习相关', icon: '📚' },
-		{ id: 'life', name: '生活服务', icon: '�' },
+		{ id: 'life', name: '生活服务', icon: '/icon/openmoji-viennese-coffee-house.svg' },
 		{ id: 'game', name: '游戏娱乐', icon: '🎮' },
 		{ id: 'uncategorized', name: '待分类', icon: '📋' },
 	],
