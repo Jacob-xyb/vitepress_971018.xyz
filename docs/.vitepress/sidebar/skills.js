@@ -19,7 +19,8 @@ export default {
 		{
 			text: 'GitHub',
 			items: [
-				{ text: '使用指南', link: '/skills/github/' }
+				{ text: '使用指南', link: '/skills/github/' },
+				{ text: 'Release 发布', link: '/skills/github/release' }
 			]
 		},
 		{
