@@ -11,7 +11,7 @@ export const skillsLinks = [
   {
     id: 'github',
     title: 'GitHub',
-    icon: '🐙',
+    icon: 'github',
     desc: '代码托管与协作平台',
     link: '/skills/github/',
     tags: ['版本控制', '协作']
