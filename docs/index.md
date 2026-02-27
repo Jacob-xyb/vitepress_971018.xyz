@@ -26,7 +26,7 @@ features:
 
   - title: IT必备技能
     icon: 📝
-    details: MarkDown
+    details: MarkDown、Github
     link: /skills/
 
   - title: Web开发
