@@ -9,6 +9,14 @@ export const skillsLinks = [
     tags: ['文档', '写作']
   },
   {
+    id: 'github',
+    title: 'GitHub',
+    icon: '🐙',
+    desc: '代码托管与协作平台',
+    link: '/skills/github/',
+    tags: ['版本控制', '协作']
+  },
+  {
     id: 'regex',
     title: '正则表达式',
     icon: '🔍',
