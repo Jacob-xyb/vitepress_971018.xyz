@@ -78,7 +78,7 @@ export const rentalGames = [
 		note: '无损',
 		popularity: 0,
 		history: [
-			{ date: '2026-02-14', renter: 'Destiny', income: 30, returned: false, returnDate: '2026-03-14' },
+			{ date: '2026-02-14', renter: 'Destiny', income: 30, returned: true, returnDate: '2026-02-27' },
 		]
 	},	
 	{
@@ -110,7 +110,7 @@ export const rentalGames = [
 		note: '无损',
 		popularity: 0,
 		history: [
-			{ date: '2026-02-14', renter: 'Destiny', income: 25, returned: false, returnDate: '2026-03-14' },
+			{ date: '2026-02-14', renter: 'Destiny', income: 25, returned: true, returnDate: '2026-02-27' },
 		]
 	},
 	{
