@@ -65,15 +65,15 @@ export default {
           return
         }
         
-        // 方法1：尝试使用控制台 copy() 函数
+        // 方法1：直接尝试使用控制台 copy() 函数（最可靠）
         try {
-          if (typeof copy === 'function') {
-            copy(data)
-            console.log('✅ 数据已复制到剪贴板（使用 copy 函数）')
-            return
-          }
+          copy(data)  // 直接调用，不检测
+          console.log('✅ 数据已复制到剪贴板')
+          console.log('💡 现在可以运行：npm run update-nav-stats')
+          return
         } catch (e) {
           // copy() 不可用，继续尝试其他方法
+          console.log('⚠️  控制台 copy() 函数不可用，尝试其他方法...')
         }
         
         // 方法2：尝试使用 Clipboard API
