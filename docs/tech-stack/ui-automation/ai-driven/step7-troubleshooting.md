@@ -144,6 +144,61 @@ ollama pull llava:7b
 response = requests.post(url, json=data, timeout=60)  # 60秒
 ```
 
+### 5. 模型下载慢或失败
+
+**症状：**
+- 下载速度很慢（几 KB/s）
+- 下载中断
+- 连接超时
+
+**解决方案：**
+
+#### 使用代理加速
+
+```bash
+# 设置代理
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+
+# Windows
+$env:HTTP_PROXY="http://127.0.0.1:7890"
+$env:HTTPS_PROXY="http://127.0.0.1:7890"
+
+# 下载模型
+ollama pull llava:7b
+```
+
+#### 使用 ModelScope（国内快）
+
+```bash
+# 安装 modelscope
+pip install modelscope
+
+# 从 ModelScope 下载模型
+# 然后手动放到 Ollama 模型目录
+```
+
+#### 断点续传
+
+```bash
+# Ollama 支持断点续传
+# 下载中断后直接重新运行
+ollama pull llava:7b
+```
+
+#### 检查网络
+
+```bash
+# 测试连接
+ping ollama.com
+curl -I https://ollama.com
+
+# 检查 DNS
+nslookup ollama.com
+```
+
+详细的下载加速方法请参考 [Step 2: 安装 AI 模型](./step2-install-model.md#下载加速方法)。
+
 ## 客户端问题
 
 ### 1. 无法连接服务器

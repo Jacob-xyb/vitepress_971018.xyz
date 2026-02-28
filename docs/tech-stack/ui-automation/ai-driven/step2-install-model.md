@@ -105,6 +105,110 @@ writing manifest
 success
 ```
 
+### 下载加速方法
+
+如果下载速度很慢，可以尝试以下方法：
+
+#### 方法 1: 使用代理（推荐）
+
+```bash
+# 设置 HTTP 代理
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+
+# Windows PowerShell
+$env:HTTP_PROXY="http://127.0.0.1:7890"
+$env:HTTPS_PROXY="http://127.0.0.1:7890"
+
+# 然后下载模型
+ollama pull llava:7b
+```
+
+#### 方法 2: 手动下载模型文件
+
+Ollama 模型存储在 Hugging Face，可以手动下载后导入：
+
+1. **找到模型文件位置**
+   ```bash
+   # Linux/macOS
+   ~/.ollama/models/
+   
+   # Windows
+   %USERPROFILE%\.ollama\models\
+   ```
+
+2. **从 Hugging Face 下载**
+   - 访问 [Hugging Face](https://huggingface.co/)
+   - 搜索对应的模型（如 llava）
+   - 使用国内镜像站下载：
+     - [HF-Mirror](https://hf-mirror.com/)
+     - [ModelScope](https://modelscope.cn/)
+
+3. **使用 ModelScope 下载（国内快）**
+   ```bash
+   # 安装 modelscope
+   pip install modelscope
+   
+   # 下载模型（示例）
+   from modelscope import snapshot_download
+   model_dir = snapshot_download('AI-ModelScope/llava-v1.6-vicuna-7b')
+   ```
+
+#### 方法 3: 使用国内 VPS 中转
+
+1. 在国外 VPS 上下载模型
+2. 打包模型文件
+3. 传输到国内服务器
+
+```bash
+# 在国外 VPS 上
+ollama pull llava:7b
+cd ~/.ollama/models
+tar -czf llava-7b.tar.gz *
+
+# 传输到国内
+scp llava-7b.tar.gz user@your-server:/tmp/
+
+# 在国内服务器上
+cd ~/.ollama/models
+tar -xzf /tmp/llava-7b.tar.gz
+```
+
+#### 方法 4: 使用 Ollama 镜像仓库（第三方）
+
+一些第三方提供了 Ollama 模型的镜像：
+
+```bash
+# 设置 Ollama 库地址（需要找到可用的镜像源）
+export OLLAMA_HOST=http://mirror-url:11434
+
+# 然后下载
+ollama pull llava:7b
+```
+
+::: warning 注意
+- 第三方镜像可能不稳定或不安全
+- 建议优先使用代理或 ModelScope
+- 确保下载的模型文件完整性
+:::
+
+#### 方法 5: 断点续传
+
+Ollama 支持断点续传，如果下载中断：
+
+```bash
+# 直接重新运行命令，会从断点继续
+ollama pull llava:7b
+```
+
+#### 方法 6: 限速下载（避免占满带宽）
+
+```bash
+# Linux 使用 trickle 限速
+sudo apt install trickle
+trickle -d 1024 ollama pull llava:7b  # 限制下载速度为 1MB/s
+```
+
 ## 验证模型安装
 
 ### 查看已安装的模型
