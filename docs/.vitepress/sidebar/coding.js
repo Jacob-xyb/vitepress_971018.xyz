@@ -32,6 +32,12 @@ export default {
 			items: [
 				{ text: '介绍', link: '/coding/python/' }
 			]
+		},
+		{
+			text: '环境配置',
+			items: [
+				{ text: '版本管理与清理', link: '/coding/python/version-management' }
+			]
 		}
 	],
 	'/coding/git/': [
