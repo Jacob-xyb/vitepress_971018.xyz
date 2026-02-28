@@ -60,7 +60,7 @@ export const navData = {
 				title: '在线观看',
 				icon: '📺',
 				links: [
-					// 在这里添加在线观看网站
+					{ name: '观影', url: 'https://www.gying.in/', desc: '聚合类 很强', icon: 'https://www.gying.in//favicon.png', isFree: true, needLogin: true, baseCount: 0 },
 				]
 			},
 			{
