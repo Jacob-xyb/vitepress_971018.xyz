@@ -6,6 +6,7 @@ import hacker from './hacker.js'
 import life from './life.js'
 import walkthrough from './walkthrough.js'
 import system from './system.js'
+import techStack from './tech-stack.js'
 
 export const sidebar = {
 	...guide,
@@ -15,5 +16,6 @@ export const sidebar = {
 	...hacker,
 	...life,
 	...walkthrough,
-	...system
+	...system,
+	...techStack
 }

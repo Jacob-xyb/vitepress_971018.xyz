@@ -14,6 +14,11 @@ hero:
       link: /guide/getting-started
 
 features:
+  - title: 技术栈
+    icon: 🎯
+    details: 完整技术体系与最佳实践
+    link: /tech-stack/
+
   - title: 编程
     icon: 💻
     details: Python、C++、Git
