@@ -42,14 +42,14 @@ export const navData = {
 				title: '日常必备',
 				icon: '💎',
 				links: [
-					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 2 },
+					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 3 },
 				]
 			},
 			{
 				title: '强烈推荐',
 				icon: '⭐',
 				links: [
-					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 2 },
+					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 4 },
 					{ name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: 'github', needVPN: true, isFree: true, baseCount: 5 },
 				]
 			}
@@ -169,8 +169,9 @@ export const navData = {
 				title: '图标资源',
 				icon: '🎨',
 				links: [
-					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 2 },
-					{ name: 'OpenMoji', url: 'https://openmoji.org/', desc: '开源 Emoji 图标库', icon: '/logo/openmoji-logo.svg', isFree: true, baseCount: 0 },
+					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 4 },
+					{ name: 'OpenMoji', url: 'https://openmoji.org/', desc: '开源 Emoji 图标库', icon: '/logo/openmoji-logo.svg', isFree: true, baseCount: 3 },
+					{ name: 'iconfont', url: 'https://www.iconfont.cn/', desc: '阿里巴巴矢量图标库', icon: 'https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg', isFree: true, needLogin: true, baseCount: 1 },
 				]
 			},
 			{
@@ -197,7 +198,7 @@ export const navData = {
 				links: [
 					{ name: 'ChatGPT', url: 'https://chat.openai.com', desc: 'OpenAI对话AI', icon: '💬', needVPN: true, needLogin: true, baseCount: 0 },
 					{ name: 'Midjourney', url: 'https://www.midjourney.com', desc: 'AI绘画工具', icon: '🎨', needLogin: true, needPay: true, baseCount: 0 },
-					{ name: 'Claude', url: 'https://claude.ai', desc: 'Anthropic AI助手', icon: '🤖', needVPN: true, needLogin: true, baseCount: 0 },
+					{ name: 'Claude', url: 'https://claude.ai', desc: 'Anthropic AI助手', icon: '🤖', needVPN: true, needLogin: true, baseCount: 1 },
 				]
 			}
 		],
@@ -207,7 +208,7 @@ export const navData = {
 				title: '学习工具',
 				icon: '📖',
 				links: [
-					{ name: '有道词典', url: 'https://www.youdao.com/', desc: '在线翻译与词典', icon: '📕', isFree: true, baseCount: 0 },
+					{ name: '有道词典', url: 'https://www.youdao.com/', desc: '在线翻译与词典', icon: '📕', isFree: true, baseCount: 1 },
 				]
 			}
 		],
@@ -232,6 +233,13 @@ export const navData = {
 					{ name: 'Steam', url: 'https://store.steampowered.com', desc: 'PC游戏平台', icon: '🎮', baseCount: 0 },
 					{ name: 'PlayStation', url: 'https://www.playstation.com', desc: 'PS游戏平台', icon: '🎮', baseCount: 0 },
 					{ name: 'Nintendo', url: 'https://www.nintendo.com', desc: '任天堂官网', icon: '🎮', baseCount: 0 },
+				]
+			},
+			{
+				title: '游戏下载',
+				icon: '/icon/mage--video-download.svg',
+				links: [
+					{name: 'switch520', url: 'https://www.gamer520.com/', desc: '完全的免费的switch下载', icon: 'https://ig.freer.blog/2023/10/25/d67adcffb89dd.jpg', isFree:true, }
 				]
 			}
 		],
