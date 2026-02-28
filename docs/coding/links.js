@@ -1,6 +1,14 @@
 // 编程导航链接数据
 export const codingLinks = [
 	{
+		id: 'python',
+		title: 'Python',
+		icon: 'python',
+		desc: '通用编程语言',
+		link: '/coding/python/',
+		tags: ['编程语言', '数据分析']
+	},
+	{
 		id: 'cpp',
 		title: 'C++',
 		icon: 'cplusplus',
@@ -55,14 +63,6 @@ export const codingLinks = [
 		desc: 'JavaScript运行时 TODO',
 		link: '/coding/nodejs/',
 		tags: ['后端', '服务器']
-	},
-	{
-		id: 'python',
-		title: 'Python',
-		icon: '🐍',
-		desc: '通用编程语言 TODO',
-		link: '/coding/python/',
-		tags: ['编程语言', '数据分析']
 	},
 	{
 		id: 'docker',

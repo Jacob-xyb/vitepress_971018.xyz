@@ -16,7 +16,7 @@ hero:
 features:
   - title: 编程
     icon: 💻
-    details: Git
+    details: Python、C++、Git
     link: /coding/
 
   - title: 游戏攻略

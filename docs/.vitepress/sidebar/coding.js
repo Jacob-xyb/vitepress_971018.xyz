@@ -26,6 +26,14 @@ export default {
 			]
 		}
 	],
+	'/coding/python/': [
+		{
+			text: 'Python',
+			items: [
+				{ text: '介绍', link: '/coding/python/' }
+			]
+		}
+	],
 	'/coding/git/': [
 		{
 			text: 'Git',
