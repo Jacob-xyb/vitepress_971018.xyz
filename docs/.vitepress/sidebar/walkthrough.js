@@ -55,5 +55,38 @@ export default {
 				// 待添加
 			]
 		}
+	],
+	'/walkthrough/恶魔之魂/': [
+		{
+			text: '恶魔之魂：重置版',
+			items: [
+				{ text: '主页', link: '/walkthrough/恶魔之魂/' },
+				{ text: '白金攻略', link: '/walkthrough/恶魔之魂/白金攻略' },
+			]
+		},
+		{
+			text: '核心系统',
+			items: [
+				// 待添加：倾向系统、职业加点等
+			]
+		},
+		{
+			text: '关卡攻略',
+			items: [
+				// 待添加：各区域攻略
+			]
+		},
+		{
+			text: 'BOSS 攻略',
+			items: [
+				// 待添加：各 BOSS 打法
+			]
+		},
+		{
+			text: '收集要素',
+			items: [
+				// 待添加：武器、法术、戒指等
+			]
+		}
 	]
 }
