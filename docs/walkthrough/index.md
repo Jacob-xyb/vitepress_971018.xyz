@@ -22,6 +22,14 @@ const games = [
     platform: 'PS5,NS2,PC',
     link: '/walkthrough/DynastyWarriors-Origins'
   },
+  {
+    id: 3,
+    title: '恶魔之魂重置版',
+    titleEn: 'Demon\'s Souls Remake',
+    cover: '/gameover/恶魔之魂重置版-v.jpg',
+    platform: 'PS5,PC',
+    link: '/walkthrough/恶魔之魂'
+  },
   // 添加更多游戏...
 ]
 
