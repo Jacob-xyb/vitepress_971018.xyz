@@ -241,6 +241,13 @@ export const navData = {
 				links: [
 					{name: 'switch520', url: 'https://www.gamer520.com/', desc: '完全的免费的switch下载', icon: 'https://ig.freer.blog/2023/10/25/d67adcffb89dd.jpg', isFree:true, }
 				]
+			},
+			{
+				title: '游戏攻略',
+				icon: '📖',
+				links: [
+					{name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree:true, needLogin: true }
+				]
 			}
 		],
 
