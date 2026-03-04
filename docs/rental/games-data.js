@@ -219,4 +219,20 @@ export const rentalGames = [
 			{ date: '2025-11-25', renter: 'Destiny', income: 35, returned: true, returnDate: '2026-01-25' },
 		]
 	},
+	{
+		id: 15,
+		title: '麻布仔大冒险',
+		titleEn: 'Sackboy: A Big Adventure',
+		cover: '/gameover/麻布仔大冒险-v.jpg',
+		platform: 'PS5',
+		version: '港版 中文',
+		cost: 160,
+		rentalPrice: 20,
+		deposit: 180,
+		note: '无损',
+		popularity: 0,
+		history: [
+			{ date: '2026-03-04', renter: 't***5', income: 20, returned: false, returnDate: '2026-04-06' },
+		]
+	},
 ]
