@@ -51,6 +51,7 @@ export const navData = {
 				links: [
 					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 4 },
 					{ name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: 'github', needVPN: true, isFree: true, baseCount: 5 },
+					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon:'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 1},
 				]
 			}
 		],
@@ -138,6 +139,7 @@ export const navData = {
 				title: '在线工具',
 				icon: '🌐',
 				links: [
+					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon:'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 1},
 					{ name: 'CodePen', url: 'https://codepen.io', desc: '在线代码编辑器', icon: '✏️', baseCount: 0 },
 					{ name: 'RegExr', url: 'https://regexr.com', desc: '正则表达式测试', icon: '🔍', baseCount: 0 },
 					{ name: 'Can I Use', url: 'https://caniuse.com', desc: '浏览器兼容性查询', icon: '✅', baseCount: 0 },
