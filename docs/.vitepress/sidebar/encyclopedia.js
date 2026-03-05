@@ -17,6 +17,7 @@ export default {
 			text: '孕期常识',
 			items: [
 				{ text: '概览', link: '/encyclopedia/pregnancy/' },
+				{ text: '日常琐事', link: '/encyclopedia/pregnancy/daily-matters' },
 				{ text: '隐私话题', link: '/encyclopedia/pregnancy/privacy' }
 			]
 		}
