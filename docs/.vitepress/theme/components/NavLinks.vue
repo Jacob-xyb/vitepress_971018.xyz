@@ -183,18 +183,19 @@ const saveStats = () => {
   }
 }
 
-// 获取基准访问次数
+// 获取基准访问次数（如果有重复链接，取最大的 baseCount）
 const getBaseCount = (url) => {
-  // 遍历所有链接找到对应的 baseCount
+  let maxBaseCount = 0
+  // 遍历所有链接找到对应的 baseCount，取最大值
   for (const categoryLinks of Object.values(links)) {
     for (const section of categoryLinks) {
       const link = section.links.find(l => l.url === url)
-      if (link && link.baseCount) {
-        return link.baseCount
+      if (link && link.baseCount !== undefined) {
+        maxBaseCount = Math.max(maxBaseCount, link.baseCount)
       }
     }
   }
-  return 0
+  return maxBaseCount
 }
 
 // 记录点击
@@ -220,25 +221,30 @@ const getClickCount = (url) => {
   return baseCount + userClicks
 }
 
-// 获取所有链接的访问次数（用于排名）
+// 获取所有链接的访问次数（用于排名）- 去重处理
 const getAllCounts = computed(() => {
-  const allUrls = []
+  const urlMap = new Map() // 使用 Map 去重，key 是 url
+  
   for (const categoryLinks of Object.values(links)) {
     for (const section of categoryLinks) {
       for (const link of section.links) {
         const count = getClickCount(link.url)
         if (count >= hotConfig.minCount) {
-          allUrls.push({ 
-            url: link.url, 
-            count,
-            link: link  // 保存完整的链接对象
-          })
+          // 如果 URL 已存在，只保留第一个遇到的链接对象
+          if (!urlMap.has(link.url)) {
+            urlMap.set(link.url, { 
+              url: link.url, 
+              count,
+              link: link  // 保存完整的链接对象
+            })
+          }
         }
       }
     }
   }
-  // 按访问次数降序排序
-  return allUrls.sort((a, b) => b.count - a.count)
+  
+  // 转换为数组并按访问次数降序排序
+  return Array.from(urlMap.values()).sort((a, b) => b.count - a.count)
 })
 
 // 生成全场最佳页面的内容
