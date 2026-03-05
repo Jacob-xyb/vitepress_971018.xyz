@@ -48,4 +48,9 @@ features:
     icon: 🔧
     details: 小众但有趣的技术折腾
     link: /tinkering/
+
+  - title: 美食
+    icon: 🍜
+    details: 美食探店与烹饪记录
+    link: /food/
 ---

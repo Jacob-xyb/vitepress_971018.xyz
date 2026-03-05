@@ -4,6 +4,7 @@ import './markdown.css'
 import ThemeIcon from './components/ThemeIcon.vue'
 import NavLinks from './components/NavLinks.vue'
 import NavCards from './components/NavCards.vue'
+import CookingMenu from './components/CookingMenu.vue'
 
 export default {
   extends: DefaultTheme,
@@ -12,6 +13,7 @@ export default {
     app.component('ThemeIcon', ThemeIcon)
     app.component('NavLinks', NavLinks)
     app.component('NavCards', NavCards)
+    app.component('CookingMenu', CookingMenu)
     
     // 开发模式：全局导出函数（任何页面都可用）
     if (typeof window !== 'undefined' && import.meta.env.DEV) {
