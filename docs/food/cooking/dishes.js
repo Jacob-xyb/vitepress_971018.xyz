@@ -15,7 +15,7 @@ export const dishesData = {
 				title: '四季',
 				icon: '🍽️',
 				dishes: [
-					{ name: '番茄炒鸡蛋', desc: '经典家常菜', difficulty: '简单', time: '15分钟', link: '番茄炒鸡蛋' },
+					{ name: '番茄炒鸡蛋🍅🥚', desc: '经典家常菜', difficulty: '简单', time: '15分钟', link: '番茄炒鸡蛋' },
 				]
 			}
 		],
