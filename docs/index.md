@@ -53,4 +53,9 @@ features:
     icon: 🍜
     details: 美食探店与烹饪记录
     link: /food/
+
+  - title: 生活百科
+    icon: 📚
+    details: 生活中的实用知识与经验
+    link: /encyclopedia/
 ---
