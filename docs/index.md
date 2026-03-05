@@ -58,4 +58,9 @@ features:
     icon: 📚
     details: 生活中的实用知识与经验
     link: /encyclopedia/
+
+  - title: 外语学习
+    icon: 🌍
+    details: 外语学习资源与技巧
+    link: /language/
 ---

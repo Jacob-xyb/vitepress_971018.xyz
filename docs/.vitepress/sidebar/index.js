@@ -8,6 +8,7 @@ import walkthrough from './walkthrough.js'
 import system from './system.js'
 import techStack from './tech-stack.js'
 import encyclopedia from './encyclopedia.js'
+import language from './language.js'
 
 export const sidebar = {
 	...guide,
@@ -19,5 +20,6 @@ export const sidebar = {
 	...walkthrough,
 	...system,
 	...techStack,
-	...encyclopedia
+	...encyclopedia,
+	...language
 }
