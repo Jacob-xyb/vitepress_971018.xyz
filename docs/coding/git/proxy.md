@@ -88,9 +88,11 @@ git config --global --unset https.proxy
 
 如果不想设置全局配置，可以在需要时临时使用代理，这样更灵活：
 
-#### 方式一：使用环境变量
+#### 方式一：使用环境变量（一行命令）
 
-```bash
+::: code-group
+
+```bash [Bash]
 # 临时使用 SOCKS5 代理推送
 ALL_PROXY=socks5://127.0.0.1:10808 git push
 
@@ -101,10 +103,53 @@ https_proxy=http://127.0.0.1:7890 git push
 ALL_PROXY=socks5://127.0.0.1:10808 git clone https://github.com/xxx/xxx.git
 ```
 
-#### 方式二：使用 Git 命令行参数
+```powershell [PowerShell]
+# 临时使用 SOCKS5 代理推送
+$env:ALL_PROXY="socks5://127.0.0.1:10808"; git push
+
+# 临时使用 HTTP 代理推送
+$env:https_proxy="http://127.0.0.1:7890"; git push
+
+# 临时使用代理克隆
+$env:ALL_PROXY="socks5://127.0.0.1:10808"; git clone https://github.com/xxx/xxx.git
+```
+
+:::
+
+#### 方式二：设置当前会话的环境变量
+
+::: code-group
+
+```bash [Bash]
+# 设置环境变量（对当前终端会话有效）
+export ALL_PROXY=socks5://127.0.0.1:10808
+
+# 后续所有 Git 命令都会使用代理
+git push
+git clone https://github.com/xxx/xxx.git
+
+# 使用完后取消
+unset ALL_PROXY
+```
+
+```powershell [PowerShell]
+# 设置环境变量（对当前 PowerShell 会话有效）
+$env:ALL_PROXY="socks5://127.0.0.1:10808"
+
+# 后续所有 Git 命令都会使用代理
+git push
+git clone https://github.com/xxx/xxx.git
+
+# 使用完后取消
+Remove-Item Env:ALL_PROXY
+```
+
+:::
+
+#### 方式三：使用 Git 命令行参数（跨平台通用）
 
 ```bash
-# 临时为单次命令设置代理
+# 临时为单次命令设置代理（Bash 和 PowerShell 都适用）
 git -c http.proxy=socks5://127.0.0.1:10808 push
 git -c http.proxy=socks5://127.0.0.1:10808 clone https://github.com/xxx/xxx.git
 ```
@@ -115,31 +160,6 @@ git -c http.proxy=socks5://127.0.0.1:10808 clone https://github.com/xxx/xxx.git
 - ✅ 关闭代理后不影响 Git 操作
 - ✅ 可以灵活切换是否使用代理
 - ✅ 适合偶尔需要访问 GitHub 的场景
-
-#### Windows PowerShell 示例
-
-```powershell
-# 设置临时环境变量
-$env:ALL_PROXY="socks5://127.0.0.1:10808"
-git push
-
-# 或者一行命令
-$env:ALL_PROXY="socks5://127.0.0.1:10808"; git push
-```
-
-#### Linux/macOS 示例
-
-```bash
-# 一行命令
-ALL_PROXY=socks5://127.0.0.1:10808 git push
-
-# 或者设置当前会话的环境变量
-export ALL_PROXY=socks5://127.0.0.1:10808
-git push
-git clone https://github.com/xxx/xxx.git
-# 使用完后取消
-unset ALL_PROXY
-```
 
 ## 常见问题
 
@@ -217,7 +237,9 @@ pause
 
 **最佳实践**：不设置全局配置，需要时临时使用
 
-```bash
+::: code-group
+
+```bash [Bash]
 # 需要访问 GitHub 时
 ALL_PROXY=socks5://127.0.0.1:10808 git push
 ALL_PROXY=socks5://127.0.0.1:10808 git clone https://github.com/xxx/xxx.git
@@ -225,5 +247,16 @@ ALL_PROXY=socks5://127.0.0.1:10808 git clone https://github.com/xxx/xxx.git
 # 不需要代理时
 git push  # 直接使用，无需任何配置
 ```
+
+```powershell [PowerShell]
+# 需要访问 GitHub 时
+$env:ALL_PROXY="socks5://127.0.0.1:10808"; git push
+$env:ALL_PROXY="socks5://127.0.0.1:10808"; git clone https://github.com/xxx/xxx.git
+
+# 不需要代理时
+git push  # 直接使用，无需任何配置
+```
+
+:::
 
 这样可以避免因代理关闭导致的推送失败问题。
