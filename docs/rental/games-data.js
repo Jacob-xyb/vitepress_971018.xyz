@@ -235,4 +235,19 @@ export const rentalGames = [
 			{ date: '2026-03-04', renter: 't***5', income: 20, returned: false, returnDate: '2026-04-06' },
 		]
 	},
+	{
+		id: 16,
+		title: '第一狂战士:卡赞',
+		titleEn: 'The First Berserker: Khazan',
+		cover: '/gameover/第一狂战士卡赞-v.jpg',
+		platform: 'PS5',
+		version: '港版 中文',
+		cost: 190,
+		rentalPrice: 25,
+		deposit: 220,
+		note: '无损',
+		popularity: 0,
+		history: [
+		]
+	},
 ]
