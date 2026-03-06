@@ -30,7 +30,11 @@ export default {
 		{
 			text: 'Rust',
 			items: [
-				{ text: '介绍', link: '/coding/rust/' }
+				{ text: '概览', link: '/coding/rust/' },
+				{ text: '历史背景', link: '/coding/rust/history' },
+				{ text: '性能对比', link: '/coding/rust/performance' },
+				{ text: '开发环境', link: '/coding/rust/environment' },
+				{ text: 'VSCode 开发配置', link: '/coding/rust/vscode-setup' }
 			]
 		}
 	],
