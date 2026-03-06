@@ -17,6 +17,14 @@ export const codingLinks = [
 		tags: ['编程语言', '性能']
 	},
 	{
+		id: 'rust',
+		title: 'Rust',
+		icon: 'rust',
+		desc: '安全高效的系统编程语言',
+		link: '/coding/rust/',
+		tags: ['编程语言', '系统编程', '安全']
+	},
+	{
 		id: 'git',
 		title: 'Git',
 		icon: '📦',

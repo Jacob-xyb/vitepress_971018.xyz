@@ -26,6 +26,14 @@ export default {
 			]
 		}
 	],
+	'/coding/rust/': [
+		{
+			text: 'Rust',
+			items: [
+				{ text: '介绍', link: '/coding/rust/' }
+			]
+		}
+	],
 	'/coding/python/': [
 		{
 			text: 'Python',

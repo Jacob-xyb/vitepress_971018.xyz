@@ -21,7 +21,7 @@ features:
 
   - title: 编程
     icon: 💻
-    details: Python、C++、Git
+    details: Python、C++、Rust、Git
     link: /coding/
 
   - title: 游戏攻略
