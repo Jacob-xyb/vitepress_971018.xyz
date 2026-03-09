@@ -42,7 +42,7 @@ export const rentalGames = [
 		cost: 120,
 		rentalPrice: 20,
 		deposit: 220,
-		note: '无损',
+		note: '两碟装，卡槽损坏一个，盘无损',
 		popularity: 0,
 		history: [
 			{ date: '2026-02-07', renter: '向西0', income: 18, returned: true, returnDate: '2026-03-07' },
