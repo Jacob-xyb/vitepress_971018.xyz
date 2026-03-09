@@ -43,6 +43,7 @@ export const navData = {
 				icon: '💎',
 				links: [
 					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 3 },
+					{ name: '闲鱼', url: 'https://www.goofish.com/', desc: '最大闲置交易市场', icon: 'https://img.alicdn.com/tfs/TB19WObTNv1gK0jSZFFXXb0sXXa-144-144.png', needLogin: true},
 				]
 			},
 			{
