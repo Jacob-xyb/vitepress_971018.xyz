@@ -62,7 +62,7 @@ export const rentalGames = [
 		popularity: 0,
 		history: [
 			{ date: '2026-01-13', renter: '帅的想整容i', income: 20, returned: true, returnDate: '2026-02-07' },
-			{ date: '2026-02-07', renter: 'niko', income: 30, returned: false, returnDate: '2026-03-11' },
+			{ date: '2026-02-07', renter: 'niko', income: 30, returned: true, returnDate: '2026-03-11' },
 		]
 	},	
 	{
