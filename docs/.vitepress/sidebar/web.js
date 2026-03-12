@@ -3,8 +3,16 @@ export default {
 		{
 			text: 'Web开发',
 			items: [
-				{ text: '概览', link: '/web/' },
-				{ text: 'npm', link: '/web/npm/' }
+				{ text: '概览', link: '/web/' }
+			]
+		}
+	],
+	'/web/npm/': [
+		{
+			text: 'npm',
+			items: [
+				{ text: '介绍', link: '/web/npm/' },
+				{ text: 'package-lock.json', link: '/web/npm/lock-file' }
 			]
 		}
 	],
