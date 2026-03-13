@@ -1,5 +1,4 @@
 ---
-layout: home
 ---
 
 # VS Code
@@ -11,3 +10,7 @@ layout: home
 ## 插件推荐
 
 ## 配置
+
+### 代理设置
+
+- [VSCode 设置代理](./vscode-proxy.md)

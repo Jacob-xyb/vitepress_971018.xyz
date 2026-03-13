@@ -9,6 +9,7 @@ import system from './system.js'
 import techStack from './tech-stack.js'
 import encyclopedia from './encyclopedia.js'
 import language from './language.js'
+import soft from './soft.js'
 
 export const sidebar = {
 	...guide,
@@ -21,5 +22,6 @@ export const sidebar = {
 	...system,
 	...techStack,
 	...encyclopedia,
-	...language
+	...language,
+	...soft
 }
