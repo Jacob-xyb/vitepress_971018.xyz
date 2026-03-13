@@ -204,6 +204,12 @@ export const navData = {
 					{ name: 'Midjourney', url: 'https://www.midjourney.com', desc: 'AI绘画工具', icon: '🎨', needLogin: true, needPay: true, baseCount: 0 },
 					{ name: 'Claude', url: 'https://claude.ai', desc: 'Anthropic AI助手', icon: '🤖', needVPN: true, needLogin: true, baseCount: 1 },
 				]
+			},
+			{
+				title: 'Coding Plan',
+				links:[
+					{ name: 'MiniMax', url: 'https://www.minimaxi.com/', desc: '与所有人共创智能', icon: 'https://www.minimaxi.com/favicon.ico', needLogin: true, needPay: true},
+				]
 			}
 		],
 
