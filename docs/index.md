@@ -34,6 +34,11 @@ features:
     details: MarkDown、Github
     link: /skills/
 
+  - title: 软件手册
+    icon: 📖
+    details: VSCode、常用软件使用手册
+    link: /soft/
+
   - title: Web开发
     icon: 🌐
     details: Vitepress、npm
