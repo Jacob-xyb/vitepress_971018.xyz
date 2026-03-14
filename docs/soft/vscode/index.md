@@ -14,3 +14,4 @@
 ### 代理设置
 
 - [VSCode 设置代理](./vscode-proxy.md)
+- [Vibe Coding](./vscode-vibecoding.md)
