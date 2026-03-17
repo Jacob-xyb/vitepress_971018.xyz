@@ -1,25 +1,27 @@
 <template>
   <div class="nav-cards">
-    <a 
-      v-for="item in items" 
-      :key="item.id" 
-      :href="item.link" 
+    <a
+      v-for="item in items"
+      :key="item.id"
+      :href="item.link"
       class="nav-card"
     >
       <span class="nav-icon" v-if="item.icon">
-        <!-- 自定义图片路径：包含 / 或 . 的路径 -->
-        <img 
-          v-if="item.icon.startsWith('/') || (item.icon.includes('.') && item.icon.includes('/'))" 
-          :src="item.icon" 
+        <!-- 本地图片或 Simple Icons：统一使用 ThemeIcon 渲染 -->
+        <ThemeIcon
+          v-if="isImageIcon(item.icon)"
+          :icon="item.icon"
+          :size="iconSize"
           :alt="item.title"
-          :style="{ width: iconSize, height: iconSize }"
-          class="icon-img"
+          :color="item.iconColor"
+          :lightColor="item.iconLightColor"
+          :darkColor="item.iconDarkColor"
         />
         <!-- ThemeIcon 图标：纯英文字母的单词（Simple Icons 名称）或带颜色的格式 -->
-        <ThemeIcon 
+        <ThemeIcon
           v-else-if="isSimpleIcon(item.icon)"
-          :icon="parseIconName(item.icon)" 
-          :size="iconSize" 
+          :icon="parseIconName(item.icon)"
+          :size="iconSize"
           :alt="item.title"
           :color="parseIconColor(item.icon) || item.iconColor"
           :lightColor="item.iconLightColor"
@@ -54,11 +56,17 @@ defineProps({
   }
 })
 
+// 判断是否为本地图片路径（包含 / 或 . 的路径）
+const isImageIcon = (icon) => {
+  if (!icon || typeof icon !== 'string') return false
+  return icon.startsWith('/') || icon.startsWith('http') || (icon.includes('.') && icon.includes('/'))
+}
+
 // 判断是否为 Simple Icons 名称（支持 name#color 格式）
 const isSimpleIcon = (icon) => {
   if (!icon || typeof icon !== 'string') return false
   if (icon.startsWith('/') || icon.startsWith('http') || icon.includes('.')) return false
-  
+
   const parts = icon.split('#')
   if (parts.length === 1) {
     return /^[a-z0-9-]+$/i.test(icon)
@@ -122,10 +130,6 @@ const parseIconColor = (icon) => {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.icon-img {
-  object-fit: contain;
 }
 
 .nav-content {

@@ -7,6 +7,15 @@ export default {
 			]
 		}
 	],
+	'/skills/commandline/': [
+		{
+			text: '命令行工具',
+			items: [
+				{ text: '概览', link: '/skills/commandline/' },
+				{ text: '统计项目规模', link: '/skills/commandline/统计项目规模' }
+			]
+		}
+	],
 	'/skills/markdown/': [
 		{
 			text: 'Markdown',

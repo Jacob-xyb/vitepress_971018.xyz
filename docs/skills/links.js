@@ -17,6 +17,15 @@ export const skillsLinks = [
     tags: ['版本控制', '协作']
   },
   {
+    id: 'commandline',
+    title: '命令行工具',
+    icon: '/icon/cmd.svg',
+	iconDarkColor: '#ffffff',
+    desc: '常用命令行操作',
+    link: '/skills/commandline/',
+    tags: ['命令行', '工具']
+  },
+  {
     id: 'regex',
     title: '正则表达式',
     icon: '🔍',
