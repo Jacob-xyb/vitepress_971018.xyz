@@ -94,6 +94,40 @@ CC-Switch 提供了一个统一的桌面应用来管理这五个 CLI 工具：
 3. 重启 CLI 工具，执行登录/授权流程
 4. 之后可以在官方和第三方提供商之间自由切换
 
+## 不使用 CC-Switch 配置
+
+如果你想手动管理配置或切换回官方登录，可以采用以下方式：
+
+### 1. 恢复官方登录
+
+1. 从预设列表添加 **"Official Login"** 提供商
+2. 切换到该提供商
+3. 重启 CLI 工具，执行登录/授权流程
+4. 之后可以在官方和第三方提供商之间自由切换
+
+### 2. 手动管理配置文件
+
+CC-Switch 会修改对应 CLI 工具的配置文件，手动编辑这些文件即可绕过 CC-Switch：
+
+| 工具 | 配置文件位置 |
+|------|-------------|
+| Claude Code | `~/.claude/settings.json` |
+| Codex | `~/.codex/settings.json` |
+| Gemini CLI | `~/.gemini/settings.json` |
+
+### 3. 完全不使用 CC-Switch
+
+如果想完全脱离 CC-Switch 管理：
+
+1. 删除对应 CLI 工具目录下的配置文件
+2. 在 CC-Switch 中添加新的"官方登录"提供商
+3. 重启 CLI 执行官方授权流程
+4. 或者从备份目录恢复配置：`~/.cc-switch/backups/`
+
+::: tip
+CC-Switch 采用"最小侵入"设计，卸载应用后 CLI 工具仍能正常工作。
+:::
+
 ## 相关链接
 
 - [GitHub 仓库](https://github.com/farion1231/cc-switch)
