@@ -42,17 +42,17 @@ export const navData = {
 				title: '日常必备',
 				icon: '💎',
 				links: [
-					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 3 },
-					{ name: '闲鱼', url: 'https://www.goofish.com/', desc: '最大闲置交易市场', icon: 'https://img.alicdn.com/tfs/TB19WObTNv1gK0jSZFFXXb0sXXa-144-144.png', needLogin: true},
+					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 9 },
+					{ name: '闲鱼', url: 'https://www.goofish.com/', desc: '最大闲置交易市场', icon: 'https://img.alicdn.com/tfs/TB19WObTNv1gK0jSZFFXXb0sXXa-144-144.png', needLogin: true, baseCount: 3},
 				]
 			},
 			{
 				title: '强烈推荐',
 				icon: '⭐',
 				links: [
-					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 4 },
-					{ name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: 'github', needVPN: true, isFree: true, baseCount: 5 },
-					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon:'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 1},
+					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 6 },
+					{ name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: 'github', needVPN: true, isFree: true, baseCount: 7 },
+					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon:'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 2},
 				]
 			}
 		],
@@ -62,7 +62,7 @@ export const navData = {
 				title: '在线观看',
 				icon: '📺',
 				links: [
-					{ name: '观影', url: 'https://www.gying.in/', desc: '聚合类 很强', icon: 'https://www.gying.in//favicon.png', isFree: true, needLogin: true, baseCount: 0 },
+					{ name: '观影', url: 'https://www.gying.in/', desc: '聚合类 很强', icon: 'https://www.gying.in//favicon.png', isFree: true, needLogin: true, baseCount: 1 },
 				]
 			},
 			{
@@ -140,7 +140,7 @@ export const navData = {
 				title: '在线工具',
 				icon: '🌐',
 				links: [
-					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon:'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 1},
+					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon:'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 2},
 					{ name: 'CodePen', url: 'https://codepen.io', desc: '在线代码编辑器', icon: '✏️', baseCount: 0 },
 					{ name: 'RegExr', url: 'https://regexr.com', desc: '正则表达式测试', icon: '🔍', baseCount: 0 },
 					{ name: 'Can I Use', url: 'https://caniuse.com', desc: '浏览器兼容性查询', icon: '✅', baseCount: 0 },
@@ -150,7 +150,7 @@ export const navData = {
 				title: '云服务平台',
 				icon: '☁️',
 				links: [
-					{ name: 'Cloudflare', url: 'https://dash.cloudflare.com/', desc: 'CDN与网站安全服务', icon: 'cloudflare#F38020', needLogin: true, needVPN: true, isFree: true, baseCount: 1 },
+					{ name: 'Cloudflare', url: 'https://dash.cloudflare.com/', desc: 'CDN与网站安全服务', icon: 'cloudflare#F38020', needLogin: true, needVPN: true, isFree: true, baseCount: 2 },
 				]
 			}
 		],
@@ -172,16 +172,16 @@ export const navData = {
 				title: '图标资源',
 				icon: '🎨',
 				links: [
-					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 4 },
+					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 6 },
 					{ name: 'OpenMoji', url: 'https://openmoji.org/', desc: '开源 Emoji 图标库', icon: '/logo/openmoji-logo.svg', isFree: true, baseCount: 3 },
-					{ name: 'iconfont', url: 'https://www.iconfont.cn/', desc: '阿里巴巴矢量图标库', icon: 'https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg', isFree: true, needLogin: true, baseCount: 1 },
+					{ name: 'iconfont', url: 'https://www.iconfont.cn/', desc: '阿里巴巴矢量图标库', icon: 'https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg', isFree: true, needLogin: true, baseCount: 3 },
 				]
 			},
 			{
 				title: '游戏素材',
 				icon: '🖌️',
 				links: [
-					{ name: 'Game FAQ', url: 'https://gamefaqs.gamespot.com/', desc: '齐全的游戏封面论坛', icon: '/logo/game-faq.ico', needVPN: true, isFree: true, baseCount: 2 },
+					{ name: 'Game FAQ', url: 'https://gamefaqs.gamespot.com/', desc: '齐全的游戏封面论坛', icon: '/logo/game-faq.ico', needVPN: true, isFree: true, baseCount: 5 },
 				]
 			},
 			{
@@ -199,7 +199,7 @@ export const navData = {
 				title: 'AI工具',
 				icon: '🤖',
 				links: [
-					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 3 },
+					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 9 },
 					{ name: 'ChatGPT', url: 'https://chat.openai.com', desc: 'OpenAI对话AI', icon: '💬', needVPN: true, needLogin: true, baseCount: 0 },
 					{ name: 'Midjourney', url: 'https://www.midjourney.com', desc: 'AI绘画工具', icon: '🎨', needLogin: true, needPay: true, baseCount: 0 },
 					{ name: 'Claude', url: 'https://claude.ai', desc: 'Anthropic AI助手', icon: '🤖', needVPN: true, needLogin: true, baseCount: 1 },
@@ -208,7 +208,7 @@ export const navData = {
 			{
 				title: 'Coding Plan',
 				links:[
-					{ name: 'MiniMax', url: 'https://www.minimaxi.com/', desc: '与所有人共创智能', icon: 'https://www.minimaxi.com/favicon.ico', needLogin: true, needPay: true},
+					{ name: 'MiniMax', url: 'https://www.minimaxi.com/', desc: '与所有人共创智能', icon: 'https://www.minimaxi.com/favicon.ico', needLogin: true, needPay: true, baseCount: 5},
 				]
 			}
 		],
@@ -218,7 +218,7 @@ export const navData = {
 				title: '学习工具',
 				icon: '📖',
 				links: [
-					{ name: '有道词典', url: 'https://www.youdao.com/', desc: '在线翻译与词典', icon: '📕', isFree: true, baseCount: 1 },
+					{ name: '有道词典', url: 'https://www.youdao.com/', desc: '在线翻译与词典', icon: '📕', isFree: true, baseCount: 2 },
 				]
 			}
 		],
@@ -256,7 +256,7 @@ export const navData = {
 				title: '游戏攻略',
 				icon: '📖',
 				links: [
-					{name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree:true, needLogin: true }
+					{name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree:true, needLogin: true , baseCount: 1}
 				]
 			}
 		],
