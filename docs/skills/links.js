@@ -26,6 +26,14 @@ export const skillsLinks = [
     tags: ['命令行', '工具']
   },
   {
+    id: 'largeaimodel',
+    title: '人工智能模型',
+    icon: '🤖',
+    desc: '大语言模型使用指南',
+    link: '/skills/LargeAIModel/',
+    tags: ['AI', '大模型']
+  },
+  {
     id: 'regex',
     title: '正则表达式',
     icon: '🔍',

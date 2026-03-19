@@ -16,6 +16,15 @@ export default {
 			]
 		}
 	],
+	'/skills/LargeAIModel/': [
+		{
+			text: '人工智能模型',
+			items: [
+				{ text: '概览', link: '/skills/LargeAIModel/' },
+				{ text: 'MiniMax', link: '/skills/LargeAIModel/minimax' }
+			]
+		}
+	],
 	'/skills/markdown/': [
 		{
 			text: 'Markdown',
