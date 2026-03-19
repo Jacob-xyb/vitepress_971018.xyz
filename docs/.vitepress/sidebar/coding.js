@@ -3,7 +3,8 @@ const cppCommonSidebar = [
 	{
 		text: 'C++',
 		items: [
-			{ text: '概览', link: '/coding/cpp/' }
+			{ text: '概览', link: '/coding/cpp/' },
+			{ text: '类的拷贝', link: '/coding/cpp/类的拷贝/' }
 		]
 	},
 	{
