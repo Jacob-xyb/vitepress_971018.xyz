@@ -1,33 +1,79 @@
 # Rust 开发环境
 
-## 安装 Rust
+## 配置 Rust 开发环境
 
-### 使用 rustup（推荐）
+配置 Rust 开发环境，核心就是三步：**安装工具链、配置 IDE、优化国内镜像**。整个过程非常直接，官方工具 `rustup` 会帮你搞定绝大部分工作。
 
-rustup 是 Rust 官方的工具链管理器，支持多版本管理和跨平台编译。
+下面我按操作系统和 IDE 选择，为你梳理了最实用的配置路径。
 
-**Windows 安装**
+### 🛠️ 第一步：安装核心工具链 (rustup + cargo)
+
+Rust 官方推荐通过 `rustup` 来安装和管理工具链。它会自动安装 `rustc`（编译器）、`cargo`（包管理器/构建工具）等所有必需品。
+
+你可以根据使用的操作系统，参照下表进行操作：
+
+| 操作系统 | 核心安装命令 / 步骤 | ⚠️ 关键注意事项 |
+| :--- | :--- | :--- |
+| **macOS / Linux** | 打开终端，执行：<br>`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \| sh` | 1. **不要**使用系统包管理器（如 `apt`、`brew`）安装，版本会滞后。<br>2. 安装后，运行 `source "$HOME/.cargo/env"` 让环境变量生效。<br>3. **（Linux）** 可能需要先安装编译依赖：<br>   `sudo apt update && sudo apt install -y curl gcc` |
+| **Windows** | 1. 下载并运行 [rustup-init.exe](https://rustup.rs/)。<br>2. 若提示缺少 **Visual Studio C++ 构建工具**，请按提示安装。 | **必须先安装** “使用C++的桌面开发” 组件（MSVC），这是编译Rust代码的基础。 |
+
+安装完成后，**重启终端**，用以下命令验证是否成功：
 ```bash
-# 下载并运行安装程序
-# 访问 https://rustup.rs/ 下载 rustup-init.exe
+rustc --version   # 应显示类似 rustc 1.91.0 的信息
+cargo --version   # 应显示类似 cargo 1.91.0 的信息
 ```
 
-**macOS / Linux 安装**
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
+### 💻 第二步：选择与配置 IDE (VSCode / RustRover)
 
-**验证安装**
-```bash
-rustc --version  # 查看 Rust 编译器版本
-cargo --version  # 查看 Cargo 包管理器版本
-```
+一个好的 IDE 能极大提升 Rust 的开发体验。目前主流选择有两种：
 
-### 更新 Rust
+| IDE | 推荐插件/版本 | 核心优势 | 适用场景 |
+| :--- | :--- | :--- | :--- |
+| **Visual Studio Code** | **[rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)** | 免费、轻量、响应快，提供顶级的代码补全、类型分析和实时错误提示。 | 绝大多数开发者，尤其是希望快速上手和获得流畅 AI 编程体验的用户。 |
+| **RustRover** | 独立 IDE (来自 JetBrains) | 开箱即用，集成了调试器、分析器、数据库工具和 VCS 等全套功能。 | 习惯 JetBrains 全家桶，需要一个一体化、大而全开发环境的专业开发者。 |
+
+> **💡 小贴士**：如果你已经是 IntelliJ IDEA 用户，可以安装官方的 **Rust 插件**，它能获得和 RustRover 几乎一样的功能。
+
+### 🇨🇳 第三步：配置国内镜像加速
+
+在国内，不配置镜像的话，下载依赖会非常慢，甚至失败。
+
+**1. 配置 Rustup 镜像**
+在终端中设置环境变量，加速 Rust 工具链本身的下载：
+```bash
+# 临时设置 (在当前终端窗口生效)
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+```
+若希望永久生效，可以将这两行 `export` 命令添加到你的 shell 配置文件（如 `~/.bashrc` 或 `~/.zshrc`）中。
+
+**2. 配置 Cargo 镜像**
+创建（或编辑）文件 `~/.cargo/config.toml`，添加以下内容，加速第三方库的下载：
+```toml
+[source.crates-io]
+replace-with = 'ustc'
+
+[source.ustc]
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+```
+> 也可以使用字节跳动提供的 `rsproxy` 镜像源，配置方法类似。
+
+### 🚀 第四步：创建并运行你的第一个项目
+
+所有配置完成后，就可以创建你的第一个 Rust 程序了：
 
 ```bash
-rustup update  # 更新到最新稳定版
+# 1. 创建一个新的二进制项目
+cargo new hello_world
+
+# 2. 进入项目目录
+cd hello_world
+
+# 3. 编译并运行项目
+cargo run
 ```
+如果一切正常，你会在屏幕上看到经典的 `Hello, world!`。
+
 
 ## Cargo 包管理器
 
@@ -126,20 +172,6 @@ my_project/
 ├── tests/              # 集成测试
 ├── benches/            # 性能测试
 └── examples/           # 示例代码
-```
-
-## 国内镜像配置（可选）
-
-如果下载速度慢，可以配置国内镜像。
-
-编辑 `~/.cargo/config.toml`（Windows: `%USERPROFILE%\.cargo\config.toml`）：
-
-```toml
-[source.crates-io]
-replace-with = 'ustc'
-
-[source.ustc]
-registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
 ```
 
 ## 学习资源
