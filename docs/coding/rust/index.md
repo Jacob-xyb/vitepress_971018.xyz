@@ -49,6 +49,7 @@ Rust 非常适合开发轻量级应用，主要优势包括：
 
 - [Rust 安装手册](./rust-install.md)
 - [Rust 编译](./rust-compile.md)
+- [Tauri 框架](./rust-tauri.md)
 
 ## 学习资源
 

@@ -37,7 +37,8 @@ export default {
 				{ text: '开发环境', link: '/coding/rust/environment' },
 				{ text: 'VSCode 开发配置', link: '/coding/rust/vscode-setup' },
 				{ text: 'Rust 安装手册', link: '/coding/rust/rust-install' },
-				{ text: 'Rust 编译', link: '/coding/rust/rust-compile' }
+				{ text: 'Rust 编译', link: '/coding/rust/rust-compile' },
+				{ text: 'Tauri 框架', link: '/coding/rust/rust-tauri' }
 			]
 		}
 	],
