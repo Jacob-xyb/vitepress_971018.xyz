@@ -36,7 +36,8 @@ export default {
 				{ text: '性能对比', link: '/coding/rust/performance' },
 				{ text: '开发环境', link: '/coding/rust/environment' },
 				{ text: 'VSCode 开发配置', link: '/coding/rust/vscode-setup' },
-				{ text: 'Rust 安装手册', link: '/coding/rust/rust-install' }
+				{ text: 'Rust 安装手册', link: '/coding/rust/rust-install' },
+				{ text: 'Rust 编译', link: '/coding/rust/rust-compile' }
 			]
 		}
 	],
