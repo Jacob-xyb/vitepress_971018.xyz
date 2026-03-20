@@ -45,6 +45,10 @@ Rust 非常适合开发轻量级应用，主要优势包括：
 - WebAssembly 应用
 - 嵌入式开发
 
+## 环境配置
+
+- [Rust 安装手册](./rust-install.md)
+
 ## 学习资源
 
 - [Rust 官方文档](https://www.rust-lang.org/)
