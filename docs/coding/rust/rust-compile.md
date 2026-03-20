@@ -25,6 +25,31 @@ Rust 编译”慢”的说法主要源于**首次构建**或**正式发布构建
 
 为了达到开发时”快”的目标，强烈建议你进行以下配置：
 
+#### 0️⃣ 配置 crates.io 国内镜像源（首步，非常重要）
+
+首次编译时需要从 crates.io 下载大量依赖包，默认服务器在国外，下载速度很慢。配置国内镜像可以大幅加速。
+
+创建或编辑 `~/.cargo/config.toml` 文件，添加以下配置：
+
+```toml
+# 中科大镜像源（推荐）
+[source.crates-io]
+replace-with = “ustc”
+
+[source.ustc]
+registry = “srs://https://mirrors.ustc.edu.cn/crates.io-index”
+
+# 如果使用清华源
+[source.tuna]
+registry = “https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git”
+
+# 如果上述 srs 格式不行，尝试 git 格式
+[source.ustc-git]
+git = “https://mirrors.ustc.edu.cn/crates.io-index”
+```
+
+> **提示**：`~/.cargo/config.toml` 的位置由 `CARGO_HOME` 环境变量决定。如果设置 `CARGO_HOME=D:\ProgramData\rust`，则配置文件为 `D:\ProgramData\rust\config.toml`。
+
 #### 1️⃣ 为 IDE 设置独立的编译目录
 
 > 效果最明显的一步，能有效避免文件锁冲突导致的卡顿。
