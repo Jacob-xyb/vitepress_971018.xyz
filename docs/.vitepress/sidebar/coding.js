@@ -33,6 +33,12 @@ export default {
 			items: [
 				{ text: '概览', link: '/coding/go/' }
 			]
+		},
+		{
+			text: '环境配置',
+			items: [
+				{ text: 'Go 安装手册', link: '/coding/go/go-install' }
+			]
 		}
 	],
 	'/coding/rust/': [
