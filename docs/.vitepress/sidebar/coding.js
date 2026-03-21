@@ -27,6 +27,14 @@ export default {
 			]
 		}
 	],
+	'/coding/go/': [
+		{
+			text: 'Go',
+			items: [
+				{ text: '概览', link: '/coding/go/' }
+			]
+		}
+	],
 	'/coding/rust/': [
 		{
 			text: 'Rust',

@@ -17,6 +17,14 @@ export const codingLinks = [
 		tags: ['编程语言', '性能']
 	},
 	{
+		id: 'go',
+		title: 'Go',
+		icon: 'go',
+		desc: '简洁高效的服务器端编程语言',
+		link: '/coding/go/',
+		tags: ['编程语言', '后端', '并发']
+	},
+	{
 		id: 'rust',
 		title: 'Rust',
 		icon: 'rust',
