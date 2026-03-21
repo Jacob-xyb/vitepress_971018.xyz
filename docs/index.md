@@ -14,6 +14,11 @@ hero:
       link: /guide/getting-started
 
 features:
+  - title: 博客
+    icon: 📝
+    details: 个人思考与技术分享
+    link: /blogs/
+
   - title: 技术栈
     icon: 🎯
     details: 完整技术体系与最佳实践

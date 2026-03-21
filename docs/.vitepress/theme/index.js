@@ -5,6 +5,7 @@ import ThemeIcon from './components/ThemeIcon.vue'
 import NavLinks from './components/NavLinks.vue'
 import NavCards from './components/NavCards.vue'
 import CookingMenu from './components/CookingMenu.vue'
+import BlogList from './components/BlogList.vue'
 
 export default {
   extends: DefaultTheme,
@@ -14,6 +15,7 @@ export default {
     app.component('NavLinks', NavLinks)
     app.component('NavCards', NavCards)
     app.component('CookingMenu', CookingMenu)
+    app.component('BlogList', BlogList)
     
     // 开发模式：全局导出函数（任何页面都可用）
     if (typeof window !== 'undefined' && import.meta.env.DEV) {
