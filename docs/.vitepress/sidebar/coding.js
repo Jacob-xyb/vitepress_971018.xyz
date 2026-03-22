@@ -8,12 +8,10 @@ const cppCommonSidebar = [
 		]
 	},
 	{
-		text: '面向对象',
+		text: '专题',
 		items: [
-			{ text: '概述', link: '/coding/cpp/oop/' },
-			{ text: '封装', link: '/coding/cpp/oop/encapsulation/' },
-			{ text: '继承', link: '/coding/cpp/oop/inheritance/' },
-			{ text: '多态', link: '/coding/cpp/oop/polymorphism/' }
+			{ text: '面向对象', link: '/coding/cpp/oop/' },
+			{ text: 'CMake', link: '/coding/cpp/cmake/' }
 		]
 	}
 ]
@@ -103,10 +101,22 @@ export default {
 	'/coding/cpp/oop/': [
 		...cppCommonSidebar,
 		{
+			text: '面向对象',
+			items: [
+				{ text: '概述', link: '/coding/cpp/oop/' },
+				{ text: '封装', link: '/coding/cpp/oop/encapsulation/' },
+				{ text: '继承', link: '/coding/cpp/oop/inheritance/' },
+				{ text: '多态', link: '/coding/cpp/oop/polymorphism/' }
+			]
+		},
+		{
 			text: '多态详解',
 			items: [
 				{ text: '虚函数重写与函数隐藏区别', link: '/coding/cpp/oop/polymorphism/virtual-override-vs-hiding' }
 			]
 		}
+	],
+	'/coding/cpp/cmake/': [
+		...cppCommonSidebar,
 	]
 }
