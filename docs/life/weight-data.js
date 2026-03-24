@@ -2,7 +2,7 @@
  * @Author: Jacob-xyb 949782197@qq.com
  * @Date: 2026-02-02 15:59:37
  * @LastEditors: Jacob-xyb 949782197@qq.com
- * @LastEditTime: 2026-03-23 10:34:12
+ * @LastEditTime: 2026-03-24 08:46:29
  * @Description: Life is struggle.
  */
 export default {
@@ -32,6 +32,7 @@ export default {
     ["2026-03-20", 84.6, null, null],
     ["2026-03-21", 84.7, null, null],
     ["2026-03-23", 84.5, null, null],
+    ["2026-03-24", 84.4, null, null],
     // 在这里添加新数据，可以保留逗号
     // 如果某天没有锻炼，calories 和 rope 填 null，例如：
     // ["2026-02-26", 83.9, null, null],
