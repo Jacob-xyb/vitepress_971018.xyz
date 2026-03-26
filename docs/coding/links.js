@@ -1,12 +1,12 @@
-// 编程导航链接数据
-export const codingLinks = [
+// 编程语言
+export const codingLanguages = [
 	{
 		id: 'python',
 		title: 'Python',
 		icon: 'python',
 		desc: '通用编程语言',
 		link: '/coding/python/',
-		tags: ['编程语言', '数据分析']
+		tags: ['数据分析']
 	},
 	{
 		id: 'cpp',
@@ -14,7 +14,7 @@ export const codingLinks = [
 		icon: 'cplusplus',
 		desc: '高性能编程语言',
 		link: '/coding/cpp/',
-		tags: ['编程语言', '性能']
+		tags: ['性能']
 	},
 	{
 		id: 'go',
@@ -22,7 +22,7 @@ export const codingLinks = [
 		icon: 'go',
 		desc: '简洁高效的服务器端编程语言',
 		link: '/coding/go/',
-		tags: ['编程语言', '后端', '并发']
+		tags: ['后端', '并发']
 	},
 	{
 		id: 'rust',
@@ -30,31 +30,7 @@ export const codingLinks = [
 		icon: 'rust',
 		desc: '安全高效的系统编程语言',
 		link: '/coding/rust/',
-		tags: ['编程语言', '系统编程', '安全']
-	},
-	{
-		id: 'git',
-		title: 'Git',
-		icon: '📦',
-		desc: '版本控制系统',
-		link: '/coding/git/',
-		tags: ['版本控制', '协作开发']
-	},
-	{
-		id: 'file-io',
-		title: '文件读写',
-		icon: '📄',
-		desc: '文件操作基础',
-		link: '/coding/file-io/',
-		tags: ['文件操作', '基础']
-	},
-	{
-		id: 'vscode',
-		title: 'VS Code',
-		icon: '💻',
-		desc: '代码编辑器 TODO',
-		link: '/coding/vscode/',
-		tags: ['编辑器', '开发工具']
+		tags: ['系统编程', '安全']
 	},
 	{
 		id: 'javascript',
@@ -62,7 +38,7 @@ export const codingLinks = [
 		icon: '🟨',
 		desc: 'Web开发语言 TODO',
 		link: '/coding/javascript/',
-		tags: ['前端', '编程语言']
+		tags: ['前端']
 	},
 	{
 		id: 'typescript',
@@ -71,7 +47,11 @@ export const codingLinks = [
 		desc: 'JavaScript超集 TODO',
 		link: '/coding/typescript/',
 		tags: ['前端', '类型安全']
-	},
+	}
+]
+
+// 框架
+export const codingFrameworks = [
 	{
 		id: 'nodejs',
 		title: 'Node.js',
@@ -95,6 +75,34 @@ export const codingLinks = [
 		desc: '操作系统 TODO',
 		link: '/coding/linux/',
 		tags: ['操作系统', '服务器']
+	}
+]
+
+// 未分类
+export const codingMisc = [
+	{
+		id: 'git',
+		title: 'Git',
+		icon: '📦',
+		desc: '版本控制系统',
+		link: '/coding/git/',
+		tags: ['版本控制', '协作开发']
+	},
+	{
+		id: 'file-io',
+		title: '文件读写',
+		icon: '📄',
+		desc: '文件操作基础',
+		link: '/coding/file-io/',
+		tags: ['文件操作', '基础']
+	},
+	{
+		id: 'vscode',
+		title: 'VS Code',
+		icon: '💻',
+		desc: '代码编辑器 TODO',
+		link: '/coding/vscode/',
+		tags: ['编辑器', '开发工具']
 	},
 	{
 		id: 'database',
