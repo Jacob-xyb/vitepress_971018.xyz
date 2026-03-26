@@ -68,6 +68,26 @@ export default {
 			]
 		}
 	],
+	'/coding/wxwidgets/': [
+		{
+			text: 'wxWidgets',
+			items: [
+				{ text: '介绍', link: '/coding/wxwidgets/' }
+			]
+		},
+		{
+			text: '环境配置',
+			items: [
+				{ text: '安装', link: '/coding/wxwidgets/install' }
+			]
+		},
+		{
+			text: '快速入门',
+			items: [
+				{ text: '入门指南', link: '/coding/wxwidgets/quickstart' }
+			]
+		}
+	],
 	'/coding/git/': [
 		{
 			text: 'Git',

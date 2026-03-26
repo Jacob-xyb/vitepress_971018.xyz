@@ -53,6 +53,14 @@ export const codingLanguages = [
 // 框架
 export const codingFrameworks = [
 	{
+		id: 'wxwidgets',
+		title: 'wxWidgets',
+		icon: '🪟',
+		desc: '跨平台 C++ GUI 库',
+		link: '/coding/wxwidgets/',
+		tags: ['GUI', '跨平台']
+	},
+	{
 		id: 'nodejs',
 		title: 'Node.js',
 		icon: '🟢',
