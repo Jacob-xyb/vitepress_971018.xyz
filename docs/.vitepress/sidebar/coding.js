@@ -138,5 +138,14 @@ export default {
 	],
 	'/coding/cpp/cmake/': [
 		...cppCommonSidebar,
+	],
+	'/coding/tool/': [
+		{
+			text: 'Tool',
+			items: [
+				{ text: '介绍', link: '/coding/tool/' },
+				{ text: 'Gettext', link: '/coding/tool/gettext-wxwidgets' }
+			]
+		}
 	]
 }

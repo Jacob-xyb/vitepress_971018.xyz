@@ -9,6 +9,7 @@ layout: home
 <script setup>
 import { codingLanguages } from './links.js'
 import { codingFrameworks } from './links.js'
+import { codingTool } from './links.js'
 import { codingMisc } from './links.js'
 </script>
 
@@ -19,6 +20,10 @@ import { codingMisc } from './links.js'
 ## 框架
 
 <NavCards :items="codingFrameworks" />
+
+## 工具
+
+<NavCards :items="codingTool" />
 
 ## 未分类
 

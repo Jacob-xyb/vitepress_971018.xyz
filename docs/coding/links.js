@@ -86,6 +86,18 @@ export const codingFrameworks = [
 	}
 ]
 
+// 工具
+export const codingTool = [
+	{
+		id: 'gettext',
+		title: 'Gettext',
+		icon: '🌍',
+		desc: '国际化 (i18n) 框架',
+		link: '/coding/tool/',
+		tags: ['i18n', '本地化']
+	}
+]
+
 // 未分类
 export const codingMisc = [
 	{
