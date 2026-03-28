@@ -8,6 +8,12 @@ export default {
 				{ text: 'Vibe Coding', link: '/soft/vscode/vscode-vibecoding' },
 				{ text: 'CC-Switch', link: '/soft/vscode/cc-switch' }
 			]
+		},
+		{
+			text: 'C/C++',
+			items: [
+				{ text: 'IntelliSense', link: '/soft/vscode/cpp/cpp-intellisense' }
+			]
 		}
 	]
 }
