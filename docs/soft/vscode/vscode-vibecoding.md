@@ -140,4 +140,48 @@
 
 配置好之后，你就可以在 VS Code 里尽情体验 Minimax 模型带来的编程快感了。
 
+## MCP (Model Context Protocol)
+
+### 简介
+
+MCP 是一种开放协议，让 AI 助手能够与外部工具和数据源无缝连接。通过 MCP，你可以让 Claude Code 访问文件系统、搜索代码库、执行命令等。
+
+### MCP 的核心用途
+
+| 功能 | 说明 |
+| --- | --- |
+| **工具调用** | AI 可以调用外部工具（如文件系统、搜索、Git 等） |
+| **资源访问** | AI 可以读取外部资源（如文件内容、数据库等） |
+| **提示模板** | 共享可复用的提示模板 |
+
+### 配置示例
+
+在项目根目录的 `.vscode/mcp.json` 中配置：
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./docs"]
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"]
+    }
+  }
+}
+```
+
+### 常用 MCP 服务
+
+| 服务 | 包名 | 功能 |
+| --- | --- | --- |
+| 文件系统 | `@modelcontextprotocol/server-filesystem` | 读写文件、列出目录 |
+| Git | `@modelcontextprotocol/server-git` | Git 操作 |
+| GitHub | `@modelcontextprotocol/server-github` | GitHub API |
+| 搜索 | `@modelcontextprotocol/server-fetch` | 网页内容获取 |
+
+配置完成后，Claude Code 就能通过 MCP 调用这些工具扩展自己的能力。
+
 在配置过程中如果遇到任何问题，比如找不到文件、填了密钥报错，随时可以再来问我，我们一起看看怎么解决～
