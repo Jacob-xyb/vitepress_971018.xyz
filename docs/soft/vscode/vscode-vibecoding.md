@@ -154,6 +154,24 @@ MCP 是一种开放协议，让 AI 助手能够与外部工具和数据源无缝
 | **资源访问** | AI 可以读取外部资源（如文件内容、数据库等） |
 | **提示模板** | 共享可复用的提示模板 |
 
+### 配置位置
+
+MCP 服务可以通过以下方式配置：
+
+| 配置文件 | 位置 | 生效范围 | 稳定性 |
+| --- | --- | --- | --- |
+| `.vscode/mcp.json` | 项目根目录 | 仅当前项目 | ⚠️ 可能被 `/install` 覆盖 |
+| `.claude.json` | 项目根目录 | 仅当前项目 | ⚠️ 可能被 `/install` 覆盖 |
+| `~/.claude/settings.json` | 用户目录 | 全局所有项目 | ✅ 推荐 |
+
+### 为什么配置经常被重置？
+
+运行 `/install` 命令时会重写 `.claude.json`，导致项目级的 MCP 配置丢失。
+
+**解决方案**：
+- **全局配置**：将 MCP 配置放在 `~/.claude/settings.json`，不会被项目级操作覆盖
+- **备份习惯**：修改配置前先备份原有内容
+
 ### 配置示例
 
 在项目根目录的 `.vscode/mcp.json` 中配置：
@@ -168,6 +186,19 @@ MCP 是一种开放协议，让 AI 助手能够与外部工具和数据源无缝
     "git": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-git"]
+    }
+  }
+}
+```
+
+全局配置则放在 `~/.claude/settings.json`：
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
     }
   }
 }
