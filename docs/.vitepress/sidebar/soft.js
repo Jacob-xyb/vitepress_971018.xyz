@@ -14,6 +14,12 @@ export default {
 			items: [
 				{ text: 'IntelliSense', link: '/soft/vscode/cpp/cpp-intellisense' }
 			]
+		},
+		{
+			text: '插件',
+			items: [
+				{ text: 'Claude Code', link: '/soft/vscode/plugin/Claude-Code' }
+			]
 		}
 	]
 }

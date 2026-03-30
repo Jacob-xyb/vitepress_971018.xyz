@@ -2,7 +2,7 @@
  * @Author: Jacob-xyb 949782197@qq.com
  * @Date: 2026-03-14 21:33:28
  * @LastEditors: Jacob-xyb 949782197@qq.com
- * @LastEditTime: 2026-03-14 21:33:50
+ * @LastEditTime: 2026-03-30 12:23:17
  * @Description: Life is struggle.
 -->
 # Vscode中使用vibe-coding
@@ -156,53 +156,59 @@ MCP 是一种开放协议，让 AI 助手能够与外部工具和数据源无缝
 
 ### 配置位置
 
-MCP 服务可以通过以下方式配置：
+虽然每个 MCP 服务器都需要手动编写一段 JSON 配置，但现在 VS Code 已经提供了**图形化界面**和**统一的配置规范**，让整个过程变得标准了很多。
 
-| 配置文件 | 位置 | 生效范围 | 稳定性 |
-| --- | --- | --- | --- |
-| `.mcp.json` | 项目根目录 | 仅当前项目 | ⚠️ 可能被 `/install` 覆盖 |
-| `.claude.json` | 项目根目录 | 仅当前项目 | ⚠️ 可能被 `/install` 覆盖 |
-| `~/.claude/settings.json` | 用户目录 | 全局所有项目 | ✅ 推荐 |
+目前主要有两种配置路径，体验差别很大：
 
-### 为什么配置经常被重置？
+### 🆚 新旧配置方式对比
 
-运行 `/install` 命令时会重写 `.claude.json`，导致项目级的 MCP 配置丢失。
+| 特性 | 🚀 **现代方式 (图形化界面)** | 📝 **传统方式 (JSON文件)** |
+| :--- | :--- | :--- |
+| **操作方式** | 通过命令面板 (`Cmd+Shift+P`)，搜索"MCP"，点击"安装"或"添加 MCP 服务器"，跟随向导提示操作。 | 手动编辑项目或用户目录下的 `.vscode/mcp.json` 文件。 |
+| **配置难度** | **极低**。界面引导输入，交互友好，像安装普通插件一样。 | **中等**。需要了解 JSON 格式，并准确填写每个服务器的特定字段。 |
+| **安全性** | **更高**。敏感信息（如 API 密钥）会通过单独的输入框安全填写，不会明文保存在配置文件中。 | **较低**。密钥等敏感信息通常直接写在 JSON 文件里，有泄露风险。 |
+| **适用场景** | 日常使用，添加大部分常见 MCP 服务器。 | 需要精细控制服务器参数（如环境变量、超时时间）的高级用户或开发场景。 |
 
-**解决方案**：
-- **全局配置**：将 MCP 配置放在 `~/.claude/settings.json`，不会被项目级操作覆盖
-- **备份习惯**：修改配置前先备份原有内容
+> 值得一提的是，即使你选择了手动编辑 JSON 文件，VS Code 也提供了贴心的辅助功能。比如，当你的配置中定义了需要输入的信息（`inputs` 字段），编辑器界面会直接出现"输入"和"启动"按钮，引导你完成最后的设置。
 
-### 配置示例
+::: tip 并非所有插件都适用
+VSCode 本身提供了官方的 MCP 客户端实现（`.vscode/mcp.json`），但插件必须**主动适配**这个官方客户端才会读取该文件。如果插件自己实现了一套独立的 MCP 管理逻辑，就**不会**读取 `.vscode/mcp.json`。
 
-在项目根目录的 `.mcp.json` 中配置：
+例如：早期的 Claude 插件使用自己的配置方式，不读取 `.vscode/mcp.json`。
+:::
 
-```json
-{
-  "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./docs"]
-    },
-    "git": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-git"]
-    }
-  }
-}
-```
+详细的 Claude Code 插件 MCP 配置方法，请参阅：[Claude Code - MCP 配置](/soft/vscode/plugin/Claude-Code#mcp配置)
 
-全局配置则放在 `~/.claude/settings.json`：
+### 🛠️ 配置文件的核心结构
+
+无论通过哪种方式，最终配置的核心逻辑都是一样的：
 
 ```json
 {
-  "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
+    "servers": {
+        "给你的服务器起个好记的名字": {
+            "type": "stdio",
+            "command": "启动命令",
+            "args": ["命令参数1", "命令参数2"],
+            "env": {
+                "API_KEY": "你的密钥"
+            }
+        }
     }
-  }
 }
 ```
+
+### 💡 实战示例：添加 GitHub MCP 服务器
+
+- **JSON 配置方式**：手动创建或修改 `.vscode/mcp.json`，将 GitHub 官方提供的配置代码粘贴进去。
+- **图形化方式**：在命令面板选择"安装 MCP 服务器"，找到 GitHub，点击安装，VS Code 会自动引导你完成授权。
+
+### 📚 统一的配置逻辑
+
+每个 MCP 服务器因为功能不同，需要填写的"启动命令"和"参数"是唯一的。配置时只需要关注：
+1. **启动命令**：是用 `npx`、`docker` 还是 `node`？
+2. **命令参数**：后面跟着什么样的参数？
+3. **环境变量**：是否需要设置 `API_KEY` 之类的密钥？
 
 ### 常用 MCP 服务
 
