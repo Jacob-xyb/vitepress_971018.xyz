@@ -62,7 +62,7 @@ export const navData = {
 				title: '在线观看',
 				icon: '📺',
 				links: [
-					{ name: '观影', url: 'https://www.gying.in/', desc: '聚合类 很强', icon: 'https://www.gying.in//favicon.png', isFree: true, needLogin: true, baseCount: 1 },
+					{ name: '观影', url: 'https://www.xn--wcv59z.com/', desc: '聚合类 很强', icon: '👻', isFree: true, needLogin: true, baseCount: 1, backupUrl: "https://www.xn--ykq321c.com/"},
 				]
 			},
 			{
