@@ -43,7 +43,7 @@ export const navData = {
 				icon: '💎',
 				links: [
 					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 9 },
-					{ name: '闲鱼', url: 'https://www.goofish.com/', desc: '最大闲置交易市场', icon: 'https://img.alicdn.com/tfs/TB19WObTNv1gK0jSZFFXXb0sXXa-144-144.png', needLogin: true, baseCount: 3},
+					{ name: '闲鱼', url: 'https://www.goofish.com/', desc: '最大闲置交易市场', icon: 'https://img.alicdn.com/tfs/TB19WObTNv1gK0jSZFFXXb0sXXa-144-144.png', needLogin: true, baseCount: 3 },
 				]
 			},
 			{
@@ -52,7 +52,7 @@ export const navData = {
 				links: [
 					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 6 },
 					{ name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: 'github', needVPN: true, isFree: true, baseCount: 7 },
-					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon:'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 2},
+					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon: 'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 2 },
 				]
 			}
 		],
@@ -62,7 +62,7 @@ export const navData = {
 				title: '在线观看',
 				icon: '📺',
 				links: [
-					{ name: '观影', url: 'https://www.xn--wcv59z.com/', desc: '聚合类 很强', icon: '👻', isFree: true, needLogin: true, baseCount: 1, backupUrl: "https://www.xn--ykq321c.com/"},
+					{ name: '观影', url: 'https://www.xn--wcv59z.com/', desc: '聚合类 很强', icon: '👻', isFree: true, needLogin: true, baseCount: 1, backupUrl: "https://www.xn--ykq321c.com/" },
 				]
 			},
 			{
@@ -76,7 +76,8 @@ export const navData = {
 				title: '动漫',
 				icon: '🎭',
 				links: [
-					// 在这里添加动漫网站
+					{ name: 'AGE动漫', url: 'https://www.agedm.io/', desc: '在线、免费', icon: 'https://www.agedm.io/favicon.ico', isFree: true, needLogin: true, baseCount: 0, backupUrl: "age.tv" },
+					
 				]
 			},
 			{
@@ -140,7 +141,7 @@ export const navData = {
 				title: '在线工具',
 				icon: '🌐',
 				links: [
-					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon:'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 2},
+					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon: 'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 2 },
 					{ name: 'CodePen', url: 'https://codepen.io', desc: '在线代码编辑器', icon: '✏️', baseCount: 0 },
 					{ name: 'Gitee', url: 'https://gitee.com', desc: '代码托管平台', icon: 'https://gitee.com/favicon.ico', baseCount: 0 },
 					{ name: 'RegExr', url: 'https://regexr.com', desc: '正则表达式测试', icon: '🔍', baseCount: 0 },
@@ -208,8 +209,8 @@ export const navData = {
 			},
 			{
 				title: 'Coding Plan',
-				links:[
-					{ name: 'MiniMax', url: 'https://www.minimaxi.com/', desc: '与所有人共创智能', icon: 'https://www.minimaxi.com/favicon.ico', needLogin: true, needPay: true, baseCount: 5},
+				links: [
+					{ name: 'MiniMax', url: 'https://www.minimaxi.com/', desc: '与所有人共创智能', icon: 'https://www.minimaxi.com/favicon.ico', needLogin: true, needPay: true, baseCount: 5 },
 				]
 			}
 		],
@@ -226,6 +227,13 @@ export const navData = {
 
 		life: [
 			{
+				title: '聚合搜索',
+				icon: '🔍',
+				links: [
+					{ name: '龙轩导航', url: 'http://ilxdh.com/cat/171', desc: '做个有用的导航', icon: 'http://ilxdh.com/cat/171/favicon.ico', isFree: true, baseCount: 0 },
+				]
+			},
+			{
 				title: '生活服务',
 				icon: '🏠',
 				links: [
@@ -233,7 +241,7 @@ export const navData = {
 					{ name: '天气预报', url: 'https://www.weather.com.cn', desc: '天气查询', icon: '🌤️', baseCount: 0 },
 					{ name: '12306', url: 'https://www.12306.cn', desc: '火车票预订', icon: '🚄', baseCount: 0 },
 				]
-			}
+			},
 		],
 
 		game: [
@@ -250,14 +258,14 @@ export const navData = {
 				title: '游戏下载',
 				icon: '/icon/mage--video-download.svg',
 				links: [
-					{name: 'switch520', url: 'https://www.gamer520.com/', desc: '完全的免费的switch下载', icon: 'https://ig.freer.blog/2023/10/25/d67adcffb89dd.jpg', isFree:true, }
+					{ name: 'switch520', url: 'https://www.gamer520.com/', desc: '完全的免费的switch下载', icon: 'https://ig.freer.blog/2023/10/25/d67adcffb89dd.jpg', isFree: true, }
 				]
 			},
 			{
 				title: '游戏攻略',
 				icon: '📖',
 				links: [
-					{name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree:true, needLogin: true , baseCount: 1}
+					{ name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree: true, needLogin: true, baseCount: 1 }
 				]
 			}
 		],
