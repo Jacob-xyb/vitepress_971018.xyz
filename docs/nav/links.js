@@ -62,14 +62,15 @@ export const navData = {
 				icon: '📺',
 				links: [
 					{ name: '观影', url: 'https://www.xn--wcv59z.com/', desc: '聚合类 很强', icon: '👻', isFree: true, needLogin: true, baseCount: 3, backupUrl: "https://www.xn--ykq321c.com/" },
-					{ name: '555电影', url: 'https://www.555yy2.com/index/home.html', desc: '在线 很强', icon: '👻', isFree: true, baseCount: 0, backupUrl: "https://www.555yy2.com/favicon.ico" },
+					{ name: '555电影', url: 'https://www.555yy2.com/index/home.html', desc: '在线 很强', icon: 'https://www.555yy2.com/favicon.ico', isFree: true, baseCount: 0,},
 				]
 			},
 			{
 				title: '资源下载',
 				icon: '/icon/openmoji-film-projector.svg',
 				links: [
-					{ name: '电影港', url: 'https://www.dyg55.com/', desc: '磁力下载', icon: '👻', isFree: true, baseCount: 0, backupUrl: "https://www.dyg55.com/favicon.ico" },
+					{ name: '电影港', url: 'https://www.dyg55.com/', desc: '磁力下载', icon: 'https://www.dyg55.com/favicon.ico', isFree: true, baseCount: 0, },
+					{ name: '高清族', url: 'https://www.hdzu.cc/', desc: '磁力下载，资源不全，尚且可用', icon: 'https://www.hdzu.cc/favicon.ico', isFree: true, baseCount: 0, },
 				]
 			},
 			{
