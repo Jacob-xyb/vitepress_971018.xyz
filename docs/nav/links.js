@@ -62,6 +62,7 @@ export const navData = {
 				icon: '📺',
 				links: [
 					{ name: '观影', url: 'https://www.xn--wcv59z.com/', desc: '聚合类 很强', icon: '👻', isFree: true, needLogin: true, baseCount: 3, backupUrl: "https://www.xn--ykq321c.com/" },
+					{ name: '555电影', url: 'https://www.555yy2.com/index/home.html', desc: '在线 很强', icon: '👻', isFree: true, baseCount: 0, backupUrl: "https://www.555yy2.com/favicon.ico" },
 				]
 			},
 			{
