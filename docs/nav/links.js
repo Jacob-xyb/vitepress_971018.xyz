@@ -27,7 +27,6 @@ export const navData = {
 		{ id: 'daily', name: '日常使用', icon: '⭐' },
 		{ id: 'media', name: '影视资源', icon: '🎬' },
 		{ id: 'dev', name: '开发工具', icon: '🛠️' },
-		{ id: 'design', name: '设计资源', icon: '🎨' },
 		{ id: 'resources', name: '素材中心', icon: '📦' },
 		{ id: 'ai', name: 'AI工具', icon: '🤖' },
 		{ id: 'study', name: '学习相关', icon: '📚' },
@@ -156,19 +155,6 @@ export const navData = {
 				]
 			}
 		],
-
-		design: [
-			{
-				title: '设计工具',
-				icon: '🎨',
-				links: [
-					{ name: 'Figma', url: 'https://www.figma.com', desc: '在线UI设计工具', icon: '🎨', baseCount: 0 },
-					{ name: 'Dribbble', url: 'https://dribbble.com', desc: '设计师作品分享', icon: '🏀', baseCount: 0 },
-					{ name: 'Unsplash', url: 'https://unsplash.com', desc: '免费高质量图片', icon: '📷', baseCount: 0 },
-				]
-			}
-		],
-
 		resources: [
 			{
 				title: '图标资源',
@@ -177,6 +163,14 @@ export const navData = {
 					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 6 },
 					{ name: 'OpenMoji', url: 'https://openmoji.org/', desc: '开源 Emoji 图标库', icon: '/logo/openmoji-logo.svg', isFree: true, baseCount: 3 },
 					{ name: 'iconfont', url: 'https://www.iconfont.cn/', desc: '阿里巴巴矢量图标库', icon: 'https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg', isFree: true, needLogin: true, baseCount: 3 },
+				]
+			},
+						{
+				title: '办公素材',
+				icon: '📄',
+				links: [
+					{ name: '优品PPT', url: 'https://www.ypppt.com/', desc: '精美免费的PPT模板下载', icon: '', isFree: true, baseCount: 1 },
+					// 在这里添加办公素材网站
 				]
 			},
 			{
@@ -202,6 +196,7 @@ export const navData = {
 				icon: '🤖',
 				links: [
 					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 9 },
+					{ name: '千问', url: 'https://www.qianwen.com/', desc: '通义千问', icon: '/logo/千问-logo.svg', isFree: true, needLogin: true, baseCount: 1 },
 					{ name: 'ChatGPT', url: 'https://chat.openai.com', desc: 'OpenAI对话AI', icon: '💬', needVPN: true, needLogin: true, baseCount: 0 },
 					{ name: 'Midjourney', url: 'https://www.midjourney.com', desc: 'AI绘画工具', icon: '🎨', needLogin: true, needPay: true, baseCount: 0 },
 					{ name: 'Claude', url: 'https://claude.ai', desc: 'Anthropic AI助手', icon: '🤖', needVPN: true, needLogin: true, baseCount: 1 },
