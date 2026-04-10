@@ -253,7 +253,7 @@ export const navData = {
 				title: '游戏下载',
 				icon: '/icon/mage--video-download.svg',
 				links: [
-					{ name: 'switch520', url: 'https://www.gamer520.com/', desc: '完全的免费的switch下载', icon: 'https://ig.freer.blog/2023/10/25/d67adcffb89dd.jpg', isFree: true, , baseCount: 1}
+					{ name: 'switch520', url: 'https://www.gamer520.com/', desc: '完全的免费的switch下载', icon: 'https://ig.freer.blog/2023/10/25/d67adcffb89dd.jpg', isFree: true,  baseCount: 1}
 				]
 			},
 			{
