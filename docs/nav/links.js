@@ -69,7 +69,7 @@ export const navData = {
 				title: '资源下载',
 				icon: '/icon/openmoji-film-projector.svg',
 				links: [
-					// 在这里添加下载网站
+					{ name: '电影港', url: 'https://www.dyg55.com/', desc: '磁力下载', icon: '👻', isFree: true, baseCount: 0, backupUrl: "https://www.dyg55.com/favicon.ico" },
 				]
 			},
 			{
