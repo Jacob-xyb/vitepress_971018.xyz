@@ -232,7 +232,7 @@ export const rentalGames = [
 		note: '无损',
 		popularity: 0,
 		history: [
-			{ date: '2026-03-04', renter: 't***5', income: 20, returned: false, returnDate: '2026-04-06' },
+			{ date: '2026-03-04', renter: 't***5', income: 20, returned: true, returnDate: '2026-04-06' },
 		]
 	},
 	{
