@@ -69,6 +69,7 @@ export const navData = {
 				title: '资源下载',
 				icon: '/icon/openmoji-film-projector.svg',
 				links: [
+					{ name: 'BT之家', url: 'https://www.1lou.one/', desc: '磁力下载', icon: 'https://www.1lou.one/view/img/favicon.ico', isFree: true, baseCount: 0, },
 					{ name: '电影港', url: 'https://www.dyg55.com/', desc: '磁力下载', icon: 'https://www.dyg55.com/favicon.ico', isFree: true, baseCount: 0, },
 					{ name: '高清族', url: 'https://www.hdzu.cc/', desc: '磁力下载，资源不全，尚且可用', icon: 'https://www.hdzu.cc/favicon.ico', isFree: true, baseCount: 0, },
 				]
