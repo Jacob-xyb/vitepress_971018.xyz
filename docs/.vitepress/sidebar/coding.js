@@ -27,6 +27,7 @@ const qtCommonSidebar = [
 	{
 		text: 'UI',
 		items: [
+			{ text: '介绍', link: '/coding/qt/qt-ui/' },
 			{ text: 'QSS 样式表', link: '/coding/qt/qt-ui/qt-qss/' }
 		]
 	}
@@ -86,7 +87,15 @@ export default {
 	],
 
 	'/coding/qt/': qtCommonSidebar,
-	'/coding/qt/qt-ui/': qtCommonSidebar,
+	'/coding/qt/qt-ui/qt-qss/': [
+		...qtCommonSidebar,
+		{
+			text: 'QSS 样式表',
+			items: [
+				{ text: '基础简介', link: '/coding/qt/qt-ui/qt-qss/' }
+			]
+		}
+	],
 	'/coding/wxwidgets/': [
 		{
 			text: 'wxWidgets',
