@@ -53,6 +53,14 @@ export const codingLanguages = [
 // 框架
 export const codingFrameworks = [
 	{
+		id: 'qt',
+		title: 'qt',
+		icon: 'qt#41CD52',
+		desc: '跨平台C++图形用户界面应用程序开发框架',
+		link: '/coding/qt/',
+		tags: ['GUI', '跨平台']
+	},
+	{
 		id: 'wxwidgets',
 		title: 'wxWidgets',
 		icon: '🪟',

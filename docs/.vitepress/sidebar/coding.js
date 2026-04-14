@@ -68,6 +68,14 @@ export default {
 			]
 		}
 	],
+	'/coding/qt/': [
+		{
+			text: 'Qt',
+			items: [
+				{ text: '介绍', link: '/coding/qt/' }
+			]
+		}
+	],
 	'/coding/wxwidgets/': [
 		{
 			text: 'wxWidgets',
