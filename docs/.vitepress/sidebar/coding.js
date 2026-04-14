@@ -16,6 +16,22 @@ const cppCommonSidebar = [
 	}
 ]
 
+// Qt 公共侧边栏
+const qtCommonSidebar = [
+	{
+		text: 'Qt',
+		items: [
+			{ text: '介绍', link: '/coding/qt/' }
+		]
+	},
+	{
+		text: 'UI',
+		items: [
+			{ text: 'QSS 样式表', link: '/coding/qt/qt-ui/qt-qss/' }
+		]
+	}
+]
+
 export default {
 	'/coding/': [
 		{
@@ -68,14 +84,9 @@ export default {
 			]
 		}
 	],
-	'/coding/qt/': [
-		{
-			text: 'Qt',
-			items: [
-				{ text: '介绍', link: '/coding/qt/' }
-			]
-		}
-	],
+
+	'/coding/qt/': qtCommonSidebar,
+	'/coding/qt/qt-ui/': qtCommonSidebar,
 	'/coding/wxwidgets/': [
 		{
 			text: 'wxWidgets',
