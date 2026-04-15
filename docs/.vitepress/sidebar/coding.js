@@ -93,6 +93,7 @@ export default {
 			text: 'QSS 样式表',
 			items: [
 				{ text: '基础简介', link: '/coding/qt/qt-ui/qt-qss/' },
+				{ text: 'QSS 的加载原理', link: '/coding/qt/qt-ui/qt-qss/qss的加载原理/' },
 				{ text: '快速调试模板', link: '/coding/qt/qt-ui/qt-qss/qss快速调试模板/' }
 			]
 		}
