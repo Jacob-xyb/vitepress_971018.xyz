@@ -94,6 +94,18 @@ export const codingFrameworks = [
 	}
 ]
 
+// 游戏引擎
+export const codingGameEngines = [
+	{
+		id: 'godot',
+		title: 'Godot',
+		icon: '🎮',
+		desc: '开源免费的游戏引擎',
+		link: '/coding/godot/',
+		tags: ['游戏', '开源']
+	}
+]
+
 // 工具
 export const codingTool = [
 	{

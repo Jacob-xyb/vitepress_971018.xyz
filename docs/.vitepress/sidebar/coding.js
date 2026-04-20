@@ -177,5 +177,13 @@ export default {
 				{ text: 'Gettext', link: '/coding/tool/gettext-wxwidgets' }
 			]
 		}
+	],
+	'/coding/godot/': [
+		{
+			text: 'Godot',
+			items: [
+				{ text: '介绍', link: '/coding/godot/' }
+			]
+		}
 	]
 }
