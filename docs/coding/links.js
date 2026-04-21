@@ -99,7 +99,7 @@ export const codingGameEngines = [
 	{
 		id: 'godot',
 		title: 'Godot',
-		icon: '🎮',
+		icon: 'godotengine#478CBF',
 		desc: '开源免费的游戏引擎',
 		link: '/coding/godot/',
 		tags: ['游戏', '开源']
