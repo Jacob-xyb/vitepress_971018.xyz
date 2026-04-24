@@ -201,6 +201,7 @@ export const navData = {
 				links: [
 					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: 'https://deepseek.com/favicon.ico', isFree: true, needLogin: true, baseCount: 20 },
 					{ name: '千问', url: 'https://www.qianwen.com/', desc: '通义千问', icon: '/logo/千问-logo.svg', isFree: true, needLogin: true, baseCount: 2 },
+					{ name: '豆包', url: 'https://www.doubao.com/', desc: '字节跳动旗下 AI 智能助手', icon: '//lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/chat/favicon.png', isFree: true, needLogin: true, baseCount: 1 },
 					{ name: 'ChatGPT', url: 'https://chat.openai.com', desc: 'OpenAI对话AI', icon: '💬', needVPN: true, needLogin: true, baseCount: 0 },
 					{ name: 'Midjourney', url: 'https://www.midjourney.com', desc: 'AI绘画工具', icon: '🎨', needLogin: true, needPay: true, baseCount: 0 },
 					{ name: 'Claude', url: 'https://claude.ai', desc: 'Anthropic AI助手', icon: '🤖', needVPN: true, needLogin: true, baseCount: 1 },
