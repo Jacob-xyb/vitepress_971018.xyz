@@ -182,7 +182,10 @@ export default {
 		{
 			text: 'Godot',
 			items: [
-				{ text: '介绍', link: '/coding/godot/' }
+				{ text: '介绍', link: '/coding/godot/' },
+				{ text: '系统架构', link: '/coding/godot/godot_system' },
+				{ text: '函数', link: '/coding/godot/godot_function' },
+				{ text: '快捷键', link: '/coding/godot/godot_shortcut' }
 			]
 		}
 	]
