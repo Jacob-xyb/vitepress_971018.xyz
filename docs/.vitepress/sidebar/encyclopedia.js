@@ -25,7 +25,7 @@ export default {
 		{
 			text: '孕期办理事项',
 			items: [
-				
+				{ text: '手续流程', link: '/encyclopedia/pregnancy/pregnancy_affairs' }
 			]
 		}
 	]
