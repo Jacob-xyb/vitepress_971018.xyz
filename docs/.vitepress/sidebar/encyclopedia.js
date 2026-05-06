@@ -17,8 +17,15 @@ export default {
 			text: '孕期常识',
 			items: [
 				{ text: '概览', link: '/encyclopedia/pregnancy/' },
+				{ text: '孕早期', link: '/encyclopedia/pregnancy/early_pregnancy' },
 				{ text: '日常琐事', link: '/encyclopedia/pregnancy/daily-matters' },
 				{ text: '隐私话题', link: '/encyclopedia/pregnancy/privacy' }
+			]
+		},
+		{
+			text: '孕期办理事项',
+			items: [
+				
 			]
 		}
 	]
