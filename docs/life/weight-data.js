@@ -2,7 +2,7 @@
  * @Author: Jacob-xyb 949782197@qq.com
  * @Date: 2026-02-02 15:59:37
  * @LastEditors: Jacob-xyb 949782197@qq.com
- * @LastEditTime: 2026-04-10 15:04:32
+ * @LastEditTime: 2026-05-11 17:16:20
  * @Description: Life is struggle.
  */
 export default {
@@ -43,6 +43,24 @@ export default {
     ["2026-04-08", 84.4, null, null],
     ["2026-04-09", 84.5, null, null],
     ["2026-04-10", 84.4, null, null],
+    ["2026-04-13", 84.5, null, null],
+    ["2026-04-14", 84.6, null, null],
+    ["2026-04-15", 84.8, null, null],
+    ["2026-04-16", 84.7, 127, 879],
+    ["2026-04-17", 84.8, null, null],
+    ["2026-04-20", 84.7, null, null],
+    ["2026-04-21", 84.9, null, null],
+    ["2026-04-22", 84.9, null, null],
+    ["2026-04-23", 84.8, null, null],
+    ["2026-04-24", 84.7, null, null],
+    ["2026-04-28", 84.8, null, null],
+    ["2026-04-29", 84.7, null, null],
+    ["2026-05-06", 85.1, null, null],
+    ["2026-05-07", 85.4, null, null],
+    ["2026-05-08", 85.7, null, null],
+    ["2026-05-09", 85.8, null, null],
+    ["2026-05-10", 85.7, null, null],
+    ["2026-05-11", 85.6, null, null],
     // 在这里添加新数据，可以保留逗号
     // 如果某天没有锻炼，calories 和 rope 填 null，例如：
     // ["2026-02-26", 83.9, null, null],
