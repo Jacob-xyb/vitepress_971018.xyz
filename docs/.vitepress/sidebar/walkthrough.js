@@ -56,6 +56,22 @@ export default {
 			]
 		}
 	],
+	'/walkthrough/识质存在/': [
+		{
+			text: '识质存在',
+			items: [
+				{ text: '主页', link: '/walkthrough/识质存在/' },
+				{ text: '白金攻略', link: '/walkthrough/识质存在/白金攻略' },
+			]
+		},
+		{
+			text: '白金要点',
+			items: [
+				{ text: '狂月难度', link: '/walkthrough/识质存在/狂月难度' },
+				{ text: '奖杯核对', link: '/walkthrough/识质存在/奖杯核对' },
+			]
+		}
+	],
 	'/walkthrough/恶魔之魂/': [
 		{
 			text: '恶魔之魂：重置版',

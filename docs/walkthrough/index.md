@@ -30,6 +30,14 @@ const games = [
     platform: 'PS5,PC',
     link: '/walkthrough/恶魔之魂'
   },
+  {
+    id: 4,
+    title: '识质存在',
+    titleEn: 'Pragmata',
+    cover: '/gameover/识质存在.jpg',
+    platform: 'PS5,PC,NS2',
+    link: '/walkthrough/识质存在'
+  },
   // 添加更多游戏...
 ]
 
