@@ -67,6 +67,7 @@ export default {
 		{
 			text: '白金要点',
 			items: [
+				{ text: '模拟训练', link: '/walkthrough/识质存在/模拟训练' },
 				{ text: '狂月难度', link: '/walkthrough/识质存在/狂月难度' },
 				{ text: '奖杯核对', link: '/walkthrough/识质存在/奖杯核对' },
 			]
