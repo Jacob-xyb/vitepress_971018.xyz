@@ -289,11 +289,27 @@ const generateMvpSections = () => {
       }))
     })
   }
-  
-  // 七武海 - 第6-12名
+
+  // 三大将 - 第6-8名
+  const admiralsLinks = qualifiedLinks.slice(
+    mvpConfig.onePiece + mvpConfig.yonko,
+    mvpConfig.onePiece + mvpConfig.yonko + mvpConfig.admirals
+  )
+  if (admiralsLinks.length > 0) {
+    sections.push({
+      title: '三大将',
+      icon: '⚓',
+      links: admiralsLinks.map(item => ({
+        ...item.link,
+        visitCount: item.count
+      }))
+    })
+  }
+
+  // 七武海 - 第9-15名
   const shichibukaiLinks = qualifiedLinks.slice(
-    mvpConfig.onePiece + mvpConfig.yonko, 
-    mvpConfig.onePiece + mvpConfig.yonko + mvpConfig.shichibukai
+    mvpConfig.onePiece + mvpConfig.yonko + mvpConfig.admirals,
+    mvpConfig.onePiece + mvpConfig.yonko + mvpConfig.admirals + mvpConfig.shichibukai
   )
   if (shichibukaiLinks.length > 0) {
     sections.push({
