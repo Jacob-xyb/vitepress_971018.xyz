@@ -508,6 +508,21 @@ onUnmounted(() => {
   padding: 30px;
   overflow-y: auto;
   max-height: 90vh;
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-brand) transparent;
+}
+
+.nav-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.nav-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav-content::-webkit-scrollbar-thumb {
+  background: var(--vp-c-brand);
+  border-radius: 2px;
 }
 
 .nav-section {
