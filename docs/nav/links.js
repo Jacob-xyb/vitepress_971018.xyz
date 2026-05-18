@@ -80,7 +80,7 @@ export const navData = {
 				icon: '🎭',
 				links: [
 					{ name: 'AGE动漫', url: 'https://www.agedm.io/', desc: '在线、免费', icon: 'https://www.agedm.io/favicon.ico', isFree: true, needLogin: true, baseCount: 2, backupUrl: "age.tv" },
-					
+					{ name: 'Komiic漫画', url: 'https://komiic.com/', desc: '在线、免费，赞助一次后体验绝佳', icon: 'https://komiic.com/favicon.ico', isFree: true, needLogin: false },
 				]
 			},
 			{
