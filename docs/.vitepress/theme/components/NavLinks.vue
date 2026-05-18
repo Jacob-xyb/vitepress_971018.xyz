@@ -445,6 +445,7 @@ onUnmounted(() => {
 .nav-links-container {
   display: flex;
   min-height: 600px;
+
   background: var(--vp-c-bg);
   border-radius: 8px;
   overflow: hidden;
@@ -506,7 +507,7 @@ onUnmounted(() => {
   flex: 1;
   padding: 30px;
   overflow-y: auto;
-  max-height: 800px;
+  max-height: 90vh;
 }
 
 .nav-section {
