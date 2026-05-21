@@ -61,6 +61,7 @@ export default {
 			text: '识质存在',
 			items: [
 				{ text: '主页', link: '/walkthrough/识质存在/' },
+				{ text: '游玩感受', link: '/walkthrough/识质存在/游玩感受' },
 				{ text: '白金攻略', link: '/walkthrough/识质存在/白金攻略' },
 			]
 		},
