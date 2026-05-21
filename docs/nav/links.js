@@ -147,10 +147,18 @@ export const navData = {
 				links: [
 					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon: 'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 7 },
 					{ name: 'CodePen', url: 'https://codepen.io', desc: '在线代码编辑器', icon: '✏️', baseCount: 0 },
-					{ name: 'Any2Card', url: 'https://any2card.com/zh', desc: 'markdown转小卡片', icon: 'https://any2card.com/_next/image?url=%2Flogo.jpeg&w=32&q=75', isFree: true, baseCount: 0 },
 					{ name: 'Gitee', url: 'https://gitee.com', desc: '代码托管平台', icon: 'https://gitee.com/favicon.ico', baseCount: 5 },
 					{ name: 'RegExr', url: 'https://regexr.com', desc: '正则表达式测试', icon: '🔍', baseCount: 0 },
 					{ name: 'Can I Use', url: 'https://caniuse.com', desc: '浏览器兼容性查询', icon: '✅', baseCount: 0 },
+				]
+			},
+			{
+				title: '自媒体工具',
+				icon: '🎬',
+				links: [
+					// 在这里添加自媒体相关网站
+					{ name: '小红书创作平台', url: 'https://creator.xiaohongshu.com/new/home', desc: '', icon: 'https://www.xiaohongshu.com/favicon.ico', isFree: true, eedLogin: true, baseCount: 0 },
+					{ name: 'Any2Card', url: 'https://any2card.com/zh', desc: 'markdown转小卡片', icon: 'https://any2card.com/_next/image?url=%2Flogo.jpeg&w=32&q=75', isFree: true, baseCount: 0 },
 				]
 			},
 			{
