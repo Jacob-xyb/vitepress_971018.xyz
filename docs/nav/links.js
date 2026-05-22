@@ -70,7 +70,7 @@ export const navData = {
 				title: '资源下载',
 				icon: '/icon/openmoji-film-projector.svg',
 				links: [
-					{ name: '6v电影', url: 'https://www.6v520.net/', desc: '磁力下载', icon: 'https://www.6v520.net/favicon.ico', isFree: true, baseCount: 0, backupUrl: "www.6v123.com" },
+					{ name: '6v电影', url: 'https://www.6v520.net/', desc: '磁力下载', icon: 'https://www.6v520.net/favicon.ico', isFree: true, hasAds: true, baseCount: 0, backupUrl: "www.6v123.com" },
 					{ name: 'BT世界', url: 'https://www.btsj6.com/', desc: '磁力下载，电视剧需要一集一集下载', icon: 'https://www.btsj6.com/favicon.ico', isFree: true, baseCount: 3, },
 					{ name: '电影港', url: 'https://www.dyg55.com/', desc: '磁力下载', icon: 'https://www.dyg55.com/favicon.ico', isFree: true, baseCount: 4, },
 					{ name: '高清族', url: 'https://www.hdzu.cc/', desc: '磁力下载，资源不全，尚且可用', icon: 'https://www.hdzu.cc/favicon.ico', isFree: true, baseCount: 0, },
