@@ -117,7 +117,7 @@ export const navData = {
 				title: '字幕资源',
 				icon: '💬',
 				links: [
-					// 在这里添加字幕网站
+					{ name: '字幕库', url: 'https://zimuku.org/', desc: '免费', icon: 'https://zimuku.org/favicon.png', isFree: true}
 				]
 			},
 			{
