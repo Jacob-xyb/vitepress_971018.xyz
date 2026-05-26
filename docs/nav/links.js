@@ -124,7 +124,7 @@ export const navData = {
 				title: '影视素材',
 				icon: '🎞️',
 				links: [
-					// 在这里添加影视素材网站
+					{ name: 'TMDB', url: 'https://www.themoviedb.org/', desc: '影视刮削', icon: 'https://www.themoviedb.org/favicon.ico', isFree: true}
 				]
 			}
 		],
