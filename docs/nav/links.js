@@ -277,7 +277,8 @@ export const navData = {
 				title: '游戏攻略',
 				icon: '📖',
 				links: [
-					{ name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree: true, needLogin: true, baseCount: 4 }
+					{ name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree: true, needLogin: true, baseCount: 4 },
+					{ name: '暗黑核', url: 'https://www.d2core.com/', desc: '暗黑破坏神4bd', icon: 'https://cloudstorage.d2core.com/app/logo-fav-32-solid.png', isFree: true, needLogin: true, baseCount: 1 }
 				]
 			}
 		],
