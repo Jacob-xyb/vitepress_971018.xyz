@@ -231,7 +231,8 @@ export const navData = {
 				title: '学习工具',
 				icon: '📖',
 				links: [
-					{ name: '有道词典', url: 'https://www.youdao.com/', desc: '在线翻译与词典', icon: '📕', isFree: true, baseCount: 20 },
+					{ name: '有道词典', url: 'https://www.youdao.com/', desc: '在线翻译与词典', icon: 'https://www.youdao.com/favicon.ico', isFree: true, baseCount: 20 },
+					{ name: '有道云笔记', url: 'https://note.youdao.com/', desc: '', icon: 'https://note.youdao.com/favicon.ico', isFree: true, needLogin: true, baseCount: 0 },
 				]
 			}
 		],
