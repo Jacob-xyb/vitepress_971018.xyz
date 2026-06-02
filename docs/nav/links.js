@@ -178,6 +178,7 @@ export const navData = {
 					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 10 },
 					{ name: 'OpenMoji', url: 'https://openmoji.org/', desc: '开源 Emoji 图标库', icon: '/logo/openmoji-logo.svg', isFree: true, baseCount: 4 },
 					{ name: 'iconfont', url: 'https://www.iconfont.cn/', desc: '阿里巴巴矢量图标库', icon: 'https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg', isFree: true, needLogin: true, baseCount: 6 },
+					{ name: 'flaticon', url: 'https://www.flaticon.com/', desc: '半免费cdn图标库', icon: 'https://media.flaticon.com/dist/min/img/favicon.ico',},
 				]
 			},
 						{
