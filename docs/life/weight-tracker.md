@@ -24,6 +24,22 @@ const records = ref(
 // 当前选择的指标
 const selectedMetric = ref('calories')
 
+// 图表显示的最近 3 个月时间范围（以最新一条记录为锚点）
+const chartTimeRange = computed(() => {
+  if (records.value.length === 0) return null
+  const maxDate = new Date(records.value[records.value.length - 1].date)
+  const minDate = new Date(maxDate)
+  minDate.setMonth(minDate.getMonth() - 3)
+  return { minDate, maxDate }
+})
+
+// 最近 6 个月的数据
+const chartRecords = computed(() => {
+  const range = chartTimeRange.value
+  if (!range) return []
+  return records.value.filter(r => new Date(r.date) >= range.minDate)
+})
+
 // 指标选项
 const metrics = [
   { value: 'calories', label: '消耗卡路里 (kcal)', color: '#ef4444' },
@@ -58,7 +74,8 @@ function createChart(Chart) {
   
   const currentMetric = metrics.find(m => m.value === selectedMetric.value)
   // 当前切换线的"是否有数据"判断：红线看 calories，绿线看 rope，各自独立
-  const metricHasData = records.value.map(r => r[selectedMetric.value] !== null)
+  const metricHasData = chartRecords.value.map(r => r[selectedMetric.value] !== null)
+  const timeRange = chartTimeRange.value
   const isMobile = window.innerWidth < 768
   
   chartInstance = new Chart(ctx, {
@@ -67,23 +84,23 @@ function createChart(Chart) {
       datasets: [
         {
           label: '体重 (kg)',
-          data: records.value.map(r => ({ x: r.date, y: r.weight })),
+          data: chartRecords.value.map(r => ({ x: r.date, y: r.weight })),
           borderColor: '#8b5cf6',
           backgroundColor: 'rgba(139, 92, 246, 0.1)',
           yAxisID: 'y',
           tension: 0.4,
           fill: true,
           cubicInterpolationMode: 'monotone',
-          pointBackgroundColor: records.value.map(r => r.hasExercise ? '#8b5cf6' : '#ffffff'),
-          pointBorderColor: records.value.map(r => '#8b5cf6'),
-          pointBorderWidth: records.value.map(r => r.hasExercise ? 2 : 3),
+          pointBackgroundColor: chartRecords.value.map(r => r.hasExercise ? '#8b5cf6' : '#ffffff'),
+          pointBorderColor: chartRecords.value.map(r => '#8b5cf6'),
+          pointBorderWidth: chartRecords.value.map(r => r.hasExercise ? 2 : 3),
           pointRadius: 3,
           pointHoverRadius: 5
         },
         {
           label: currentMetric.label,
-          data: records.value.map(r => ({ 
-            x: r.date, 
+          data: chartRecords.value.map(r => ({
+            x: r.date,
             y: r[selectedMetric.value] === null ? null : r[selectedMetric.value]
           })),
           borderColor: currentMetric.color,
@@ -93,7 +110,7 @@ function createChart(Chart) {
           cubicInterpolationMode: 'monotone',
           spanGaps: true, // 跳过 null 值，连接有效数据点
           pointBackgroundColor: metricHasData.map(has => has ? currentMetric.color : '#ffffff'),
-          pointBorderColor: records.value.map(r => currentMetric.color),
+          pointBorderColor: chartRecords.value.map(r => currentMetric.color),
           pointBorderWidth: metricHasData.map(has => has ? 2 : 3),
           pointRadius: 3,
           pointHoverRadius: 5
@@ -416,6 +433,7 @@ const stats = computed(() => {
   color: white;
 }
 
+/* 图表容器：自适应宽度，Chart.js 自己处理 label 拥挤 */
 .chart-container {
   height: 400px;
   margin-bottom: 2rem;
@@ -423,8 +441,6 @@ const stats = computed(() => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   padding: 1rem;
-  min-width: 100%;
-  overflow-x: auto;
 }
 
 @media (max-width: 768px) {
