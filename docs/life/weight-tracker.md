@@ -5,7 +5,8 @@ outline: false
 ---
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import * as echarts from 'echarts'
 import weightData from './weight-data.js'
 
 // 将数组数据转换为对象格式
@@ -24,214 +25,169 @@ const records = ref(
 // 当前选择的指标
 const selectedMetric = ref('calories')
 
-// 图表显示的最近 3 个月时间范围（以最新一条记录为锚点）
-const chartTimeRange = computed(() => {
-  if (records.value.length === 0) return null
-  const maxDate = new Date(records.value[records.value.length - 1].date)
-  const minDate = new Date(maxDate)
-  minDate.setMonth(minDate.getMonth() - 3)
-  return { minDate, maxDate }
-})
-
-// 最近 6 个月的数据
-const chartRecords = computed(() => {
-  const range = chartTimeRange.value
-  if (!range) return []
-  return records.value.filter(r => new Date(r.date) >= range.minDate)
-})
-
 // 指标选项
 const metrics = [
   { value: 'calories', label: '消耗卡路里 (kcal)', color: '#ef4444' },
   { value: 'rope', label: '跳绳个数', color: '#10b981' }
 ]
 
-// 图表实例
-let chartInstance = null
-
-// 初始化图表
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    Promise.all([
-      import('chart.js/auto'),
-      import('chartjs-adapter-date-fns')
-    ]).then(([Chart]) => {
-      const ctx = document.getElementById('weightChart')
-      if (ctx) {
-        createChart(Chart.default)
-      }
-    })
-  }
-})
-
-// 创建图表
-function createChart(Chart) {
-  const ctx = document.getElementById('weightChart')
-  
-  if (chartInstance) {
-    chartInstance.destroy()
-  }
-  
-  const currentMetric = metrics.find(m => m.value === selectedMetric.value)
-  // 当前切换线的"是否有数据"判断：红线看 calories，绿线看 rope，各自独立
-  const metricHasData = chartRecords.value.map(r => r[selectedMetric.value] !== null)
-  const timeRange = chartTimeRange.value
-  const isMobile = window.innerWidth < 768
-  
-  chartInstance = new Chart(ctx, {
-    type: 'line',
-    data: {
-      datasets: [
-        {
-          label: '体重 (kg)',
-          data: chartRecords.value.map(r => ({ x: r.date, y: r.weight })),
-          borderColor: '#8b5cf6',
-          backgroundColor: 'rgba(139, 92, 246, 0.1)',
-          yAxisID: 'y',
-          tension: 0.4,
-          fill: true,
-          cubicInterpolationMode: 'monotone',
-          pointBackgroundColor: chartRecords.value.map(r => r.hasExercise ? '#8b5cf6' : '#ffffff'),
-          pointBorderColor: chartRecords.value.map(r => '#8b5cf6'),
-          pointBorderWidth: chartRecords.value.map(r => r.hasExercise ? 2 : 3),
-          pointRadius: 3,
-          pointHoverRadius: 5
-        },
-        {
-          label: currentMetric.label,
-          data: chartRecords.value.map(r => ({
-            x: r.date,
-            y: r[selectedMetric.value] === null ? null : r[selectedMetric.value]
-          })),
-          borderColor: currentMetric.color,
-          backgroundColor: currentMetric.color + '20',
-          yAxisID: 'y1',
-          tension: 0.4,
-          cubicInterpolationMode: 'monotone',
-          spanGaps: true, // 跳过 null 值，连接有效数据点
-          pointBackgroundColor: metricHasData.map(has => has ? currentMetric.color : '#ffffff'),
-          pointBorderColor: chartRecords.value.map(r => currentMetric.color),
-          pointBorderWidth: metricHasData.map(has => has ? 2 : 3),
-          pointRadius: 3,
-          pointHoverRadius: 5
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      layout: {
-      },
-      interaction: {
-        mode: 'index',
-        intersect: false,
-      },
-      plugins: {
-        legend: {
-          display: true,
-          position: 'top'
-        },
-        tooltip: {
-          callbacks: {
-            title: function(context) {
-              return context[0].label
-            },
-            label: function(context) {
-              let label = context.dataset.label || ''
-              if (label) {
-                label += ': '
-              }
-              label += context.parsed.y
-              return label
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          type: 'time',
-          time: {
-            unit: 'day',
-            displayFormats: {
-              day: 'yyyy-MM-dd'
-            }
-          },
-          display: !isMobile,
-          grid: {
-            display: false
-          },
-          ticks: {
-            source: 'data', // 只显示数据点的日期
-            autoSkip: true, // 自动跳过标签避免拥挤
-            maxRotation: 45,
-            minRotation: 45,
-            maxTicksLimit: isMobile ? 5 : 10 // 限制最多显示的标签数量
-          }
-        },
-        y: {
-          type: 'linear',
-          display: true,
-          position: 'left',
-          title: {
-            display: !isMobile,
-            text: '体重 (kg)'
-          },
-          ticks: {
-            font: {
-              size: isMobile ? 9 : 12
-            },
-            padding: 0,
-            maxTicksLimit: isMobile ? 5 : 8
-          },
-          grid: {
-            color: 'rgba(0, 0, 0, 0.05)'
-          }
-        },
-        y1: {
-          type: 'linear',
-          display: true,
-          position: 'right',
-          title: {
-            display: !isMobile,
-            text: currentMetric.label
-          },
-          grid: {
-            drawOnChartArea: false,
-          },
-          ticks: {
-            font: {
-              size: isMobile ? 9 : 12
-            },
-            padding: 0,
-            maxTicksLimit: isMobile ? 5 : 8
-          }
-        }
-      }
-    }
-  })
-}
+// ECharts 实例
+let chart = null
 
 // 切换指标
 function changeMetric(metric) {
   selectedMetric.value = metric
-  if (typeof window !== 'undefined') {
-    Promise.all([
-      import('chart.js/auto'),
-      import('chartjs-adapter-date-fns')
-    ]).then(([Chart]) => {
-      createChart(Chart.default)
-    })
+  if (chart) chart.setOption(buildOption(), true)
+}
+
+// 构建 ECharts 配置
+function buildOption() {
+  const currentMetric = metrics.find(m => m.value === selectedMetric.value)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+
+  return {
+    backgroundColor: 'transparent',
+    legend: {
+      top: 10,
+      data: ['体重 (kg)', currentMetric.label],
+      textStyle: { color: isMobile ? '#9ca3af' : '#d1d5db' }
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'cross' }
+    },
+    grid: {
+      left: 60,
+      right: 60,
+      top: 50,
+      bottom: 80
+    },
+    xAxis: {
+      type: 'time',
+      axisLabel: {
+        formatter: (value) => {
+          const d = new Date(value)
+          return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+        },
+        hideOverlap: true
+      }
+    },
+    yAxis: [
+      {
+        type: 'value',
+        name: '体重 (kg)',
+        position: 'left',
+        nameTextStyle: { color: '#8b5cf6' },
+        // 自适应数据范围（不再从 0 起），让波动更清晰
+        scale: true,
+        // 左轴：保留网格线，但调淡、用虚线，不抢戏
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: 'rgba(128, 128, 128, 0.15)',
+            type: 'dashed'
+          }
+        }
+      },
+      {
+        type: 'value',
+        name: currentMetric.label,
+        position: 'right',
+        nameTextStyle: { color: currentMetric.color },
+        // 右轴同样自适应数据范围
+        scale: true,
+        // 右轴：不画网格线，避免和左轴交错成一团
+        splitLine: { show: false }
+      }
+    ],
+    // 关键：dataZoom 让 y 轴和图例固定，只拖曲线
+    dataZoom: [
+      {
+        type: 'slider',       // 底部滑块
+        xAxisIndex: 0,
+        bottom: 10,
+        height: 30,
+        start: 0,
+        end: 100
+      },
+      {
+        type: 'inside',        // 鼠标滚轮缩放 + 拖动平移
+        xAxisIndex: 0
+      }
+    ],
+    series: [
+      {
+        name: '体重 (kg)',
+        type: 'line',
+        data: records.value.map(r => [r.date, r.weight]),
+        yAxisIndex: 0,
+        smooth: 0.4,
+        symbolSize: 7,
+        // 每个点的颜色：实心=紫，空心=白圆
+        itemStyle: {
+          color: (params) => records.value[params.dataIndex].hasExercise ? '#8b5cf6' : '#ffffff',
+          borderColor: '#8b5cf6',
+          borderWidth: (params) => records.value[params.dataIndex].hasExercise ? 0 : 2
+        },
+        lineStyle: { color: '#8b5cf6', width: 2 },
+        areaStyle: { color: 'rgba(139, 92, 246, 0.1)' }
+      },
+      {
+        name: currentMetric.label,
+        type: 'line',
+        data: records.value.map(r => [
+          r.date,
+          r[selectedMetric.value] === null ? null : r[selectedMetric.value]
+        ]),
+        yAxisIndex: 1,
+        smooth: 0.4,
+        symbolSize: 7,
+        connectNulls: true, // 跨过 null 连线
+        // 每个点的颜色：实心=当前指标色，空心=白圆
+        itemStyle: {
+          color: (params) => records.value[params.dataIndex][selectedMetric.value] !== null ? currentMetric.color : '#ffffff',
+          borderColor: currentMetric.color,
+          borderWidth: (params) => records.value[params.dataIndex][selectedMetric.value] !== null ? 0 : 2
+        },
+        lineStyle: { color: currentMetric.color, width: 2 }
+      }
+    ]
   }
+}
+
+// 初始化图表
+onMounted(() => {
+  if (typeof window === 'undefined') return
+  const el = document.getElementById('weightChart')
+  if (!el) return
+  chart = echarts.init(el)
+  chart.setOption(buildOption())
+  // 窗口缩放时重排
+  window.addEventListener('resize', handleResize)
+})
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('resize', handleResize)
+  }
+  if (chart) {
+    chart.dispose()
+    chart = null
+  }
+})
+
+function handleResize() {
+  if (chart) chart.resize()
 }
 
 // 统计数据
 const stats = computed(() => {
   if (records.value.length === 0) return null
-  
+
   const weights = records.value.map(r => r.weight)
   const latest = records.value[records.value.length - 1]
   const first = records.value[0]
-  
+
   return {
     current: latest.weight,
     change: (latest.weight - first.weight).toFixed(1),
@@ -274,8 +230,8 @@ const stats = computed(() => {
   <!-- 指标切换 -->
   <div class="metric-selector">
     <span class="selector-label">对比指标：</span>
-    <button 
-      v-for="metric in metrics" 
+    <button
+      v-for="metric in metrics"
       :key="metric.value"
       @click="changeMetric(metric.value)"
       :class="['metric-btn', { active: selectedMetric === metric.value }]"
@@ -285,10 +241,8 @@ const stats = computed(() => {
     </button>
   </div>
 
-  <!-- 图表 -->
-  <div class="chart-container">
-    <canvas id="weightChart"></canvas>
-  </div>
+  <!-- ECharts 图表：dataZoom 内置滑块，y 轴和图例固定，只拖曲线 -->
+  <div id="weightChart" class="chart-container"></div>
 
   <!-- 数据表格 -->
   <div class="data-table">
@@ -433,20 +387,19 @@ const stats = computed(() => {
   color: white;
 }
 
-/* 图表容器：自适应宽度，Chart.js 自己处理 label 拥挤 */
+/* 图表容器：固定宽度，dataZoom 滑块内置在图表里 */
 .chart-container {
+  width: 100%;
   height: 400px;
   margin-bottom: 2rem;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 1rem;
 }
 
 @media (max-width: 768px) {
   .chart-container {
     height: 300px;
-    padding: 0.5rem 0.25rem;
   }
 }
 
