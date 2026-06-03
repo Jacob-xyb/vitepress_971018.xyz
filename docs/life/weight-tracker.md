@@ -15,7 +15,9 @@ const records = ref(
     weight: row[1],
     calories: row[2],
     rope: row[3],
-    hasExercise: row[2] !== null && row[3] !== null // 判断是否有锻炼
+    hasExercise: row[2] !== null && row[3] !== null, // 体重线：两者都有才算锻炼
+    hasCalories: row[2] !== null,                    // 红线：calories 有值就实心
+    hasRope: row[3] !== null                         // 绿线：rope 有值就实心
   }))
 )
 
@@ -55,6 +57,8 @@ function createChart(Chart) {
   }
   
   const currentMetric = metrics.find(m => m.value === selectedMetric.value)
+  // 当前切换线的"是否有数据"判断：红线看 calories，绿线看 rope，各自独立
+  const metricHasData = records.value.map(r => r[selectedMetric.value] !== null)
   const isMobile = window.innerWidth < 768
   
   chartInstance = new Chart(ctx, {
@@ -73,8 +77,8 @@ function createChart(Chart) {
           pointBackgroundColor: records.value.map(r => r.hasExercise ? '#8b5cf6' : '#ffffff'),
           pointBorderColor: records.value.map(r => '#8b5cf6'),
           pointBorderWidth: records.value.map(r => r.hasExercise ? 2 : 3),
-          pointRadius: 5,
-          pointHoverRadius: 7
+          pointRadius: 3,
+          pointHoverRadius: 5
         },
         {
           label: currentMetric.label,
@@ -88,11 +92,11 @@ function createChart(Chart) {
           tension: 0.4,
           cubicInterpolationMode: 'monotone',
           spanGaps: true, // 跳过 null 值，连接有效数据点
-          pointBackgroundColor: records.value.map(r => r.hasExercise ? currentMetric.color : '#ffffff'),
+          pointBackgroundColor: metricHasData.map(has => has ? currentMetric.color : '#ffffff'),
           pointBorderColor: records.value.map(r => currentMetric.color),
-          pointBorderWidth: records.value.map(r => r.hasExercise ? 2 : 3),
-          pointRadius: 5,
-          pointHoverRadius: 7
+          pointBorderWidth: metricHasData.map(has => has ? 2 : 3),
+          pointRadius: 3,
+          pointHoverRadius: 5
         }
       ]
     },
