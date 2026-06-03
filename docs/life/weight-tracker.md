@@ -15,7 +15,7 @@ const records = ref(
     weight: row[1],
     calories: row[2],
     rope: row[3],
-    hasExercise: row[2] !== null && row[3] !== null, // 体重线：两者都有才算锻炼
+    hasExercise: row[2] !== null || row[3] !== null, // 体重线：两者都没有才算无锻炼
     hasCalories: row[2] !== null,                    // 红线：calories 有值就实心
     hasRope: row[3] !== null                         // 绿线：rope 有值就实心
   }))
