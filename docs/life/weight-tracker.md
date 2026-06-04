@@ -100,7 +100,8 @@ function buildOption() {
         splitLine: { show: false }
       }
     ],
-    // 关键：dataZoom 让 y 轴和图例固定，只拖曲线
+    // 只保留底部滑块，去掉 inside 类型，否则鼠标在图表上滚动/拖动会偷偷缩放
+    // 导致范围外的点消失
     dataZoom: [
       {
         type: 'slider',       // 底部滑块
@@ -109,10 +110,6 @@ function buildOption() {
         height: 30,
         start: 0,
         end: 100
-      },
-      {
-        type: 'inside',        // 鼠标滚轮缩放 + 拖动平移
-        xAxisIndex: 0
       }
     ],
     series: [
@@ -122,15 +119,27 @@ function buildOption() {
         data: records.value.map(r => [r.date, r.weight]),
         yAxisIndex: 0,
         smooth: 0.4,
+        showSymbol: false,
         symbolSize: 7,
-        // 每个点的颜色：实心=紫，空心=白圆
-        itemStyle: {
-          color: (params) => records.value[params.dataIndex].hasExercise ? '#8b5cf6' : '#ffffff',
-          borderColor: '#8b5cf6',
-          borderWidth: (params) => records.value[params.dataIndex].hasExercise ? 0 : 2
-        },
         lineStyle: { color: '#8b5cf6', width: 2 },
         areaStyle: { color: 'rgba(139, 92, 246, 0.1)' }
+      },
+      {
+        name: '体重点位',
+        type: 'scatter',
+        data: records.value.map(r => ({
+          value: [r.date, r.weight],
+          itemStyle: {
+            color: '#8b5cf6',
+            opacity: r.hasExercise ? 1 : 0.4,
+            borderColor: '#8b5cf6',
+            borderWidth: 0
+          }
+        })),
+        yAxisIndex: 0,
+        symbolSize: 7,
+        zlevel: 3,
+        tooltip: { show: false }
       },
       {
         name: currentMetric.label,
@@ -141,15 +150,27 @@ function buildOption() {
         ]),
         yAxisIndex: 1,
         smooth: 0.4,
+        showSymbol: false,
         symbolSize: 7,
         connectNulls: true, // 跨过 null 连线
-        // 每个点的颜色：实心=当前指标色，空心=白圆
-        itemStyle: {
-          color: (params) => records.value[params.dataIndex][selectedMetric.value] !== null ? currentMetric.color : '#ffffff',
-          borderColor: currentMetric.color,
-          borderWidth: (params) => records.value[params.dataIndex][selectedMetric.value] !== null ? 0 : 2
-        },
         lineStyle: { color: currentMetric.color, width: 2 }
+      },
+      {
+        name: `${currentMetric.label}点位`,
+        type: 'scatter',
+        data: records.value
+          .map(r => [r.date, r[selectedMetric.value]])
+          .filter(item => item[1] !== null),
+        yAxisIndex: 1,
+        symbolSize: 7,
+        zlevel: 3,
+        itemStyle: {
+          color: currentMetric.color,
+          opacity: 1,
+          borderColor: currentMetric.color,
+          borderWidth: 0
+        },
+        tooltip: { show: false }
       }
     ]
   }
