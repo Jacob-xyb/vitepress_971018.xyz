@@ -61,9 +61,7 @@ function buildOption() {
     // 而不是 ECharts 6 默认调色板（第一色是 #5470c6 蓝）
     color: ['#8b5cf6', currentMetric.color],
     legend: {
-      top: 10,
-      data: ['体重 (kg)', currentMetric.label],
-      textStyle: { color: isMobile ? '#9ca3af' : '#d1d5db' }
+      show: false
     },
     tooltip: {
       trigger: 'axis',
