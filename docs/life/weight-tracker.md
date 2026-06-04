@@ -131,7 +131,7 @@ function buildOption() {
           value: [r.date, r.weight],
           itemStyle: {
             color: '#8b5cf6',
-            opacity: r.hasExercise ? 1 : 0.4,
+            opacity: 1,
             borderColor: '#8b5cf6',
             borderWidth: 0
           }
