@@ -189,6 +189,24 @@ function buildOption() {
           borderWidth: 0
         },
         tooltip: { show: false }
+      },
+      {
+        name: `${currentMetric.label}圆心`,
+        type: 'scatter',
+        data: records.value
+          .map(r => [r.date, r[selectedMetric.value]])
+          .filter(item => item[1] !== null),
+        yAxisIndex: 1,
+        symbol: 'circle',
+        symbolSize: 2,
+        zlevel: 4,
+        itemStyle: {
+          color: '#ffffff',
+          opacity: 1,
+          borderColor: '#ffffff',
+          borderWidth: 0
+        },
+        tooltip: { show: false }
       }
     ]
   }
