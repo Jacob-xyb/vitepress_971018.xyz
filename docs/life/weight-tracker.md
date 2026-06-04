@@ -34,6 +34,16 @@ const metrics = [
 // ECharts 实例
 let chart = null
 
+const hoverPointEmphasis = {
+  scale: true,
+  itemStyle: {
+    borderColor: '#22c55e',
+    borderWidth: 2,
+    shadowBlur: 10,
+    shadowColor: 'rgba(34, 197, 94, 0.35)'
+  }
+}
+
 // 切换指标
 function changeMetric(metric) {
   selectedMetric.value = metric
@@ -139,6 +149,7 @@ function buildOption() {
         yAxisIndex: 0,
         symbolSize: 7,
         zlevel: 3,
+        emphasis: hoverPointEmphasis,
         tooltip: { show: false }
       },
       {
@@ -157,6 +168,7 @@ function buildOption() {
           borderColor: '#ffffff',
           borderWidth: 0
         },
+        emphasis: hoverPointEmphasis,
         tooltip: { show: false }
       },
       {
