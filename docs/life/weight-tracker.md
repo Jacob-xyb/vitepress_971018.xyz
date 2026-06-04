@@ -336,44 +336,6 @@ const stats = computed(() => {
   <!-- ECharts 图表：dataZoom 内置滑块，y 轴和图例固定，只拖曲线 -->
   <div id="weightChart" class="chart-container"></div>
 
-  <!-- 数据表格 -->
-  <div class="data-table">
-    <h2>详细记录</h2>
-    <div class="legend">
-      <span class="legend-item">
-        <span class="legend-dot" style="background: #8b5cf6;"></span>
-        有锻炼
-      </span>
-      <span class="legend-item">
-        <span class="legend-dot" style="background: #ffffff; border: 2px solid #8b5cf6;"></span>
-        无锻炼 ⚠️
-      </span>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>日期</th>
-          <th>体重 (kg)</th>
-          <th>消耗卡路里 (kcal)</th>
-          <th>跳绳个数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="record in records.slice().reverse()" :key="record.date">
-          <td>{{ record.date }}</td>
-          <td>
-            <span :style="{ color: record.hasExercise ? 'inherit' : '#ef4444' }">
-              {{ record.weight }}
-              <span v-if="!record.hasExercise" style="font-size: 0.75rem; margin-left: 4px;">⚠️</span>
-            </span>
-          </td>
-          <td>{{ record.calories === null ? '-' : record.calories }}</td>
-          <td>{{ record.rope === null ? '-' : record.rope }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
   <!-- 累计统计 -->
   <div class="total-stats" v-if="stats">
     <h2>累计统计</h2>
