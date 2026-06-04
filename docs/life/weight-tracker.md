@@ -57,6 +57,9 @@ function buildOption() {
 
   return {
     backgroundColor: 'transparent',
+    // 显式指定调色板，让 tooltip/legend 的 marker 用这里定义的颜色
+    // 而不是 ECharts 6 默认调色板（第一色是 #5470c6 蓝）
+    color: ['#8b5cf6', currentMetric.color],
     legend: {
       top: 10,
       data: ['体重 (kg)', currentMetric.label],
@@ -66,15 +69,24 @@ function buildOption() {
       trigger: 'axis',
       axisPointer: { type: 'cross' },
       // 自定义 tooltip：日期只显示 yyyy-MM-dd，null 值显示为 "-"
+      // 圆点用硬编码颜色映射画（绕开 ECharts 6 marker 颜色机制的 bug）
       formatter: (params) => {
         if (!params || params.length === 0) return ''
         const d = new Date(params[0].axisValue)
         const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+        // 硬编码：series name → marker 颜色（和线色严格一致）
+        const markerColor = {
+          '体重 (kg)': '#8b5cf6',
+          '消耗卡路里 (kcal)': '#ef4444',
+          '跳绳个数': '#10b981'
+        }
         let html = `${dateStr}<br/>`
         params.forEach(p => {
           const v = p.value[1]
           const display = (v === null || v === undefined) ? '-' : v
-          html += `${p.marker} ${p.seriesName}: <strong>${display}</strong><br/>`
+          const c = markerColor[p.seriesName] || p.color
+          const dot = `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${c};margin-right:6px;vertical-align:middle;"></span>`
+          html += `${dot}${p.seriesName}: <strong>${display}</strong><br/>`
         })
         return html
       }
