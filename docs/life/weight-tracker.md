@@ -64,7 +64,20 @@ function buildOption() {
     },
     tooltip: {
       trigger: 'axis',
-      axisPointer: { type: 'cross' }
+      axisPointer: { type: 'cross' },
+      // 自定义 tooltip：日期只显示 yyyy-MM-dd，null 值显示为 "-"
+      formatter: (params) => {
+        if (!params || params.length === 0) return ''
+        const d = new Date(params[0].axisValue)
+        const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+        let html = `${dateStr}<br/>`
+        params.forEach(p => {
+          const v = p.value[1]
+          const display = (v === null || v === undefined) ? '-' : v
+          html += `${p.marker} ${p.seriesName}: <strong>${display}</strong><br/>`
+        })
+        return html
+      }
     },
     grid: {
       left: 60,
