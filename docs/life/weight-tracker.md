@@ -142,6 +142,24 @@ function buildOption() {
         tooltip: { show: false }
       },
       {
+        name: '体重锻炼中心点',
+        type: 'scatter',
+        data: records.value
+          .filter(r => r.hasExercise)
+          .map(r => [r.date, r.weight]),
+        yAxisIndex: 0,
+        symbol: 'circle',
+        symbolSize: 3,
+        zlevel: 4,
+        itemStyle: {
+          color: '#ffffff',
+          opacity: 1,
+          borderColor: '#ffffff',
+          borderWidth: 0
+        },
+        tooltip: { show: false }
+      },
+      {
         name: currentMetric.label,
         type: 'line',
         data: records.value.map(r => [
