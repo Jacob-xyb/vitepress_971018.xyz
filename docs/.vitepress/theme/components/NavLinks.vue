@@ -306,10 +306,26 @@ const generateMvpSections = () => {
     })
   }
 
-  // 七武海 - 第9-15名
-  const shichibukaiLinks = qualifiedLinks.slice(
+  // 五老星 - 第9-13名
+  const goroseiLinks = qualifiedLinks.slice(
     mvpConfig.onePiece + mvpConfig.admirals + mvpConfig.yonko,
-    mvpConfig.onePiece + mvpConfig.admirals + mvpConfig.yonko + mvpConfig.shichibukai
+    mvpConfig.onePiece + mvpConfig.admirals + mvpConfig.yonko + mvpConfig.gorosei
+  )
+  if (goroseiLinks.length > 0) {
+    sections.push({
+      title: '五老星',
+      icon: '⭐',
+      links: goroseiLinks.map(item => ({
+        ...item.link,
+        visitCount: item.count
+      }))
+    })
+  }
+
+  // 七武海 - 第14-20名
+  const shichibukaiLinks = qualifiedLinks.slice(
+    mvpConfig.onePiece + mvpConfig.admirals + mvpConfig.yonko + mvpConfig.gorosei,
+    mvpConfig.onePiece + mvpConfig.admirals + mvpConfig.yonko + mvpConfig.gorosei + mvpConfig.shichibukai
   )
   if (shichibukaiLinks.length > 0) {
     sections.push({

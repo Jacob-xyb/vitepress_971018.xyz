@@ -19,7 +19,8 @@ export const mvpConfig = {
 	onePiece: 1,        // 前 1 名：OnePiece（海贼王）
 	admirals: 3,        // 前 2-4 名：三大将（3个）
 	yonko: 4,           // 前 5-8 名：四皇（4个）
-	shichibukai: 7     // 前 9-15 名：七武海（7个）
+	gorosei: 5,         // 前 9-13 名：五老星（5个）
+	shichibukai: 7     // 前 14-20 名：七武海（7个）
 }
 
 export const navData = {
