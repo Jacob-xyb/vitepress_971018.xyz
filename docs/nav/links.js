@@ -17,8 +17,8 @@ export const hotConfig = {
 export const mvpConfig = {
 	minCount: 5,        // 最少访问次数才能进入全场最佳
 	onePiece: 1,        // 前 1 名：OnePiece（海贼王）
-	yonko: 4,           // 前 2-5 名：四皇（4个）
-	admirals: 3,        // 前 6-8 名：三大将（3个）
+	admirals: 3,        // 前 2-4 名：三大将（3个）
+	yonko: 4,           // 前 5-8 名：四皇（4个）
 	shichibukai: 7     // 前 9-15 名：七武海（7个）
 }
 

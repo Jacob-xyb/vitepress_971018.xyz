@@ -277,24 +277,8 @@ const generateMvpSections = () => {
     })
   }
   
-  // 四皇 - 第2-5名
-  const yonkoLinks = qualifiedLinks.slice(mvpConfig.onePiece, mvpConfig.onePiece + mvpConfig.yonko)
-  if (yonkoLinks.length > 0) {
-    sections.push({
-      title: '四皇',
-      icon: '⚔️',
-      links: yonkoLinks.map(item => ({
-        ...item.link,
-        visitCount: item.count
-      }))
-    })
-  }
-
-  // 三大将 - 第6-8名
-  const admiralsLinks = qualifiedLinks.slice(
-    mvpConfig.onePiece + mvpConfig.yonko,
-    mvpConfig.onePiece + mvpConfig.yonko + mvpConfig.admirals
-  )
+  // 三大将 - 第2-4名
+  const admiralsLinks = qualifiedLinks.slice(mvpConfig.onePiece, mvpConfig.onePiece + mvpConfig.admirals)
   if (admiralsLinks.length > 0) {
     sections.push({
       title: '三大将',
@@ -306,10 +290,26 @@ const generateMvpSections = () => {
     })
   }
 
+  // 四皇 - 第5-8名
+  const yonkoLinks = qualifiedLinks.slice(
+    mvpConfig.onePiece + mvpConfig.admirals,
+    mvpConfig.onePiece + mvpConfig.admirals + mvpConfig.yonko
+  )
+  if (yonkoLinks.length > 0) {
+    sections.push({
+      title: '四皇',
+      icon: '⚔️',
+      links: yonkoLinks.map(item => ({
+        ...item.link,
+        visitCount: item.count
+      }))
+    })
+  }
+
   // 七武海 - 第9-15名
   const shichibukaiLinks = qualifiedLinks.slice(
-    mvpConfig.onePiece + mvpConfig.yonko + mvpConfig.admirals,
-    mvpConfig.onePiece + mvpConfig.yonko + mvpConfig.admirals + mvpConfig.shichibukai
+    mvpConfig.onePiece + mvpConfig.admirals + mvpConfig.yonko,
+    mvpConfig.onePiece + mvpConfig.admirals + mvpConfig.yonko + mvpConfig.shichibukai
   )
   if (shichibukaiLinks.length > 0) {
     sections.push({
