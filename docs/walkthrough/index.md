@@ -38,6 +38,14 @@ const games = [
     platform: 'PS5,PC,NS2',
     link: '/walkthrough/识质存在'
   },
+  {
+    id: 5,
+    title: '歧路旅人2',
+    titleEn: 'Octopath Traveler 2',
+    cover: '/gameover/歧路旅人2.jpg',
+    platform: 'PS5,PC,NS',
+    link: '/walkthrough/歧路旅人2'
+  },
   // 添加更多游戏...
 ]
 

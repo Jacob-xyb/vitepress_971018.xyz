@@ -74,6 +74,15 @@ export default {
 			]
 		}
 	],
+	'/walkthrough/歧路旅人2/': [
+		{
+			text: '歧路旅人2',
+			items: [
+				{ text: '主页', link: '/walkthrough/歧路旅人2/' },
+				{ text: '职业介绍', link: '/walkthrough/歧路旅人2/职业介绍' },
+			]
+		}
+	],
 	'/walkthrough/恶魔之魂/': [
 		{
 			text: '恶魔之魂：重置版',
