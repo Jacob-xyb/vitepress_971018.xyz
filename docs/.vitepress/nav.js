@@ -24,7 +24,8 @@ export const nav = [
 		text: '系统技巧',
 		items: [
 			{ text: 'macOS', link: '/system/mac/' },
-			{ text: 'Windows', link: '/system/windows/' }
+			{ text: 'Windows', link: '/system/windows/' },
+			{ text: 'Linux', link: '/system/linux/' }
 		]
 	},
 	{

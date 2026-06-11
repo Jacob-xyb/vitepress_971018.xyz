@@ -34,5 +34,20 @@ export default {
 				// { text: '效率工具', link: '/system/windows/productivity' }
 			]
 		}
+	],
+	'/system/linux/': [
+		{
+			text: 'Linux',
+			items: [
+				{ text: 'Linux 概述', link: '/system/linux/' },
+				{ text: 'Bash 基础操作', link: '/system/linux/bash-basics' },
+				// { text: '文件与目录管理', link: '/system/linux/file-management' },
+				// { text: '用户与权限管理', link: '/system/linux/permissions' },
+				// { text: 'Shell 配置', link: '/system/linux/shell' },
+				// { text: '包管理器', link: '/system/linux/package-manager' },
+				// { text: '常用命令', link: '/system/linux/commands' },
+				// { text: '终端美化', link: '/system/linux/terminal-beautify' },
+			]
+		}
 	]
 }

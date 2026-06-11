@@ -51,7 +51,7 @@ features:
 
   - title: 系统技巧
     icon: 🖥️
-    details: macOS、Windows
+    details: macOS、Windows、Linux
     link: /system/
 
   - title: 折腾日记

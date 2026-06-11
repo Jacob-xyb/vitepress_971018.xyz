@@ -15,5 +15,13 @@ export const systemLinks = [
 		desc: 'Windows 系统使用技巧',
 		link: '/system/windows/',
 		tags: ['Windows', 'Microsoft']
+	},
+	{
+		id: 'linux',
+		title: 'Linux',
+		icon: '🐧',
+		desc: 'Linux 系统与 Bash 使用技巧',
+		link: '/system/linux/',
+		tags: ['Linux', 'Bash', 'Shell']
 	}
 ]
