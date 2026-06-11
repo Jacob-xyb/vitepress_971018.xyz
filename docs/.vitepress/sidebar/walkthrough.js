@@ -81,6 +81,7 @@ export default {
 				{ text: '主页', link: '/walkthrough/歧路旅人2/' },
 				{ text: '职业介绍', link: '/walkthrough/歧路旅人2/职业介绍' },
 				{ text: '前期攻略', link: '/walkthrough/歧路旅人2/前期攻略' },
+				{ text: '武器获取', link: '/walkthrough/歧路旅人2/武器获取' },
 			]
 		}
 	],
