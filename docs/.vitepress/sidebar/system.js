@@ -44,7 +44,7 @@ export default {
 				// { text: '文件与目录管理', link: '/system/linux/file-management' },
 				// { text: '用户与权限管理', link: '/system/linux/permissions' },
 				// { text: 'Shell 配置', link: '/system/linux/shell' },
-				// { text: '包管理器', link: '/system/linux/package-manager' },
+				{ text: '包管理器', link: '/system/linux/package-manager' },
 				// { text: '常用命令', link: '/system/linux/commands' },
 				// { text: '终端美化', link: '/system/linux/terminal-beautify' },
 			]

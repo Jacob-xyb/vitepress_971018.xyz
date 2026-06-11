@@ -15,7 +15,7 @@
 - 别名与函数
 
 ### 软件与工具
-- 包管理器（apt / yum / dnf / pacman）
+- [包管理器（apt / yum / dnf / pacman）](./package-manager.md)
 - 常用开发环境配置
 - 终端美化
 
