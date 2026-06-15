@@ -23,6 +23,12 @@ export default {
 			]
 		},
 		{
+			text: '孕期检查',
+			items: [
+				{ text: 'NT 检查', link: '/encyclopedia/pregnancy/NT检查' }
+			]
+		},
+		{
 			text: '孕期办理事项',
 			items: [
 				{ text: '手续流程', link: '/encyclopedia/pregnancy/pregnancy_affairs' }
