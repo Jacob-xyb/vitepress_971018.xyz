@@ -83,6 +83,12 @@ export default {
 				{ text: '前期攻略', link: '/walkthrough/歧路旅人2/前期攻略' },
 				{ text: '武器获取', link: '/walkthrough/歧路旅人2/武器获取' },
 			]
+		},
+		{
+			text: '职业攻略',
+			items: [
+				{ text: '猎人攻略', link: '/walkthrough/歧路旅人2/猎人攻略' },
+			]
 		}
 	],
 	'/walkthrough/恶魔之魂/': [
