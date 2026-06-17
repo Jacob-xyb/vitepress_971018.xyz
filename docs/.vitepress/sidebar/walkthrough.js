@@ -88,6 +88,7 @@ export default {
 			text: '职业攻略',
 			items: [
 				{ text: '猎人攻略', link: '/walkthrough/歧路旅人2/猎人攻略' },
+				{ text: '剑士攻略', link: '/walkthrough/歧路旅人2/剑士攻略' },
 			]
 		}
 	],
