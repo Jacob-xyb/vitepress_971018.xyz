@@ -82,13 +82,14 @@ export default {
 				{ text: '职业介绍', link: '/walkthrough/歧路旅人2/职业介绍' },
 				{ text: '前期攻略', link: '/walkthrough/歧路旅人2/前期攻略' },
 				{ text: '武器获取', link: '/walkthrough/歧路旅人2/武器获取' },
+				{ text: '后期攻略', link: '/walkthrough/歧路旅人2/后期攻略' },
 			]
 		},
 		{
 			text: '职业攻略',
 			items: [
-				{ text: '猎人攻略', link: '/walkthrough/歧路旅人2/猎人攻略' },
 				{ text: '剑士攻略', link: '/walkthrough/歧路旅人2/剑士攻略' },
+				{ text: '猎人攻略', link: '/walkthrough/歧路旅人2/猎人攻略' },
 			]
 		}
 	],
