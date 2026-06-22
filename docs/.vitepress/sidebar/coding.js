@@ -122,7 +122,8 @@ export default {
 		{
 			text: 'Git',
 			items: [
-				{ text: '介绍', link: '/coding/git/' }
+				{ text: '介绍', link: '/coding/git/' },
+				{ text: '分支', link: '/coding/git/branch' },
 			]
 		},
 		{

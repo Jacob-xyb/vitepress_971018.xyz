@@ -71,5 +71,6 @@ Git 的配置系统是确定性的，这是其可靠性的基础。
 
 ## 内容导航
 
+- [分支基础操作和简介](/coding/git/branch) - Git 分支的创建、切换、合并与删除
 - [代理配置](/coding/git/proxy) - 解决 Git 连接 GitHub 超时问题
 - [Rebase 变基](/coding/git/rebase) - Git 分支整理技巧
