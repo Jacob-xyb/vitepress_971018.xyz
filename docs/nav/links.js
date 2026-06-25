@@ -252,6 +252,7 @@ export const navData = {
 				icon: '🏠',
 				links: [
 					{ name: '115网盘', url: 'https://115.com/', desc: '一生相伴', baseCount: 5, icon: 'https://115.com/favicon.ico' },
+					{ name: '海盗湾', url: 'https://thepiratebay.org/index.html', desc: '磁力下载', icon: 'https://torrindex.net/images/tpb.jpg', isFree: true, needVPN: true },
 					{ name: '百度地图', url: 'https://map.baidu.com', desc: '地图导航服务', icon: '🗺️', baseCount: 0 },
 					{ name: '天气预报', url: 'https://www.weather.com.cn', desc: '天气查询', icon: '🌤️', baseCount: 0 },
 					{ name: '12306', url: 'https://www.12306.cn', desc: '火车票预订', icon: '🚄', baseCount: 0 },
