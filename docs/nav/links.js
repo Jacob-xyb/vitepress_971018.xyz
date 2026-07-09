@@ -258,6 +258,13 @@ export const navData = {
 					{ name: '12306', url: 'https://www.12306.cn', desc: '火车票预订', icon: '🚄', baseCount: 0 },
 				]
 			},
+			{
+				title: '资源下载',
+				icon: '🔎',
+				links: [
+					{ name: '网盘搜', url: 'https://wangpansou.net/', desc: '夸克、百度、阿里', icon: 'https://wangpansou.net/icon.svg?icon.06fp4pul1nk-z.svg', isFree: true, baseCount: 0 },
+				]
+			},
 		],
 
 		game: [
