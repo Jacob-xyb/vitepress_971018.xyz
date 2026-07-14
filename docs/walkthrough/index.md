@@ -7,6 +7,14 @@ outline: false
 <script setup>
 const games = [
   {
+    id: 6,
+    title: '暗黑破坏神4',
+    titleEn: 'Diablo IV',
+    cover: '/gameover/暗黑4.jpg',
+    platform: 'PS5,PC',
+    link: '/walkthrough/暗黑破坏神4'
+  },
+  {
     id: 1,
     title: '仁王3',
     titleEn: 'Nioh 3',
@@ -46,6 +54,7 @@ const games = [
     platform: 'PS5,PC,NS',
     link: '/walkthrough/歧路旅人2'
   },
+
   // 添加更多游戏...
 ]
 

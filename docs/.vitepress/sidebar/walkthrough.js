@@ -94,6 +94,38 @@ export default {
 			]
 		}
 	],
+	'/walkthrough/暗黑破坏神4/': [
+		{
+			text: '暗黑破坏神4',
+			items: [
+				{ text: '主页', link: '/walkthrough/暗黑破坏神4/' },
+			]
+		},
+		{
+			text: '职业攻略',
+			items: [
+				{
+					text: '德鲁伊',
+					collapsed: false,
+					items: [
+						{ text: 'S14攻略', link: '/walkthrough/暗黑破坏神4/德鲁伊/S14攻略' },
+					]
+				}
+			]
+		},
+		{
+			text: '核心系统',
+			items: [
+				// 待添加：巅峰盘、装备词条、过滤器等
+			]
+		},
+		{
+			text: '赛季内容',
+			items: [
+				// 待添加：各赛季机制
+			]
+		}
+	],
 	'/walkthrough/恶魔之魂/': [
 		{
 			text: '恶魔之魂：重置版',
