@@ -292,7 +292,8 @@ export const navData = {
 					{ name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree: true, needLogin: true, baseCount: 4 },
 					{ name: 'PSNs', url: 'https://www.psnsgame.com/', desc: 'PS白金中文站', icon: 'https://www.psnsgame.com/logo.png', isFree: true, needLogin: true, baseCount: 4 },
 					{ name: 'PANAX', url: 'https://trophy.panaxgames.com/', desc: '炫酷的奖杯走廊', icon: 'https://trophy.panaxgames.com/favicon-96x96.png?v=2', isFree: true, baseCount: 1 },
-					{ name: '游民星空', url: 'https://www.gamersky.com/', desc: '游戏攻略站', icon: 'https://www.gamersky.com/favicon.ico', isFree: true, baseCount: 1 }
+					{ name: '游民星空', url: 'https://www.gamersky.com/', desc: '游戏攻略站', icon: 'https://www.gamersky.com/favicon.ico', isFree: true, baseCount: 1 },
+					{ name: 'NGA', url: 'https://bbs.nga.cn/', desc: '游戏攻略站', icon: 'https://bbs.nga.cn/favicon.ico', needLogin: true, baseCount: 0 }
 				]
 			}
 		],
