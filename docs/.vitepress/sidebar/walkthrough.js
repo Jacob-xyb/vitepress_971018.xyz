@@ -108,7 +108,7 @@ export default {
 					text: '德鲁伊',
 					collapsed: false,
 					items: [
-						{ text: 'S14攻略', link: '/walkthrough/暗黑破坏神4/德鲁伊/S14攻略' },
+						{ text: 'S14攻略', link: '/walkthrough/暗黑破坏神4/德鲁伊/德鲁伊S14攻略' },
 					]
 				}
 			]
@@ -117,6 +117,13 @@ export default {
 			text: '核心系统',
 			items: [
 				// 待添加：巅峰盘、装备词条、过滤器等
+			]
+		},
+		{
+			text: '打造与材料',
+			items: [
+				{ text: '装备打造', link: '/walkthrough/暗黑破坏神4/装备打造' },
+				{ text: '材料获取', link: '/walkthrough/暗黑破坏神4/材料获取' },
 			]
 		},
 		{
