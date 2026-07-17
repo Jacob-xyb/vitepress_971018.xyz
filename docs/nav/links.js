@@ -214,6 +214,7 @@ export const navData = {
 				icon: '🤖',
 				links: [
 					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: 'https://deepseek.com/favicon.ico', isFree: true, needLogin: true, baseCount: 38 },
+					{ name: 'MIMO', url: 'https://aistudio.xiaomimimo.com/', desc: '小米AI对话助手', icon: 'https://aistudio.xiaomimimo.com/favicon.png', isFree: true, needLogin: true, baseCount: 0 },
 					{ name: '千问', url: 'https://www.qianwen.com/', desc: '通义千问', icon: '/logo/千问-logo.svg', isFree: true, needLogin: true, baseCount: 3 },
 					{ name: '豆包', url: 'https://www.doubao.com/', desc: '字节跳动旗下 AI 智能助手', icon: '//lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/chat/favicon.png', isFree: true, needLogin: true, baseCount: 11 },
 					{ name: 'ChatGPT', url: 'https://chat.openai.com', desc: 'OpenAI对话AI', icon: '/logo/ChatGPT.svg', needVPN: true, needLogin: true, baseCount: 1 },
