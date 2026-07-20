@@ -305,6 +305,7 @@ export const navData = {
 				icon: '👾',
 				links: [
 					{ name: '暗黑核', url: 'https://www.d2core.com/', desc: '暗黑4bd', icon: 'https://cloudstorage.d2core.com/app/logo-fav-32-solid.png', isFree: true, needLogin: true, baseCount: 1 },
+					{ name: '地狱之潮', url: 'https://helltides.com/', desc: '暗黑4天梯', icon: 'https://helltides.com/favicon.ico', isFree: true, baseCount: 0},
 					{ name: '暗黑IV过滤器解析', url: 'https://www.d4lootfilter.com/', desc: '暗黑4过滤器', icon: 'https://www.d4lootfilter.com/icon.svg', isFree: true},
 				]
 			},
