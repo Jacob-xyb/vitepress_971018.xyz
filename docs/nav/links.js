@@ -267,6 +267,13 @@ export const navData = {
 					{ name: '网盘搜', url: 'https://wangpansou.net/', desc: '夸克、百度、阿里', icon: 'https://wangpansou.net/icon.svg?icon.06fp4pul1nk-z.svg', isFree: true, baseCount: 0 },
 				]
 			},
+			{
+				title: '百科Wiki',
+				icon: '🧬',
+				links: [
+					{ name: 'musclewiki', url: 'https://musclewiki.com/zh-cn', desc: '免费的健身指南', icon: 'https://musclewiki.com/favicon.ico', isFree: true, baseCount: 0 },
+				]
+			},
 		],
 
 		game: [
