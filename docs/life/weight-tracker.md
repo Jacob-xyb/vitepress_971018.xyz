@@ -31,6 +31,23 @@ const metrics = [
   { value: 'rope', label: '跳绳个数', color: '#10b981' }
 ]
 
+// 默认 dataZoom 范围：聚焦最近半年数据（基于数据中最新一天向前推 6 个月）
+const defaultDataZoom = computed(() => {
+  if (records.value.length === 0) return { start: 0, end: 100 }
+  const earliest = new Date(records.value[0].date).getTime()
+  const latest = new Date(records.value[records.value.length - 1].date).getTime()
+  const halfYearAgo = new Date(latest)
+  halfYearAgo.setMonth(halfYearAgo.getMonth() - 6)
+
+  const totalSpan = latest - earliest
+  if (totalSpan <= 0) return { start: 0, end: 100 }
+
+  // 半年窗口起点不能早于数据最早一天
+  const windowStart = Math.max(halfYearAgo.getTime(), earliest)
+  const start = ((windowStart - earliest) / totalSpan) * 100
+  return { start, end: 100 }
+})
+
 // ECharts 实例
 let chart = null
 
@@ -141,8 +158,9 @@ function buildOption() {
         xAxisIndex: 0,
         bottom: 10,
         height: 30,
-        start: 0,
-        end: 100
+        // 默认聚焦最近半年数据（用户仍可拖动滑块查看更早的数据）
+        start: defaultDataZoom.value.start,
+        end: defaultDataZoom.value.end
       }
     ],
     series: [
