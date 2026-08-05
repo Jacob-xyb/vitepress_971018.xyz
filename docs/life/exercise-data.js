@@ -45,7 +45,7 @@ export const exercisePhases = [
 				note: '背部训练',
 				items: [
 					{ name: '哑铃弯腰划船', gif: '/exercise/哑铃弯腰划船.gif', reps: '4 × 15', weight: '5kg' },
-					{ name: '仰卧起坐', gif: '/exercise/仰卧起坐.gif', reps: '1 x 20' },
+					{ name: '仰卧起坐', gif: '/exercise/仰卧起坐.gif', reps: '2 x 20' },
 					{ name: '哑铃斜板划船', gif: '/exercise/哑铃斜板划船.gif', reps: '4 × 10（正握）', weight: '5kg' },
 				]
 			},
@@ -56,12 +56,12 @@ export const exercisePhases = [
 					{ name: '哑铃单臂推肩', gif: '/exercise/哑铃单臂推肩.gif', reps: '4 x 12（单侧）', weight: '5kg'},
 					{ name: '哑铃上举', gif: '/exercise/哑铃上举.gif', reps: '4 x 12', weight: '5kg'},
 					{ name: '左右勾拳', gif: '/exercise/左右勾拳.gif', reps: '4 x 15（单侧）' },
-					{ name: '仰卧起坐', gif: '/exercise/仰卧起坐.gif', reps: '1 x 20' },
+					{ name: '仰卧起坐', gif: '/exercise/仰卧起坐.gif', reps: '2 x 20' },
 					{
 						name: '蝴蝶机反向飞鸟',
 						variants: [
-							{ scene: '正常', gif: '/exercise/蝴蝶机反向飞鸟.gif', reps: '4 × 10', weight: '5kg' },
-							{ scene: '平行', gif: '/exercise/蝴蝶机反向飞鸟(平行).gif', reps: '4 × 10', weight: '5kg' }
+							{ scene: '正常', gif: '/exercise/蝴蝶机反向飞鸟.gif', reps: '4 × 10', weight: '18kg' },
+							{ scene: '平行', gif: '/exercise/蝴蝶机反向飞鸟(平行).gif', reps: '4 × 10', weight: '12kg' }
 						]
 					},
 					{ name: '坐姿肩部推举', gif: '/exercise/坐姿肩部推举.gif', reps: '4 x 10', weight: '10kg' },
