@@ -31,7 +31,8 @@ export const nav = [
 	{
 		text: '生活',
 		items: [
-			{ text: '体重记录', link: '/life/weight-tracker' }
+			{ text: '体重记录', link: '/life/weight-tracker' },
+			{ text: '锻炼计划', link: '/life/exercise-plan' }
 		]
 	},
 	{

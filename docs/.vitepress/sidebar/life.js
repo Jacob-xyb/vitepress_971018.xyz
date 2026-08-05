@@ -4,7 +4,8 @@ export default {
 			text: '生活记录',
 			items: [
 				{ text: '概览', link: '/life/' },
-				{ text: '体重记录', link: '/life/weight-tracker' }
+				{ text: '体重记录', link: '/life/weight-tracker' },
+				{ text: '锻炼计划', link: '/life/exercise-plan' }
 			]
 		}
 	]

@@ -14,6 +14,13 @@
       <p>追踪体重变化和运动数据</p>
     </div>
   </a>
+  <a href="/life/exercise-plan" class="nav-card">
+    <span class="nav-icon">💪</span>
+    <div class="nav-content">
+      <h3>锻炼计划</h3>
+      <p>无分化训练计划与动作演示</p>
+    </div>
+  </a>
 </div>
 
 <style scoped>
