@@ -53,9 +53,10 @@ export const exercisePhases = [
 				label: '周三',
 				note: '肩部训练',
 				items: [
-					{ name: '哑铃单臂推肩', gif: '/exercise/哑铃单臂推肩.gif', reps: '4 x 12（单侧）', weight: '5kg'},
-					{ name: '哑铃上举', gif: '/exercise/哑铃上举.gif', reps: '4 x 12', weight: '5kg'},
-					{ name: '左右勾拳', gif: '/exercise/左右勾拳.gif', reps: '4 x 15（单侧）' },
+					{ name: '哑铃单臂推肩', gif: '/exercise/哑铃单臂推肩.gif', reps: '2 x 10（单侧）', weight: '5kg'},
+					{ name: '哑铃上举', gif: '/exercise/哑铃上举.gif', reps: '4 x 15', weight: '5kg'},
+					{ name: 'V字卷腹', gif: '/exercise/反向卷腹.gif', reps: '4 x 20' },
+					{ name: '左右勾拳', gif: '/exercise/左右勾拳.gif', reps: '2 x 15（单侧）' },
 					{ name: '仰卧起坐', gif: '/exercise/仰卧起坐.gif', reps: '2 x 20' },
 					{
 						name: '蝴蝶机反向飞鸟',
@@ -71,9 +72,7 @@ export const exercisePhases = [
 				label: '周四',
 				note: '上肢拉 + 核心',
 				items: [
-					{ name: '引体向上', gif: '', reps: '4 × 8' },
-					{ name: '哑铃划船', gif: '', reps: '3 × 12' },
-					{ name: '卷腹', gif: '', reps: '3 × 20' }
+					{ name: 'V字卷腹', gif: '/exercise/反向卷腹.gif', reps: '4 x 20' },
 				]
 			},
 			{
