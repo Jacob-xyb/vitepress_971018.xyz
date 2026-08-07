@@ -173,20 +173,23 @@ function buildOption() {
         showSymbol: false,
         symbolSize: 7,
         lineStyle: { color: '#8b5cf6', width: 2 },
-        areaStyle: { color: 'rgba(139, 92, 246, 0.1)' }
+        areaStyle: { color: 'rgba(139, 92, 246, 0.1)' },
+        connectNulls: true  // 体重可能跨天未记：跳过 null 直接连线，与卡路里行为一致
       },
       {
         name: '体重点位',
         type: 'scatter',
-        data: records.value.map(r => ({
-          value: [r.date, r.weight],
-          itemStyle: {
-            color: '#8b5cf6',
-            opacity: 1,
-            borderColor: '#8b5cf6',
-            borderWidth: 0
-          }
-        })),
+        data: records.value
+          .filter(r => r.weight !== null)
+          .map(r => ({
+            value: [r.date, r.weight],
+            itemStyle: {
+              color: '#8b5cf6',
+              opacity: 1,
+              borderColor: '#8b5cf6',
+              borderWidth: 0
+            }
+          })),
         yAxisIndex: 0,
         symbolSize: 7,
         zlevel: 3,
@@ -197,7 +200,7 @@ function buildOption() {
         name: '体重锻炼中心点',
         type: 'scatter',
         data: records.value
-          .filter(r => r.hasExercise)
+          .filter(r => r.hasExercise && r.weight !== null)
           .map(r => [r.date, r.weight]),
         yAxisIndex: 0,
         symbol: 'circle',
@@ -294,20 +297,32 @@ function handleResize() {
 const stats = computed(() => {
   if (records.value.length === 0) return null
 
-  const weights = records.value.map(r => r.weight)
-  const latest = records.value[records.value.length - 1]
-  const first = records.value[0]
+  // 只统计有体重的日期，避免 null 污染 min/max/avg
+  const weightRecords = records.value.filter(r => r.weight !== null)
+  const weights = weightRecords.map(r => r.weight)
+  const totalCalories = records.value.reduce((sum, r) => sum + (r.calories || 0), 0)
+  const totalRope = records.value.reduce((sum, r) => sum + (r.rope || 0), 0)
+  const exerciseDays = records.value.filter(r => r.hasExercise).length
+  const totalDays = records.value.length
+
+  // 全部都是 null 体重时：当前/变化/最低/平均都返回 null，让模板降级显示 —
+  if (weightRecords.length === 0) {
+    return { current: null, change: null, min: null, max: null, avg: null, totalCalories, totalRope, exerciseDays, totalDays }
+  }
+
+  const latestWeighed = weightRecords[weightRecords.length - 1]
+  const firstWeighed = weightRecords[0]
 
   return {
-    current: latest.weight,
-    change: (latest.weight - first.weight).toFixed(1),
+    current: latestWeighed.weight,
+    change: (latestWeighed.weight - firstWeighed.weight).toFixed(1),
     min: Math.min(...weights),
     max: Math.max(...weights),
     avg: (weights.reduce((a, b) => a + b, 0) / weights.length).toFixed(1),
-    totalCalories: records.value.reduce((sum, r) => sum + (r.calories || 0), 0),
-    totalRope: records.value.reduce((sum, r) => sum + (r.rope || 0), 0),
-    exerciseDays: records.value.filter(r => r.hasExercise).length,
-    totalDays: records.value.length
+    totalCalories,
+    totalRope,
+    exerciseDays,
+    totalDays
   }
 })
 </script>
@@ -319,21 +334,27 @@ const stats = computed(() => {
   <div class="stats-grid" v-if="stats">
     <div class="stat-card">
       <div class="stat-label">当前体重</div>
-      <div class="stat-value">{{ stats.current }} kg</div>
+      <div class="stat-value">{{ stats.current ?? '—' }} kg</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">体重变化</div>
-      <div class="stat-value" :class="stats.change < 0 ? 'positive' : 'negative'">
-        {{ stats.change > 0 ? '+' : '' }}{{ stats.change }} kg
+      <div
+        class="stat-value"
+        :class="stats.change !== null && stats.change < 0 ? 'positive' : (stats.change !== null && stats.change > 0 ? 'negative' : '')"
+      >
+        <template v-if="stats.change !== null">
+          {{ stats.change > 0 ? '+' : '' }}{{ stats.change }} kg
+        </template>
+        <template v-else>—</template>
       </div>
     </div>
     <div class="stat-card">
       <div class="stat-label">最低体重</div>
-      <div class="stat-value">{{ stats.min }} kg</div>
+      <div class="stat-value">{{ stats.min ?? '—' }} kg</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">平均体重</div>
-      <div class="stat-value">{{ stats.avg }} kg</div>
+      <div class="stat-value">{{ stats.avg ?? '—' }} kg</div>
     </div>
   </div>
 
