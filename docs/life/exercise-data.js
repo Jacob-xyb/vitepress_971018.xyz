@@ -16,6 +16,8 @@ export const exercisePhases = [
 	{
 		phase: '拉伸动作',
 		items: [
+			{ name: '胸部拉伸', gif: '/exercise/胸部拉伸.gif', reps: '2 × 15s' },
+			{ name: '胸部和前肩拉伸', gif: '/exercise/胸部和前肩拉伸.gif', reps: '2 × 15s' },
 			{ name: '后三角肌拉伸', gif: '/exercise/后三角肌拉伸.gif', reps: '2 × 15s（单侧）' },
 		]
 	},
@@ -26,31 +28,22 @@ export const exercisePhases = [
 		days: [
 			{
 				label: '周一',
-				note: '上肢推 + 核心',
+				note: '胸部训练',
 				items: [
-					{ name: '俯卧撑', gif: '', reps: '4 × 12' },
-					{
-						name: '哑铃推举',
-						gif: '',
+					{ name: '哑铃平板飞鸟', gif: '/exercise/哑铃平板飞鸟.gif', 
 						variants: [
-							{ scene: '居家', reps: '4 × 15', weight: '5kg' },
-							{ scene: '健身房', reps: '3 × 10', weight: '7.5kg' }
-						]
+							{ scene: '居家(地板)', reps: '4 × 12', weight: '5kg' },
+							{ scene: '健身房', reps: '3 × 10', weight: '7.5kg' },]
 					},
-					{ name: '平板支撑', gif: '', reps: '3 × 1min' }
+					{ name: '哑铃单臂推举', gif: '/exercise/哑铃单臂推举.gif', reps: '2 × 10(单侧)', weight: '5kg' },
+					{ name: '仰卧起坐', gif: '/exercise/仰卧起坐.gif', reps: '2 x 20' },
+					{ name: '杠铃平板卧推', gif: '/exercise/杠铃平板卧推.gif', reps: '4 × 12', weight: '20kg' },
+					{ name: '蝴蝶机正向飞鸟', gif: '/exercise/蝴蝶机正向飞鸟.gif', reps: '4 × 12', weight: '18kg' },
+					{ name: '哑铃仰卧屈臂上拉', gif: '/exercise/哑铃仰卧屈臂上拉.gif', reps: '4 × 12', weight: '7.5kg' },
 				]
 			},
 			{
 				label: '周二',
-				note: '背部训练',
-				items: [
-					{ name: '哑铃弯腰划船', gif: '/exercise/哑铃弯腰划船.gif', reps: '4 × 15', weight: '5kg' },
-					{ name: '仰卧起坐', gif: '/exercise/仰卧起坐.gif', reps: '2 x 20' },
-					{ name: '哑铃斜板划船', gif: '/exercise/哑铃斜板划船.gif', reps: '4 × 10（正握）', weight: '5kg' },
-				]
-			},
-			{
-				label: '周三',
 				note: '肩部训练',
 				items: [
 					{ name: '哑铃单臂推肩', gif: '/exercise/哑铃单臂推肩.gif', reps: '2 x 10（单侧）', weight: '5kg'},
@@ -66,6 +59,23 @@ export const exercisePhases = [
 						]
 					},
 					{ name: '坐姿肩部推举', gif: '/exercise/坐姿肩部推举.gif', reps: '4 x 10', weight: '10kg' },
+					{
+						name: '哑铃推举',
+						gif: '',
+						variants: [
+							{ scene: '居家', reps: '4 × 15', weight: '5kg' },
+							{ scene: '健身房', reps: '3 × 10', weight: '7.5kg' }
+						]
+					},
+				]
+			},
+			{
+				label: '周三',
+				note: '背部训练',
+				items: [
+					{ name: '哑铃弯腰划船', gif: '/exercise/哑铃弯腰划船.gif', reps: '4 × 15', weight: '5kg' },
+					{ name: '仰卧起坐', gif: '/exercise/仰卧起坐.gif', reps: '2 x 20' },
+					{ name: '哑铃斜板划船', gif: '/exercise/哑铃斜板划船.gif', reps: '4 × 10（正握）', weight: '5kg' },
 				]
 			},
 			{
