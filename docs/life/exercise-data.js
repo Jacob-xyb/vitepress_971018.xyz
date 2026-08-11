@@ -48,8 +48,8 @@ export const exercisePhases = [
 						name: '哑铃斜板反手上推',
 						gif: '/exercise/哑铃斜板反手上推.gif',
 						variants: [
-							{ scene: '居家', reps: '4 × 15', weight: '5kg' },
-							{ scene: '健身房', reps: '4 × 12', weight: '7.5kg' }
+							{ scene: '居家', reps: '2 × 15', weight: '5kg' },
+							{ scene: '健身房', reps: '2 × 12', weight: '7.5kg' }
 						]
 					},
 					{ name: '杠铃平板卧推', gif: '/exercise/杠铃平板卧推.gif', reps: '4 × 10', weight: '20kg' },
