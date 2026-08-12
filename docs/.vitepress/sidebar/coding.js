@@ -170,6 +170,12 @@ export default {
 	],
 	'/coding/cpp/cmake/': [
 		...cppCommonSidebar,
+		{
+			text: '对比',
+			items: [
+				{ text: 'cmake VS 编译', link: '/coding/cpp/cmake/cmakeVS编译' }
+			]
+		}
 	],
 	'/coding/tool/': [
 		{
