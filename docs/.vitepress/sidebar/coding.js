@@ -10,8 +10,9 @@ const cppCommonSidebar = [
 	{
 		text: '专题',
 		items: [
-			{ text: '面向对象', link: '/coding/cpp/oop/' },
-			{ text: 'CMake', link: '/coding/cpp/cmake/' }
+			{ text: '编译', link: '/coding/cpp/编译/' },
+			{ text: 'CMake', link: '/coding/cpp/cmake/' },
+			{ text: '面向对象', link: '/coding/cpp/oop/' }
 		]
 	}
 ]
