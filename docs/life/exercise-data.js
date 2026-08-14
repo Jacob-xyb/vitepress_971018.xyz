@@ -53,7 +53,7 @@ export const exercisePhases = [
 						]
 					},
 					{ name: '杠铃平板卧推', gif: '/exercise/杠铃平板卧推.gif', reps: '4 × 10', weight: '20kg' },
-					{ name: '蝴蝶机正向飞鸟', gif: '/exercise/蝴蝶机正向飞鸟.gif', reps: '4 × 12', weight: '18kg' },
+					{ name: '蝴蝶机正向飞鸟', gif: '/exercise/蝴蝶机正向飞鸟.gif', reps: '4 × 10', weight: '24kg' },
 					{ name: '哑铃仰卧屈臂上拉', gif: '/exercise/哑铃仰卧屈臂上拉.gif', reps: '4 × 12', weight: '7.5kg' },
 				]
 			},
