@@ -48,13 +48,13 @@ export const exercisePhases = [
 						name: '哑铃斜板反手上推',
 						gif: '/exercise/哑铃斜板反手上推.gif',
 						variants: [
-							{ scene: '居家', reps: '2 × 15', weight: '5kg' },
-							{ scene: '健身房', reps: '2 × 12', weight: '7.5kg' }
+							{ scene: '居家', reps: '4 × 14', weight: '5kg' },
+							{ scene: '健身房', rreps: '4 × 14', weight: '5kg' }
 						]
 					},
-					{ name: '杠铃平板卧推', gif: '/exercise/杠铃平板卧推.gif', reps: '4 × 10', weight: '20kg' },
-					{ name: '蝴蝶机正向飞鸟', gif: '/exercise/蝴蝶机正向飞鸟.gif', reps: '4 × 10', weight: '24kg' },
-					{ name: '哑铃仰卧屈臂上拉', gif: '/exercise/哑铃仰卧屈臂上拉.gif', reps: '4 × 12', weight: '7.5kg' },
+					{ name: '杠铃平板卧推', gif: '/exercise/杠铃平板卧推.gif', reps: '4 × 12', weight: '20kg' },
+					{ name: '蝴蝶机正向飞鸟', gif: '/exercise/蝴蝶机正向飞鸟.gif', reps: '4 × 14', weight: '18kg' },
+					{ name: '哑铃仰卧屈臂上拉', gif: '/exercise/哑铃仰卧屈臂上拉.gif', reps: '4 × 14', weight: '7.5kg' },
 				]
 			},
 			{
