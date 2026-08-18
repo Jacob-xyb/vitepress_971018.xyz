@@ -87,6 +87,10 @@ export const exercisePhases = [
 				note: '背部训练',
 				items: [
 					{ name: '哑铃弯腰划船', gif: '/exercise/哑铃弯腰划船.gif', reps: '4 × 15', weight: '5kg' },
+					{ name: '绳索坐姿高位下拉', gif: '/exercise/绳索坐姿高位下拉.gif', reps: '4 x 12', weight: '48kg' },
+					{ name: '绳索坐姿中位划船', gif: '/exercise/绳索坐姿中位划船.gif', reps: '4 x 16', weight: '24kg' },
+					{ name: '哑铃单臂划船', gif: '/exercise/哑铃单臂划船.gif', reps: '4 x 12', weight: '15kg' },
+					{ name: '绳索坐姿反手高位下拉', gif: '/exercise/绳索坐姿反手高位下拉.gif', reps: '4 x 12', weight: '48kg' },
 					{ name: '哑铃斜板划船', gif: '/exercise/哑铃斜板划船.gif', reps: '4 × 10（正握）', weight: '5kg' },
 				]
 			},
