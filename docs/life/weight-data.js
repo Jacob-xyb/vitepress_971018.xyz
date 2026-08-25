@@ -2,7 +2,7 @@
  * @Author: Jacob-xyb 949782197@qq.com
  * @Date: 2026-02-02 15:59:37
  * @LastEditors: Jacob-xyb 949782197@qq.com
- * @LastEditTime: 2026-08-21 09:11:02
+ * @LastEditTime: 2026-08-25 17:33:38
  * @Description: Life is struggle.
  */
 export default {
@@ -137,6 +137,10 @@ export default {
 	["2026-08-19", 85.1, 606, null],
 	["2026-08-20", 85.0, 326, null],
 	["2026-08-21", 85.1, 326, null],
+	["2026-08-22", 85.2, 188, null],
+	["2026-08-23", 85.2, 476, null],
+	["2026-08-24", 85.3, 375, null],
+	["2026-08-25", 85.2, 179, null],
     // 在这里添加新数据，可以保留逗号
     // 如果某天没有锻炼，calories 和 rope 填 null，例如：
     // ["2026-02-26", 83.9, null, null],
