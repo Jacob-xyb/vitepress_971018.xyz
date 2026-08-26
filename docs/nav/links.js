@@ -264,7 +264,11 @@ export const navData = {
 				title: '资源下载',
 				icon: '🔎',
 				links: [
+					{ name: 'BT1207‌', url: 'https://bt1207xo.cc/', desc: '强大磁力引擎', icon: 'https://bt1207xo.cc/favicon.ico', isFree: true, baseCount: 0,
+						backupUrl1: 'https://bt1207sv.top/', backupUrl2: 'https://new1207.top/',
+					},
 					{ name: '网盘搜', url: 'https://wangpansou.net/', desc: '夸克、百度、阿里', icon: 'https://wangpansou.net/icon.svg?icon.06fp4pul1nk-z.svg', isFree: true, baseCount: 0 },
+					{ name: '无极磁链', url: 'https://wuji.me/', desc: '免费磁力搜索', icon: 'https://wuji.me/favicon.ico', isFree: true, baseCount: 0 },
 				]
 			},
 			{
