@@ -18,6 +18,7 @@ export const exercisePhases = [
 		items: [
 			{ name: '胸部拉伸', gif: '/exercise/胸部拉伸.gif', reps: '2 × 15s' },
 			{ name: '胸部和前肩拉伸', gif: '/exercise/胸部和前肩拉伸.gif', reps: '2 × 15s' },
+			{ name: '肩部W拉伸', gif: '/exercise/肩部W拉伸.gif', reps: '2 × 10', weight: '2.5kg' },
 			{ name: '后三角肌拉伸', gif: '/exercise/后三角肌拉伸.gif', reps: '2 × 15s（单侧）' },
 		]
 	},
@@ -61,9 +62,13 @@ export const exercisePhases = [
 				label: '周二',
 				note: '肩部训练',
 				items: [
-					{ name: '哑铃单臂推肩', gif: '/exercise/哑铃单臂推肩.gif', reps: '2 x 10（单侧）', weight: '5kg' },
-					{ name: '哑铃上举', gif: '/exercise/哑铃上举.gif', reps: '4 x 15', weight: '5kg' },
-					{ name: '左右勾拳', gif: '/exercise/左右勾拳.gif', reps: '2 x 15（单侧）' },
+					{
+						name: '蝴蝶机反向飞鸟',
+						variants: [
+							{ scene: '正常', gif: '/exercise/蝴蝶机反向飞鸟.gif', reps: '4 × 10', weight: '12kg' },
+							{ scene: '平行', gif: '/exercise/蝴蝶机反向飞鸟(平行).gif', reps: '4 × 10', weight: '12kg' }
+						]
+					},
 					{
 						name: '哑铃斜板上推',
 						gif: '/exercise/哑铃斜板上推.gif',
@@ -72,14 +77,13 @@ export const exercisePhases = [
 							{ scene: '健身房', reps: '4 × 12', weight: '7.5kg' }
 						]
 					},
-					{
-						name: '蝴蝶机反向飞鸟',
-						variants: [
-							{ scene: '正常', gif: '/exercise/蝴蝶机反向飞鸟.gif', reps: '4 × 10', weight: '18kg' },
-							{ scene: '平行', gif: '/exercise/蝴蝶机反向飞鸟(平行).gif', reps: '4 × 10', weight: '12kg' }
-						]
-					},
-					{ name: '坐姿肩部推举', gif: '/exercise/坐姿肩部推举.gif', reps: '4 x 10', weight: '10kg' },
+					{ name: '坐姿肩部推举', gif: '/exercise/坐姿肩部推举.gif', reps: '4 x 10', weight: '20kg' },
+					{ name: '哑铃站姿侧平举', gif: '/exercise/哑铃站姿侧平举.gif', reps: '4 x 10', weight: '5kg' },
+					{ name: '哑铃站姿提拉划船', gif: '/exercise/哑铃站姿提拉划船.gif', reps: '4 x 10', weight: '5kg' },
+					{ name: '哑铃坐姿旋转推肩', gif: '/exercise/哑铃坐姿旋转推肩.gif', reps: '4 x 10', weight: '5kg' },
+					{ name: '哑铃单臂推肩', gif: '/exercise/哑铃单臂推肩.gif', reps: '2 x 10（单侧）', weight: '5kg', breakRow: true  },
+					{ name: '哑铃上举', gif: '/exercise/哑铃上举.gif', reps: '4 x 15', weight: '5kg' },
+					{ name: '左右勾拳', gif: '/exercise/左右勾拳.gif', reps: '2 x 15（单侧）' },
 				]
 			},
 			{

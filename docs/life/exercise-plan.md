@@ -42,7 +42,7 @@ function getEntries(phase) {
 <h3 v-if="entry.label">{{ entry.label }}<span v-if="entry.note" class="day-note">{{ entry.note }}</span></h3>
 
 <div v-if="entry.items && entry.items.length" class="exercise-grid">
-  <div v-for="item in entry.items" :key="item.name + (item.variants && item.variants.some(v => v.gif) ? '_m' : '_s')">
+  <div v-for="item in entry.items" :key="item.name + (item.variants && item.variants.some(v => v.gif) ? '_m' : '_s')" :class="{ 'break-row': item.breakRow }">
     <div v-if="item.variants && item.variants.some(v => v.gif)"
          class="exercise-card posture-flip-card"
          :class="{ 'is-flipped': !!flipStates[item.name] }"
@@ -152,6 +152,11 @@ function getEntries(phase) {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
   margin: 1rem 0 2rem;
+}
+
+/* 强制卡片从新一行开始：在数据项上加 breakRow: true 即可 */
+.exercise-grid .break-row {
+  grid-column-start: 1;
 }
 
 /* 姿势翻面卡：整张卡可点击，正反两面以 rotateY 切换。
