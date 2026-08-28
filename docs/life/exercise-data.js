@@ -77,9 +77,9 @@ export const exercisePhases = [
 							{ scene: '健身房', reps: '4 × 12', weight: '7.5kg' }
 						]
 					},
-					{ name: '坐姿肩部推举', gif: '/exercise/坐姿肩部推举.gif', reps: '4 x 10', weight: '20kg' },
-					{ name: '哑铃站姿侧平举', gif: '/exercise/哑铃站姿侧平举.gif', reps: '4 x 10', weight: '5kg' },
-					{ name: '哑铃站姿提拉划船', gif: '/exercise/哑铃站姿提拉划船.gif', reps: '4 x 10', weight: '5kg' },
+					{ name: '坐姿肩部推举', gif: '/exercise/坐姿肩部推举.gif', reps: '4 x 8', weight: '20kg' },
+					{ name: '哑铃站姿侧平举', gif: '/exercise/哑铃站姿侧平举.gif', reps: '4 x 8', weight: '5kg' },
+					{ name: '哑铃站姿提拉划船', gif: '/exercise/哑铃站姿提拉划船.gif', reps: '4 x 8', weight: '5kg' },
 					{ name: '哑铃坐姿旋转推肩', gif: '/exercise/哑铃坐姿旋转推肩.gif', reps: '4 x 10', weight: '5kg' },
 					{ name: '哑铃单臂推肩', gif: '/exercise/哑铃单臂推肩.gif', reps: '2 x 10（单侧）', weight: '5kg', breakRow: true  },
 					{ name: '哑铃上举', gif: '/exercise/哑铃上举.gif', reps: '4 x 15', weight: '5kg' },
