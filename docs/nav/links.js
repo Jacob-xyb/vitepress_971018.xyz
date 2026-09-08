@@ -44,8 +44,8 @@ export const navData = {
 				title: '日常必备',
 				icon: '💎',
 				links: [
-					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 38 },
-					{ name: '闲鱼', url: 'https://www.goofish.com/', desc: '最大闲置交易市场', icon: 'https://img.alicdn.com/tfs/TB19WObTNv1gK0jSZFFXXb0sXXa-144-144.png', needLogin: true, baseCount: 12 },
+					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: '/logo/deepseek-logo.svg', isFree: true, needLogin: true, baseCount: 62 },
+					{ name: '闲鱼', url: 'https://www.goofish.com/', desc: '最大闲置交易市场', icon: 'https://img.alicdn.com/tfs/TB19WObTNv1gK0jSZFFXXb0sXXa-144-144.png', needLogin: true, baseCount: 15 },
 				]
 			},
 			{
@@ -54,7 +54,7 @@ export const navData = {
 				links: [
 					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 10 },
 					{ name: 'GitHub', url: 'https://github.com', desc: '全球最大的代码托管平台', icon: 'github', needVPN: true, isFree: true, baseCount: 8 },
-					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon: 'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 7 },
+					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon: 'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 11 },
 				]
 			}
 		],
@@ -64,19 +64,19 @@ export const navData = {
 				title: '在线观看',
 				icon: '📺',
 				links: [
-					{ name: '观影', url: 'https://www.xn--wcv59z.com/', desc: '聚合类 很强', icon: '👻', isFree: true, needLogin: true, baseCount: 11, backupUrl: "https://www.xn--ykq321c.com/" },
-					{ name: '555电影', url: 'https://www.555yy2.com/index/home.html', desc: '在线 很强', icon: 'https://www.555yy2.com/favicon.ico', isFree: true, baseCount: 0,},
+					{ name: '观影', url: 'https://www.xn--wcv59z.com/', desc: '聚合类 很强', icon: '👻', isFree: true, needLogin: true, baseCount: 34, backupUrl: "https://www.xn--ykq321c.com/" },
+					{ name: '555电影', url: 'https://www.555yy2.com/index/home.html', desc: '在线 很强', icon: 'https://www.555yy2.com/favicon.ico', isFree: true, baseCount: 1,},
 				]
 			},
 			{
 				title: '资源下载',
 				icon: '/icon/openmoji-film-projector.svg',
 				links: [
-					{ name: '6v电影', url: 'https://www.6v520.net/', desc: '磁力下载', icon: 'https://www.6v520.net/favicon.ico', isFree: true, hasAds: true, baseCount: 0, backupUrl: "www.6v123.com" },
-					{ name: 'BT世界', url: 'https://www.btsj6.com/', desc: '磁力下载，电视剧需要一集一集下载', icon: 'https://www.btsj6.com/favicon.ico', isFree: true, baseCount: 3, },
-					{ name: '电影港', url: 'https://www.dyg55.com/', desc: '磁力下载', icon: 'https://www.dyg55.com/favicon.ico', isFree: true, baseCount: 4, },
-					{ name: '高清族', url: 'https://www.hdzu.cc/', desc: '磁力下载，资源不全，尚且可用', icon: 'https://www.hdzu.cc/favicon.ico', isFree: true, baseCount: 0, },
-					{ name: 'BT之家', url: 'https://www.1lou.one/', desc: '磁力下载,暂停注册', icon: 'https://www.1lou.one/view/img/favicon.ico', isFree: true, needLogin: true, baseCount: 2, },
+					{ name: '6v电影', url: 'https://www.6v520.net/', desc: '磁力下载', icon: 'https://www.6v520.net/favicon.ico', isFree: true, hasAds: true, baseCount: 11, backupUrl: "www.6v123.com" },
+					{ name: 'BT世界', url: 'https://www.btsj6.com/', desc: '磁力下载，电视剧需要一集一集下载', icon: 'https://www.btsj6.com/favicon.ico', isFree: true, baseCount: 5, },
+					{ name: '电影港', url: 'https://www.dyg55.com/', desc: '磁力下载', icon: 'https://www.dyg55.com/favicon.ico', isFree: true, baseCount: 6, },
+					{ name: '高清族', url: 'https://www.hdzu.cc/', desc: '磁力下载，资源不全，尚且可用', icon: 'https://www.hdzu.cc/favicon.ico', isFree: true, baseCount: 2, },
+					{ name: 'BT之家', url: 'https://www.1lou.one/', desc: '磁力下载,暂停注册', icon: 'https://www.1lou.one/view/img/favicon.ico', isFree: true, needLogin: true, baseCount: 4, },
 				]
 			},
 			{
@@ -84,7 +84,8 @@ export const navData = {
 				icon: '🎭',
 				links: [
 					{ name: 'AGE动漫', url: 'https://www.agedm.io/', desc: '在线、免费', icon: 'https://www.agedm.io/favicon.ico', isFree: true, needLogin: true, baseCount: 2, backupUrl: "age.tv" },
-					{ name: 'Komiic漫画', url: 'https://komiic.com/', desc: '在线、免费，赞助一次后体验绝佳', icon: 'https://komiic.com/favicon.ico', isFree: true, needLogin: false, needVPN: true},
+					{ name: '蜜柑计划', url: 'https://mikanime.tv/', desc: '追番神器，磁链，在线(梯子)', icon: 'https://mikanime.tv/favicon.ico', isFree: true, needLogin: true, baseCount: 2},
+					{ name: 'Komiic漫画', url: 'https://komiic.com/', desc: '在线、免费，赞助一次后体验绝佳', icon: 'https://komiic.com/favicon.ico', isFree: true, needLogin: false, needVPN: true, baseCount: 2},
 				]
 			},
 			{
@@ -119,14 +120,14 @@ export const navData = {
 				title: '字幕资源',
 				icon: '💬',
 				links: [
-					{ name: '字幕库', url: 'https://zimuku.org/', desc: '免费', icon: 'https://zimuku.org/favicon.png', isFree: true}
+					{ name: '字幕库', url: 'https://zimuku.org/', desc: '免费', icon: 'https://zimuku.org/favicon.png', isFree: true, baseCount: 3}
 				]
 			},
 			{
 				title: '影视素材',
 				icon: '🎞️',
 				links: [
-					{ name: 'TMDB', url: 'https://www.themoviedb.org/', desc: '影视刮削', icon: 'https://www.themoviedb.org/favicon.ico', isFree: true}
+					{ name: 'TMDB', url: 'https://www.themoviedb.org/', desc: '影视刮削', icon: 'https://www.themoviedb.org/favicon.ico', isFree: true, baseCount: 4}
 				]
 			}
 		],
@@ -148,11 +149,11 @@ export const navData = {
 				title: '在线工具',
 				icon: '🌐',
 				links: [
-					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon: 'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 7 },
+					{ name: 'Notion', url: 'https://www.notion.so', desc: 'AI工作空间，你的智能助手', icon: 'https://www.notion.so/front-static/favicon.ico', needLogin: true, isFree: true, baseCount: 11 },
 					{ name: 'CodePen', url: 'https://codepen.io', desc: '在线代码编辑器', icon: '✏️', baseCount: 0 },
-					{ name: 'Gitee', url: 'https://gitee.com', desc: '代码托管平台', icon: 'https://gitee.com/favicon.ico', baseCount: 5 },
+					{ name: 'Gitee', url: 'https://gitee.com', desc: '代码托管平台', icon: 'https://gitee.com/favicon.ico', baseCount: 8 },
 					{ name: 'RegExr', url: 'https://regexr.com', desc: '正则表达式测试', icon: '🔍', baseCount: 0 },
-					{ name: 'Can I Use', url: 'https://caniuse.com', desc: '浏览器兼容性查询', icon: '✅', baseCount: 0 },
+					{ name: 'Can I Use', url: 'https://caniuse.com', desc: '浏览器兼容性查询', icon: '✅', baseCount: 1 },
 				]
 			},
 			{
@@ -160,8 +161,8 @@ export const navData = {
 				icon: '🎬',
 				links: [
 					// 在这里添加自媒体相关网站
-					{ name: '小红书创作平台', url: 'https://creator.xiaohongshu.com/new/home', desc: '', icon: 'https://www.xiaohongshu.com/favicon.ico', isFree: true, eedLogin: true, baseCount: 0 },
-					{ name: 'Any2Card', url: 'https://any2card.com/zh', desc: 'markdown转小卡片', icon: 'https://any2card.com/_next/image?url=%2Flogo.jpeg&w=32&q=75', isFree: true, baseCount: 0 },
+					{ name: '小红书创作平台', url: 'https://creator.xiaohongshu.com/new/home', desc: '', icon: 'https://www.xiaohongshu.com/favicon.ico', isFree: true, eedLogin: true, baseCount: 8 },
+					{ name: 'Any2Card', url: 'https://any2card.com/zh', desc: 'markdown转小卡片', icon: 'https://any2card.com/_next/image?url=%2Flogo.jpeg&w=32&q=75', isFree: true, baseCount: 3 },
 				]
 			},
 			{
@@ -178,7 +179,7 @@ export const navData = {
 				icon: '🎨',
 				links: [
 					{ name: 'Simple Icons', url: 'https://simpleicons.org/', desc: '3000+ 品牌图标库', icon: 'simpleicons', isFree: true, baseCount: 10 },
-					{ name: 'OpenMoji', url: 'https://openmoji.org/', desc: '开源 Emoji 图标库', icon: '/logo/openmoji-logo.svg', isFree: true, baseCount: 4 },
+					{ name: 'OpenMoji', url: 'https://openmoji.org/', desc: '开源 Emoji 图标库', icon: '/logo/openmoji-logo.svg', isFree: true, baseCount: 5 },
 					{ name: 'iconfont', url: 'https://www.iconfont.cn/', desc: '阿里巴巴矢量图标库', icon: 'https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg', isFree: true, needLogin: true, baseCount: 6 },
 					{ name: 'flaticon', url: 'https://www.flaticon.com/', desc: '半免费cdn图标库', icon: 'https://media.flaticon.com/dist/min/img/favicon.ico',},
 				]
@@ -195,7 +196,7 @@ export const navData = {
 				title: '游戏素材',
 				icon: '🖌️',
 				links: [
-					{ name: 'Game FAQ', url: 'https://gamefaqs.gamespot.com/', desc: '齐全的游戏封面论坛', icon: '/logo/game-faq.ico', needVPN: true, isFree: true, baseCount: 6 },
+					{ name: 'Game FAQ', url: 'https://gamefaqs.gamespot.com/', desc: '齐全的游戏封面论坛', icon: '/logo/game-faq.ico', needVPN: true, isFree: true, baseCount: 10 },
 				]
 			},
 			{
@@ -213,7 +214,7 @@ export const navData = {
 				title: 'AI工具',
 				icon: '🤖',
 				links: [
-					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: 'https://deepseek.com/favicon.ico', isFree: true, needLogin: true, baseCount: 38 },
+					{ name: 'DeepSeek', url: 'https://chat.deepseek.com/', desc: '国产AI对话助手', icon: 'https://deepseek.com/favicon.ico', isFree: true, needLogin: true, baseCount: 62 },
 					{ name: 'MIMO', url: 'https://aistudio.xiaomimimo.com/', desc: '小米AI对话助手', icon: 'https://aistudio.xiaomimimo.com/favicon.png', isFree: true, needLogin: true, baseCount: 0 },
 					{ name: '千问', url: 'https://www.qianwen.com/', desc: '通义千问', icon: '/logo/千问-logo.svg', isFree: true, needLogin: true, baseCount: 3 },
 					{ name: '豆包', url: 'https://www.doubao.com/', desc: '字节跳动旗下 AI 智能助手', icon: '//lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/chat/favicon.png', isFree: true, needLogin: true, baseCount: 11 },
@@ -225,7 +226,7 @@ export const navData = {
 			{
 				title: 'Coding Plan',
 				links: [
-					{ name: 'MiniMax', url: 'https://www.minimaxi.com/', desc: '与所有人共创智能', icon: 'https://www.minimaxi.com/favicon.ico', needLogin: true, needPay: true, baseCount: 36 },
+					{ name: 'MiniMax', url: 'https://www.minimaxi.com/', desc: '与所有人共创智能', icon: 'https://www.minimaxi.com/favicon.ico', needLogin: true, needPay: true, baseCount: 58 },
 				]
 			}
 		],
@@ -235,8 +236,8 @@ export const navData = {
 				title: '学习工具',
 				icon: '📖',
 				links: [
-					{ name: '有道词典', url: 'https://www.youdao.com/', desc: '在线翻译与词典', icon: 'https://www.youdao.com/favicon.ico', isFree: true, baseCount: 20 },
-					{ name: '有道云笔记', url: 'https://note.youdao.com/', desc: '', icon: 'https://note.youdao.com/favicon.ico', isFree: true, needLogin: true, baseCount: 0 },
+					{ name: '有道词典', url: 'https://www.youdao.com/', desc: '在线翻译与词典', icon: 'https://www.youdao.com/favicon.ico', isFree: true, baseCount: 35 },
+					{ name: '有道云笔记', url: 'https://note.youdao.com/', desc: '', icon: 'https://note.youdao.com/favicon.ico', isFree: true, needLogin: true, baseCount: 1 },
 				]
 			}
 		],
@@ -246,15 +247,15 @@ export const navData = {
 				title: '聚合搜索',
 				icon: '🔍',
 				links: [
-					{ name: '龙轩导航', url: 'http://ilxdh.com/cat/171', desc: '做个有用的导航', icon: 'http://ilxdh.com/cat/171/favicon.ico', isFree: true, baseCount: 4 },
+					{ name: '龙轩导航', url: 'http://ilxdh.com/cat/171', desc: '做个有用的导航', icon: 'http://ilxdh.com/cat/171/favicon.ico', isFree: true, baseCount: 7 },
 				]
 			},
 			{
 				title: '生活服务',
 				icon: '🏠',
 				links: [
-					{ name: '115网盘', url: 'https://115.com/', desc: '一生相伴', baseCount: 5, icon: 'https://115.com/favicon.ico' },
-					{ name: '海盗湾', url: 'https://thepiratebay.org/index.html', desc: '磁力下载', icon: 'https://torrindex.net/images/tpb.jpg', isFree: true, needVPN: true },
+					{ name: '115网盘', url: 'https://115.com/', desc: '一生相伴', baseCount: 20, icon: 'https://115.com/favicon.ico' },
+					{ name: '海盗湾', url: 'https://thepiratebay.org/index.html', desc: '磁力下载', icon: 'https://torrindex.net/images/tpb.jpg', isFree: true, needVPN: true , baseCount: 1},
 					{ name: '百度地图', url: 'https://map.baidu.com', desc: '地图导航服务', icon: '🗺️', baseCount: 0 },
 					{ name: '天气预报', url: 'https://www.weather.com.cn', desc: '天气查询', icon: '🌤️', baseCount: 0 },
 					{ name: '12306', url: 'https://www.12306.cn', desc: '火车票预订', icon: '🚄', baseCount: 0 },
@@ -264,10 +265,10 @@ export const navData = {
 				title: '资源下载',
 				icon: '🔎',
 				links: [
-					{ name: 'BT1207‌', url: 'https://bt1207xo.cc/', desc: '强大磁力引擎', icon: 'https://bt1207xo.cc/favicon.ico', isFree: true, baseCount: 0,
+					{ name: 'BT1207‌', url: 'https://bt1207xo.cc/', desc: '强大磁力引擎', icon: 'https://bt1207xo.cc/favicon.ico', isFree: true, baseCount: 2,
 						backupUrl1: 'https://bt1207sv.top/', backupUrl2: 'https://new1207.top/',
 					},
-					{ name: '网盘搜', url: 'https://wangpansou.net/', desc: '夸克、百度、阿里', icon: 'https://wangpansou.net/icon.svg?icon.06fp4pul1nk-z.svg', isFree: true, baseCount: 0 },
+					{ name: '网盘搜', url: 'https://wangpansou.net/', desc: '夸克、百度、阿里', icon: 'https://wangpansou.net/icon.svg?icon.06fp4pul1nk-z.svg', isFree: true, baseCount: 1 },
 					{ name: '无极磁链', url: 'https://wuji.me/', desc: '免费磁力搜索', icon: 'https://wuji.me/favicon.ico', isFree: true, baseCount: 0 },
 				]
 			},
@@ -275,7 +276,7 @@ export const navData = {
 				title: '百科Wiki',
 				icon: '🧬',
 				links: [
-					{ name: 'musclewiki', url: 'https://musclewiki.com/zh-cn', desc: '免费的健身指南', icon: 'https://musclewiki.com/favicon.ico', isFree: true, baseCount: 0 },
+					{ name: 'musclewiki', url: 'https://musclewiki.com/zh-cn', desc: '免费的健身指南', icon: 'https://musclewiki.com/favicon.ico', isFree: true, baseCount: 1 },
 				]
 			},
 		],
@@ -294,17 +295,17 @@ export const navData = {
 				title: '游戏下载',
 				icon: '/icon/mage--video-download.svg',
 				links: [
-					{ name: 'switch520', url: 'https://www.gamer520.com/', desc: '完全的免费的switch下载', icon: 'https://ig.freer.blog/2023/10/25/d67adcffb89dd.jpg', isFree: true,  baseCount: 4}
+					{ name: 'switch520', url: 'https://www.gamer520.com/', desc: '完全的免费的switch下载', icon: 'https://ig.freer.blog/2023/10/25/d67adcffb89dd.jpg', isFree: true,  baseCount: 6}
 				]
 			},
 			{
 				title: '游戏攻略',
 				icon: '📖',
 				links: [
-					{ name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree: true, needLogin: true, baseCount: 4 },
-					{ name: 'PSNs', url: 'https://www.psnsgame.com/', desc: 'PS白金中文站', icon: 'https://www.psnsgame.com/logo.png', isFree: true, needLogin: true, baseCount: 4 },
-					{ name: 'PANAX', url: 'https://trophy.panaxgames.com/', desc: '炫酷的奖杯走廊', icon: 'https://trophy.panaxgames.com/favicon-96x96.png?v=2', isFree: true, baseCount: 1 },
-					{ name: '游民星空', url: 'https://www.gamersky.com/', desc: '游戏攻略站', icon: 'https://www.gamersky.com/favicon.ico', isFree: true, baseCount: 1 },
+					{ name: 'PSN中文站', url: 'https://www.psnine.com/', desc: 'PS白金中文站', icon: 'https://www.psnine.com/View/aimage/p9.png', isFree: true, needLogin: true, baseCount: 19 },
+					{ name: 'PSNs', url: 'https://www.psnsgame.com/', desc: 'PS白金中文站', icon: 'https://www.psnsgame.com/logo.png', isFree: true, needLogin: true, baseCount: 5 },
+					{ name: 'PANAX', url: 'https://trophy.panaxgames.com/', desc: '炫酷的奖杯走廊', icon: 'https://trophy.panaxgames.com/favicon-96x96.png?v=2', isFree: true, baseCount: 8 },
+					{ name: '游民星空', url: 'https://www.gamersky.com/', desc: '游戏攻略站', icon: 'https://www.gamersky.com/favicon.ico', isFree: true, baseCount: 5 },
 					{ name: 'NGA', url: 'https://bbs.nga.cn/', desc: '游戏攻略站', icon: 'https://bbs.nga.cn/favicon.ico', needLogin: true, baseCount: 0 }
 				]
 			}
@@ -315,10 +316,10 @@ export const navData = {
 				title: '暗黑破坏神IV',
 				icon: '👾',
 				links: [
-					{ name: '暗黑核', url: 'https://www.d2core.com/', desc: '暗黑4bd', icon: 'https://cloudstorage.d2core.com/app/logo-fav-32-solid.png', isFree: true, needLogin: true, baseCount: 1 },
+					{ name: '暗黑核', url: 'https://www.d2core.com/', desc: '暗黑4bd', icon: 'https://cloudstorage.d2core.com/app/logo-fav-32-solid.png', isFree: true, needLogin: true, baseCount: 5 },
 					{ name: '地狱之潮', url: 'https://helltides.com/', desc: '暗黑4天梯', icon: 'https://helltides.com/favicon.ico', isFree: true, baseCount: 0},
 					{ name: 'infinitybuilds', url: 'https://infinitybuilds.gg/zh', desc: '暗黑4bd', icon: 'https://infinitybuilds.gg/favicon.ico', isFree: true, baseCount: 0},
-					{ name: '暗黑IV过滤器解析', url: 'https://www.d4lootfilter.com/', desc: '暗黑4过滤器', icon: 'https://www.d4lootfilter.com/icon.svg', isFree: true},
+					{ name: '暗黑IV过滤器解析', url: 'https://www.d4lootfilter.com/', desc: '暗黑4过滤器', icon: 'https://www.d4lootfilter.com/icon.svg', isFree: true, baseCount: 1},
 				]
 			},
 		],
