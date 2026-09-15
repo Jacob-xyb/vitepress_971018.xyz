@@ -25,7 +25,8 @@ export default {
 		{
 			text: '孕期检查',
 			items: [
-				{ text: 'NT 检查', link: '/encyclopedia/pregnancy/NT检查' }
+				{ text: 'NT 检查', link: '/encyclopedia/pregnancy/NT检查' },
+				{ text: '糖耐检查', link: '/encyclopedia/pregnancy/糖耐检查' }
 			]
 		},
 		{
