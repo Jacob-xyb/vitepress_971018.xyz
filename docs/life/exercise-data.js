@@ -38,13 +38,6 @@ export const exercisePhases = [
 				label: '周一',
 				note: '胸部训练',
 				items: [
-					{ name: '哑铃单臂推举', gif: '/exercise/哑铃单臂推举.gif', reps: '2 × 10(单侧)', weight: '5kg' },
-					{
-						name: '哑铃平板飞鸟', gif: '/exercise/哑铃平板飞鸟.gif',
-						variants: [
-							{ scene: '居家(地板)', reps: '4 × 12', weight: '5kg' },
-							{ scene: '健身房', reps: '3 × 10', weight: '7.5kg' },]
-					},
 					{
 						name: '哑铃斜板反手上推',
 						gif: '/exercise/哑铃斜板反手上推.gif',
@@ -55,7 +48,14 @@ export const exercisePhases = [
 					},
 					{ name: '杠铃平板卧推', gif: '/exercise/杠铃平板卧推.gif', reps: '4 × 12', weight: '20kg' },
 					{ name: '蝴蝶机正向飞鸟', gif: '/exercise/蝴蝶机正向飞鸟.gif', reps: '4 × 12', weight: '18kg' },
-					{ name: '哑铃仰卧屈臂上拉', gif: '/exercise/哑铃仰卧屈臂上拉.gif', reps: '4 × 14', weight: '7.5kg' },
+					{ name: '哑铃仰卧屈臂上拉', gif: '/exercise/哑铃仰卧屈臂上拉.gif', reps: '4 × 16', weight: '7.5kg' },
+					{ name: '哑铃单臂推举', gif: '/exercise/哑铃单臂推举.gif', reps: '2 × 10(单侧)', weight: '5kg', breakRow: true  },
+					{
+						name: '哑铃平板飞鸟', gif: '/exercise/哑铃平板飞鸟.gif',
+						variants: [
+							{ scene: '居家(地板)', reps: '4 × 12', weight: '5kg' },
+							{ scene: '健身房', reps: '3 × 10', weight: '7.5kg' },]
+					},
 				]
 			},
 			{
@@ -66,7 +66,7 @@ export const exercisePhases = [
 						name: '蝴蝶机反向飞鸟',
 						variants: [
 							{ scene: '正常', gif: '/exercise/蝴蝶机反向飞鸟.gif', reps: '4 × 10', weight: '12kg' },
-							{ scene: '平行', gif: '/exercise/蝴蝶机反向飞鸟(平行).gif', reps: '4 × 10', weight: '12kg' }
+							{ scene: '平行', gif: '/exercise/蝴蝶机反向飞鸟(平行).gif', reps: '4 × 12', weight: '12kg' }
 						]
 					},
 					{
