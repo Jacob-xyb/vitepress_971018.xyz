@@ -268,6 +268,7 @@ export const navData = {
 					{ name: 'BT1207‌', url: 'https://bt1207xo.cc/', desc: '强大磁力引擎', icon: 'https://bt1207xo.cc/favicon.ico', isFree: true, baseCount: 2,
 						backupUrl1: 'https://bt1207sv.top/', backupUrl2: 'https://new1207.top/',
 					},
+					{ name: 'OpenBT', url: 'https://openbtgo.cc/zh-cn/', desc: 'BT1207新站', icon: 'https://openbtgo.cc/brand/openbt-logo-2430826816d0547c0ce495b5abb12279.svg', isFree: true, baseCount: 0 },
 					{ name: '网盘搜', url: 'https://wangpansou.net/', desc: '夸克、百度、阿里', icon: 'https://wangpansou.net/icon.svg?icon.06fp4pul1nk-z.svg', isFree: true, baseCount: 1 },
 					{ name: '无极磁链', url: 'https://wuji.me/', desc: '免费磁力搜索', icon: 'https://wuji.me/favicon.ico', isFree: true, baseCount: 0 },
 				]

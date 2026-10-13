@@ -16,8 +16,15 @@ export default {
 			]
 		},
 		{
+			text: 'Python',
+			items: [
+				{ text: '解释器配置详解', link: '/soft/vscode/python/python-config' }
+			]
+		},
+		{
 			text: '插件',
 			items: [
+				{ text: '插件离线下载', link: '/soft/vscode/plugin/offline-download' },
 				{ text: 'Claude Code', link: '/soft/vscode/plugin/Claude-Code' }
 			]
 		}
